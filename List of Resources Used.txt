@@ -1,0 +1,2 @@
+Laravel by ? along with packages included in Laravel, accounted for by its' license.
+
