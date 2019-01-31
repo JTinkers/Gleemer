@@ -1,0 +1,134 @@
+@import url("https://use.fontawesome.com/releases/v5.4.1/css/all.css");
+@import 'themes/_default';
+
+*
+{
+    box-sizing: border-box;
+}
+
+a
+{
+    text-decoration: none;
+    color: $aColor;
+
+    &:hover
+    {
+        color: brighter($aColor, 20%);
+    }
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: $bodyBackground;
+    color: $textColor;
+    margin: 0;
+    font-family: $textFont2;
+    font-size: 16px;
+}
+
+header
+{
+    background: $headerBackground;
+    display: flex;
+    align-items: center;
+    height: 120px;
+    padding: 0 20vw;
+}
+
+nav
+{
+    color: $navTextColor;
+    font-family: $textFont3;
+    margin-left: auto;
+
+    > *
+    {
+        color: $navTextColor;
+        margin-left: 32px;
+    }
+
+    > *:hover
+    {
+        color: lighten($navTextColor, 25%);
+    }
+}
+
+main
+{
+    display: flex;
+    flex-grow: 1;
+    padding: 16px;
+}
+
+footer
+{
+    padding: 16px;
+}
+
+#logo
+{
+    color: $logoColorFade2;
+    font-family: $textFont3;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 32px;
+    background: -webkit-linear-gradient($logoColorFade1 30%, $logoColorFade2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#subheader
+{
+    height: 60px;
+    padding: 0 20vw;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    background: $subheaderBackground;
+}
+
+#search
+{
+    margin-left: auto;
+    display: flex;
+    color: $searchTextColor;
+
+    #search-button
+    {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        background: $headerBackground;
+        border-radius: 16px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    #search-input
+    {
+        display: flex;
+        align-items: center;
+        background: $headerBackground;
+        border-radius: 16px;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    #search-input > input
+    {
+        color: inherit;
+        outline: none;
+        font-family: inherit;
+        font-size: inherit;
+        border: none;
+        background: none;
+
+        &::placeholder
+        {
+            color: inherit;
+        }
+    }
+}
