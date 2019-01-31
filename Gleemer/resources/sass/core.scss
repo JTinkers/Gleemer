@@ -1,5 +1,7 @@
 @import url("https://use.fontawesome.com/releases/v5.4.1/css/all.css");
 @import 'themes/_default';
+@import 'elements';
+@import 'generics';
 
 *
 {
@@ -13,7 +15,7 @@ a
 
     &:hover
     {
-        color: brighter($aColor, 20%);
+        color: lighten($aColor, 25%);
     }
 }
 
@@ -21,7 +23,7 @@ body
 {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     background: $bodyBackground;
     color: $textColor;
     margin: 0;
@@ -41,7 +43,7 @@ header
 nav
 {
     color: $navTextColor;
-    font-family: $textFont3;
+    font-family: $textFont2;
     margin-left: auto;
 
     > *
@@ -59,76 +61,297 @@ nav
 main
 {
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
-    padding: 16px;
+    padding: 32px 20vw;
 }
 
 footer
-{
-    padding: 16px;
-}
-
-#logo
-{
-    color: $logoColorFade2;
-    font-family: $textFont3;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 32px;
-    background: -webkit-linear-gradient($logoColorFade1 30%, $logoColorFade2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#subheader
 {
     height: 60px;
     padding: 0 20vw;
     display: flex;
     align-items: center;
+    justify-content: center;
     line-height: 1;
-    background: $subheaderBackground;
+    background: $footerBackground;
+    color: $footerTextColor;
 }
 
-#search
+p
 {
-    margin-left: auto;
+    white-space: pre-line;
+    line-height: 1.75;
+    margin: 0 0 16px 0;
+}
+
+fieldset
+{
+    border-radius: 3px;
+    border: 1px solid $textDimColor;
+}
+
+form
+{
     display: flex;
-    color: $searchTextColor;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
-    #search-button
-    {
-        display: flex;
-        align-items: center;
-        padding: 8px;
-        background: $headerBackground;
-        border-radius: 16px;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-    }
+form>*:not(:last-child)
+{
+    margin-bottom: 16px;
+}
 
-    #search-input
-    {
-        display: flex;
-        align-items: center;
-        background: $headerBackground;
-        border-radius: 16px;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-    }
+select, textarea, input[type="color"], input[type="text"], input[type="password"], input[type="url"], input[type="email"], input[type="tel"], input[type="search"], input[type="number"], input[type="date"], input[type="month"], input[type="week"], input[type="datetime"], input[type="datetime-local"]
+{
+    align-self: stretch;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    background: transparent;
+    border: 1px solid $textDimColor;
+    color: $textColor;
+    border-radius: 3px;
+    padding: 8px;
+    outline: none;
+}
 
-    #search-input > input
-    {
-        color: inherit;
-        outline: none;
-        font-family: inherit;
-        font-size: inherit;
-        border: none;
-        background: none;
+select::placeholder, textarea::placeholder, input[type="color"]::placeholder, input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="url"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder, input[type="search"]::placeholder, input[type="number"]::placeholder, input[type="date"]::placeholder, input[type="month"]::placeholder, input[type="week"]::placeholder, input[type="datetime"]::placeholder, input[type="datetime-local"]::placeholder
+{
+    color: #98a7b5;
+}
 
-        &::placeholder
-        {
-            color: inherit;
-        }
-    }
+select:focus, textarea:focus, input[type="color"]:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="url"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus
+{
+    border: 1px solid $submitColor;
+}
+
+select:disabled, textarea:disabled, input[type="color"]:disabled, input[type="text"]:disabled, input[type="password"]:disabled, input[type="url"]:disabled, input[type="email"]:disabled, input[type="tel"]:disabled, input[type="search"]:disabled, input[type="number"]:disabled, input[type="date"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled
+{
+    color: $textColor;
+    background: #f1f3f5;
+}
+
+input[type="radio"]
+{
+    display: none;
+}
+
+input[type="radio"]:hover, input[type="radio"]+label:hover:before
+{
+    color: saturate($submitColor, 25%);
+}
+
+input[type="radio"]+label
+{
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="radio"]+label:before
+{
+    color: $submitColor;
+    font-size: 16px;
+    font-family: "Font Awesome 5 Free";
+    margin-right: 8px;
+    text-decoration: inherit;
+    content: "\f111";
+    font-weight: 400;
+}
+
+input[type="radio"]:checked+label:before
+{
+    color: $submitColor;
+    font-weight: 700;
+}
+
+input[type="radio"]:checked:hover, input[type="radio"]+label:hover:before
+{
+    color: saturate($submitColor, 25%);
+}
+
+input[type="radio"]:disabled+label:before
+{
+    color: $textDimColor;
+}
+
+input[type="radio"]:disabled:checked+label:before
+{
+    color: $textDimColor;
+}
+
+input[type="radio"]:disabled+label
+{
+    color: $textDimColor;
+}
+
+input[type="radio"]:disabled:checked+label
+{
+    color: $textDimColor;
+}
+
+input[type="checkbox"]
+{
+    display: none;
+}
+
+input[type="checkbox"]+label
+{
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+input[type="checkbox"]:hover, input[type="checkbox"]+label:hover:before
+{
+    color: saturate($submitColor, 25%);
+}
+
+input[type="checkbox"]+label:before
+{
+    color: $submitColor;
+    font-size: 24px;
+    font-family: "Font Awesome 5 Free";
+    margin-right: 8px;
+    text-decoration: inherit;
+    content: "\f0c8"
+}
+
+input[type="checkbox"]:checked+label:before
+{
+    color: $submitColor;
+    font-weight: 700;
+    content: "\f14a"
+}
+
+input[type="checkbox"]:checked:hover, input[type="checkbox"]+label:hover:before
+{
+    color: saturate($submitColor, 25%);
+}
+
+input[type="checkbox"]:disabled+label
+{
+    color: $textDimColor;
+}
+
+input[type="checkbox"]:disabled+label:before
+{
+    color: $textDimColor;
+    font-weight: 400;
+    content: "\f0c8"
+}
+
+input[type="checkbox"]:disabled:checked+label
+{
+    color: $textDimColor;
+}
+
+input[type="checkbox"]:disabled:checked+label:before
+{
+    color: $textDimColor;
+    font-weight: 700;
+    content: "\f14a"
+}
+
+input[type=range]
+{
+    -webkit-appearance: none;
+    appearance: none;
+    background: $textDimColor;
+    height: 8px;
+    width: 100%
+}
+
+input[type=range]::-webkit-slider-thumb
+{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: $submitColor;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb:hover, input[type=range]::-webkit-slider-thumb:active
+{
+    background: saturate($submitColor, 25%);
+}
+
+input[type=range]:focus
+{
+    outline: none;
+}
+
+input[type="submit"], input[type="button"], input[type="reset"], button, button[type="reset"], button[type="button"], button[type="submit"]
+{
+    display: flex;
+    flex-grow: 0;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    color: $buttonTextColor;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    padding: 8px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"], button[type="submit"]
+{
+    background: $submitColor;
+}
+
+input[type="submit"]:hover, button[type="submit"]:hover
+{
+    background: saturate($submitColor, 25%);
+}
+
+input[type="submit"]:disabled, button[type="submit"]:disabled
+{
+    color: #e6e6e6;
+    background: #a14920;
+}
+
+input[type="button"]
+{
+    background: $buttonColor;
+}
+
+input[type="button"]:hover
+{
+    background: saturate($buttonColor, 25%);
+}
+
+button, button[type="button"]
+{
+    background: $textColor;
+}
+
+button:hover, button[type="button"]:hover
+{
+    background: darken($textColor, 5%);
+}
+
+input[type="button"]:disabled, button:disabled, button[type="button"]:disabled
+{
+    color: #e6e6e6;
+    background: #414141;
+}
+
+input[type="reset"], button[type="reset"]
+{
+    background: #b23535;
+}
+
+input[type="reset"]:hover, button[type="reset"]:hover
+{
+    background: #cf1818;
+}
+
+input[type="reset"]:disabled, button[type="reset"]:disabled
+{
+    color: #e6e6e6;
+    background: #8b2929;
 }
