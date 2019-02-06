@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/core.min.css">
+        <link rel="stylesheet" href="/css/core.min.css">
         <title>@yield('title', 'Gleemer') - Gleemer</title>
     </head>
     <body>
@@ -10,12 +10,12 @@
             <div id="logo">
                 <span>Gleemer</span>
             </div>
-            @include('component.nav')
+            @include('components.nav')
         </header>
-        @include('component.subheader')
+        @include('components.subheader')
         <main>
             @yield('content')
         </main>
-        @include('component.footer')
+        @include('components.footer')
     </body>
 </html>

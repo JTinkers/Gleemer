@@ -46,15 +46,30 @@ nav
     font-family: $textFont2;
     margin-left: auto;
 
-    > *
+    > a
     {
+        display: inline-flex;
         color: $navTextColor;
         margin-left: 32px;
+        transform: scale(1);
+        transition: all 0.25s;
+
+        > i
+        {
+            font-size: 24px;
+        }
+
+        > span
+        {
+            margin-left: 8px;
+        }
     }
 
-    > *:hover
+    > a:hover
     {
         color: lighten($navTextColor, 25%);
+        transform: scale(1.5);
+        transition: all 0.25s;
     }
 }
 

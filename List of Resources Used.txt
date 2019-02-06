@@ -1,9 +1,0 @@
-Laravel by ? along with packages included in Laravel, accounted for by its' license.
-
-https://fonts.google.com/specimen/Raleway
-
-lato font
-poppins font
-raleway
-
-font awesome

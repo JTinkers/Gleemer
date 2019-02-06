@@ -1,15 +1,15 @@
-@extends('layout.default')
+@extends('layouts.default')
 
 @section('title', 'Home')
 
 @section('content')
-    <div id="submit">
+    <div id="snippets-create-content">
         <div class="panel">
             <div class="panel-division flex">
                 <input class="fg-1" type="text" name="title" placeholder="Snippet Title"/>
                 <input id="private" type="checkbox"/><label for="private" class="ml-16">Private</label>
             </div>
-            <div class="panel-division dim flex fg-1">
+            <div class="panel-division flex fg-1">
                 <textarea class="fg-1"></textarea>
             </div>
             <div class="panel-division flex ai-c">

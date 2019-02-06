@@ -13,5 +13,21 @@
 
 Route::get('/', function ()
 {
-    return view('page.home');
+    return view('snippets.index');
+});
+
+Route::get('/api', function ()
+{
+    return view('pages.api');
+});
+
+
+Route::get('/snippets', function ()
+{
+    return view('snippets.index');
+});
+
+Route::get('/snippets/create', function ()
+{
+    return view('snippets.create');
 });
