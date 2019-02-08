@@ -11,11 +11,12 @@
 a
 {
     text-decoration: none;
-    color: $aColor;
+    color: $colorHyperlink;
+    transition: all 0.25s;
 
     &:hover
     {
-        color: lighten($aColor, 25%);
+        color: $colorHyperLinkHover;
     }
 }
 
@@ -24,52 +25,39 @@ body
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: $bodyBackground;
-    color: $textColor;
+    background: $bgBody;
+    color: $colorBody;
     margin: 0;
-    font-family: $textFont2;
+    font-family: $textFont3;
     font-size: 16px;
 }
 
 header
 {
-    background: $headerBackground;
     display: flex;
     align-items: center;
-    height: 120px;
-    padding: 0 20vw;
+    padding: 16px 20vw;
 }
 
 nav
 {
-    color: $navTextColor;
-    font-family: $textFont2;
     margin-left: auto;
 
     > a
     {
         display: inline-flex;
-        color: $navTextColor;
         margin-left: 32px;
         transform: scale(1);
-        transition: all 0.25s;
 
         > i
         {
             font-size: 24px;
         }
-
-        > span
-        {
-            margin-left: 8px;
-        }
     }
 
     > a:hover
     {
-        color: lighten($navTextColor, 25%);
         transform: scale(1.5);
-        transition: all 0.25s;
     }
 }
 
@@ -78,19 +66,19 @@ main
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 32px 20vw;
+    padding: 0 20vw;
 }
 
 footer
 {
+    font-family: $textFont2;
     height: 60px;
     padding: 0 20vw;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
-    background: $footerBackground;
-    color: $footerTextColor;
+    color: $colorFooter;
 }
 
 p
@@ -100,12 +88,6 @@ p
     margin: 0 0 16px 0;
 }
 
-fieldset
-{
-    border-radius: 3px;
-    border: 1px solid $textDimColor;
-}
-
 form
 {
     display: flex;
@@ -113,7 +95,7 @@ form
     align-items: flex-start;
 }
 
-form>*:not(:last-child)
+form > *:not(:last-child)
 {
     margin-bottom: 16px;
 }
@@ -122,29 +104,48 @@ select, textarea, input[type="color"], input[type="text"], input[type="password"
 {
     align-self: stretch;
     font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    background: transparent;
-    border: 1px solid $textDimColor;
-    color: $textColor;
+    font-family: $textFont2;
+    background: $backgroundInput;
+    border: 1px solid $borderColorAltInput;
+    color: $colorInput;
     border-radius: 3px;
     padding: 8px;
     outline: none;
 }
 
+select
+{
+    color: $colorAltInput;
+}
+
+textarea, input[type="color"], input[type="text"], input[type="password"], input[type="url"], input[type="email"], input[type="tel"], input[type="search"]
+{
+    border-top: 2px solid $borderColorInput;
+}
+
 select::placeholder, textarea::placeholder, input[type="color"]::placeholder, input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="url"]::placeholder, input[type="email"]::placeholder, input[type="tel"]::placeholder, input[type="search"]::placeholder, input[type="number"]::placeholder, input[type="date"]::placeholder, input[type="month"]::placeholder, input[type="week"]::placeholder, input[type="datetime"]::placeholder, input[type="datetime-local"]::placeholder
 {
-    color: #98a7b5;
+    color: $colorPlaceholderInput;
 }
 
-select:focus, textarea:focus, input[type="color"]:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="url"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus
+select:disabled, select:disabled::placeholder, textarea:disabled, textarea:disabled::placeholder,
+input[type="color"]:disabled, input[type="color"]:disabled::placeholder,
+input[type="text"]:disabled, input[type="text"]:disabled::placeholder,
+input[type="password"]:disabled, input[type="password"]:disabled::placeholder,
+input[type="url"]:disabled, input[type="url"]:disabled::placeholder,
+input[type="email"]:disabled, input[type="email"]:disabled::placeholder,
+input[type="tel"]:disabled, input[type="tel"]:disabled::placeholder,
+input[type="search"]:disabled, input[type="search"]:disabled::placeholder,
+input[type="number"]:disabled, input[type="number"]:disabled::placeholder,
+input[type="date"]:disabled, input[type="date"]:disabled::placeholder,
+input[type="month"]:disabled, input[type="month"]:disabled::placeholder,
+input[type="week"]:disabled, input[type="week"]:disabled::placeholder,
+input[type="datetime"]:disabled, input[type="datetime"]:disabled::placeholder,
+input[type="datetime-local"]:disabled
 {
-    border: 1px solid $submitColor;
-}
-
-select:disabled, textarea:disabled, input[type="color"]:disabled, input[type="text"]:disabled, input[type="password"]:disabled, input[type="url"]:disabled, input[type="email"]:disabled, input[type="tel"]:disabled, input[type="search"]:disabled, input[type="number"]:disabled, input[type="date"]:disabled, input[type="month"]:disabled, input[type="week"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled
-{
-    color: $textColor;
-    background: #f1f3f5;
+    color: $colorDisabledInput;
+    border: none;
+    background: $backgroundDisabledInput;
 }
 
 input[type="radio"]
@@ -154,7 +155,7 @@ input[type="radio"]
 
 input[type="radio"]:hover, input[type="radio"]+label:hover:before
 {
-    color: saturate($submitColor, 25%);
+    color: saturate($colorRadio, 25%);
 }
 
 input[type="radio"]+label
@@ -166,7 +167,7 @@ input[type="radio"]+label
 
 input[type="radio"]+label:before
 {
-    color: $submitColor;
+    color: $colorRadio;
     font-size: 16px;
     font-family: "Font Awesome 5 Free";
     margin-right: 8px;
@@ -177,33 +178,33 @@ input[type="radio"]+label:before
 
 input[type="radio"]:checked+label:before
 {
-    color: $submitColor;
+    color: $colorRadio;
     font-weight: 700;
 }
 
 input[type="radio"]:checked:hover, input[type="radio"]+label:hover:before
 {
-    color: saturate($submitColor, 25%);
+    color: saturate($colorRadio, 25%);
 }
 
 input[type="radio"]:disabled+label:before
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
 }
 
 input[type="radio"]:disabled:checked+label:before
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
 }
 
 input[type="radio"]:disabled+label
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
 }
 
 input[type="radio"]:disabled:checked+label
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
 }
 
 input[type="checkbox"]
@@ -220,12 +221,12 @@ input[type="checkbox"]+label
 
 input[type="checkbox"]:hover, input[type="checkbox"]+label:hover:before
 {
-    color: saturate($submitColor, 25%);
+    color: saturate($colorCheckbox, 25%);
 }
 
 input[type="checkbox"]+label:before
 {
-    color: $submitColor;
+    color: $colorCheckbox;
     font-size: 24px;
     font-family: "Font Awesome 5 Free";
     margin-right: 8px;
@@ -235,36 +236,36 @@ input[type="checkbox"]+label:before
 
 input[type="checkbox"]:checked+label:before
 {
-    color: $submitColor;
+    color: $colorCheckbox;
     font-weight: 700;
     content: "\f14a"
 }
 
 input[type="checkbox"]:checked:hover, input[type="checkbox"]+label:hover:before
 {
-    color: saturate($submitColor, 25%);
+    color: saturate($colorCheckbox, 25%);
 }
 
 input[type="checkbox"]:disabled+label
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
 }
 
 input[type="checkbox"]:disabled+label:before
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
     font-weight: 400;
     content: "\f0c8"
 }
 
 input[type="checkbox"]:disabled:checked+label
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
 }
 
 input[type="checkbox"]:disabled:checked+label:before
 {
-    color: $textDimColor;
+    color: $colorDisabledRadio;
     font-weight: 700;
     content: "\f14a"
 }
@@ -273,7 +274,7 @@ input[type=range]
 {
     -webkit-appearance: none;
     appearance: none;
-    background: $textDimColor;
+    background: $bgRange;
     height: 8px;
     width: 100%
 }
@@ -284,14 +285,14 @@ input[type=range]::-webkit-slider-thumb
     appearance: none;
     width: 16px;
     height: 16px;
-    background: $submitColor;
+    background: $bgThumbRange;
     border-radius: 3px;
     cursor: pointer;
 }
 
 input[type=range]::-webkit-slider-thumb:hover, input[type=range]::-webkit-slider-thumb:active
 {
-    background: saturate($submitColor, 25%);
+    background: saturate($bgThumbRange, 25%);
 }
 
 input[type=range]:focus
@@ -305,8 +306,8 @@ input[type="submit"], input[type="button"], input[type="reset"], button, button[
     flex-grow: 0;
     font-size: 16px;
     font-family: "Poppins", sans-serif;
-    color: $buttonTextColor;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    color: $colorButtons;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
     padding: 8px;
     border-radius: 3px;
     border: none;
@@ -315,58 +316,40 @@ input[type="submit"], input[type="button"], input[type="reset"], button, button[
 
 input[type="submit"], button[type="submit"]
 {
-    background: $submitColor;
+    background: $bgSubmitButton;
 }
 
 input[type="submit"]:hover, button[type="submit"]:hover
 {
-    background: saturate($submitColor, 25%);
+    background: saturate($bgSubmitButton, 25%);
 }
 
-input[type="submit"]:disabled, button[type="submit"]:disabled
+input[type="button"], button, button[type="button"]
 {
-    color: #e6e6e6;
-    background: #a14920;
+    background: $bgButton;
 }
 
-input[type="button"]
+input[type="button"]:hover, button:hover, button[type="button"]:hover
 {
-    background: $buttonColor;
+    background: lighten($bgButton, 10%);
 }
 
-input[type="button"]:hover
+input[type="button"]:disabled, input[type="submit"]:disabled, button:disabled, button[type="button"]:disabled
 {
-    background: saturate($buttonColor, 25%);
-}
-
-button, button[type="button"]
-{
-    background: $textColor;
-}
-
-button:hover, button[type="button"]:hover
-{
-    background: darken($textColor, 5%);
-}
-
-input[type="button"]:disabled, button:disabled, button[type="button"]:disabled
-{
-    color: #e6e6e6;
-    background: #414141;
+    background: lighten($bgButton, 10%);
 }
 
 input[type="reset"], button[type="reset"]
 {
-    background: #b23535;
+    background: $bgResetButton;
 }
 
 input[type="reset"]:hover, button[type="reset"]:hover
 {
-    background: #cf1818;
+    background: saturate($bgResetButton, 25%);
 }
 
 input[type="reset"]:disabled, button[type="reset"]:disabled
 {
-    color: #e6e6e6;
-    background: #8b2929;
+    background: lighten($bgResetButton, 10%);
 }

@@ -1,33 +1,58 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200,400,700');
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Poppins:200,300,400,700');
 
-$textColor: rgb(90, 90, 90);
-$textDimColor: rgb(196, 205, 213);
-$textFont: 'Lato', sans-serif;
-$textFont2: 'Poppins', sans-serif;
-$textFont3: 'Raleway', sans-serif;
+//-20 to brightness/saturation when on white background
+$textFont1: 'Lato', sans-serif; //Detail text
+$textFont2: 'Poppins', sans-serif; //Highlighted elements
+$textFont3: 'Raleway', sans-serif; //Plain text
 
-$logoColorFade1: rgb(0, 255, 169);
-$logoColorFade2: rgb(0, 153, 101);
+$colorLogo: #00E5C6;
 
-$aColor: rgb(204, 92, 40);
+$bgBody: #EDF1F4;
+$colorBody: #000000;
 
-$buttonColor: rgb(204, 92, 40);
-$buttonTextColor: white;
+$colorFooter: #99B0C6;
 
-$focusOutlineColor: rgb(35, 178, 130);
+$bgSearch: #DEE8EF;
+$colorSearch: #99B0C6;
 
-$submitColor: rgb(35, 178, 130);
+$bgCrumb: #CCDAE5;
 
-$navTextColor: rgb(0, 204, 135);
+$colorHyperlink: #F44900;
+$colorHyperLinkHover: #00E5C6;
 
-$bodyBackground: rgb(241, 243, 245);
-$headerBackground: rgb(36, 38, 37);
+$bgPanel: #F9F9F9;
+$bgPanelDim: #E8EEF4;
+$bgPanelWarning: #F2CDCD;
+$bgPanelAttention: #F2F2CD;
+$bgPanelInfo: #CDE6F2;
+$bgPanelSuccess: #CDF2CD;
+$bgPanelNote: #D6CDF2;
+$borderColorPanel: #E8EEF4;
+$shadowColorPanel: #CCD8E5;
 
-$footerBackground: rgb(48, 51, 50);
-$footerTextColor: rgb(131, 140, 137);
+$colorInput: #000000;
+$colorAltInput: #70879E;
+$colorPlaceholderInput: #9CACBC;
+$colorDisabledInput: #9CACBC;
+$backgroundInput: #EDF3F9;
+$backgroundDisabledInput: #EDF3F9;
+$borderColorInput: #C2D5E8;
+$borderColorAltInput: #D2E3F4;
 
-$footerstatsheaderTextColor: rgb(131, 140, 137);
+$colorRadio: #DB571E;
+$colorDisabledRadio: #9CACBC;
 
-$subheaderBackground: rgb(48, 51, 50);
-$subheaderTextColor: rgb(131, 140, 137);
+$colorCheckbox: #DB571E;
+$colorDisabledRadio: #9CACBC;
+
+$bgRange: #9CACBC;
+$bgThumbRange: #DB571E;
+
+$colorButtons: #F9F9F9;
+
+$bgSubmitButton: #DB571E;
+
+$bgButton: #303030;
+
+$bgResetButton: #DB1E1E;

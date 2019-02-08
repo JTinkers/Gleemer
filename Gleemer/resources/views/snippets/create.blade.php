@@ -10,7 +10,7 @@
                 <input id="private" type="checkbox"/><label for="private" class="ml-16">Private</label>
             </div>
             <div class="panel-division flex fg-1">
-                <textarea class="fg-1"></textarea>
+                <textarea placeholder="Paste your code here!" class="fg-1"></textarea>
             </div>
             <div class="panel-division flex ai-c">
                 <input type="submit" value="Submit"/>

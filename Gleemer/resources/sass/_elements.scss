@@ -44,31 +44,38 @@
 
 #logo
 {
-    color: $logoColorFade2;
     font-family: $textFont3;
     font-size: 64px;
     font-weight: 700;
     line-height: 1;
-    background: -webkit-linear-gradient($logoColorFade1 30%, $logoColorFade2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: $colorLogo;
+    text-shadow: 1px 1px 0px darken($colorLogo, 10%);
 }
 
 #subheader
 {
-    position: sticky;
-    top: 0;
-    height: 60px;
-    padding: 0 20vw;
+    font-family: $textFont3;
+    font-size: 14px;
+    padding: 0 20vw 16px 20vw;
     display: flex;
     align-items: center;
     line-height: 1;
-    background: $subheaderBackground;
-    color: $subheaderTextColor;
+}
+
+#breadcrumbs
+{
+    > span
+    {
+        background: $bgCrumb;
+        border-radius: 3px;
+        padding: 4px;
+    }
 }
 
 #search
 {
+    font-family: $textFont1;
+    font-size: 16px;
     margin-left: auto;
     display: flex;
 }
@@ -79,7 +86,8 @@
     align-items: center;
     justify-content: center;
     padding: 8px;
-    background: $headerBackground;
+    background: $bgSearch;
+    color: $colorSearch;
     border-radius: 16px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
@@ -89,13 +97,15 @@
 {
     display: flex;
     align-items: center;
-    background: $headerBackground;
+    color: $colorBody;
+    background: $bgSearch;
     border-radius: 16px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 
     > input
     {
+        line-height: 1;
         color: inherit;
         outline: none;
         font-family: inherit;
@@ -117,21 +127,19 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: white;
+    background: $bgPanel;
     border-radius: 3px;
-    box-shadow: 0 6px 8px rgba(100,115,130,0.03), 0 1px 2px rgba(100,115,130,0.3);
-
-    > .panel-division:last-of-type
-    {
-        border-radius: 3px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
+    box-shadow: 0 2px 6px $shadowColorPanel;
 
     > .panel-division
     {
         padding: 16px;
-        border-bottom: 1px solid rgba(100,115,130,0.1);
+        border-bottom: solid 1px $borderColorPanel;
+    }
+
+    > .panel-division:last-of-type
+    {
+        border-bottom: none;
     }
 
     > .panel-division > :last-child
@@ -141,12 +149,6 @@
 
     > .panel-division.dim
     {
-        background: #f1f3f5;
-    }
-
-    > .panel-division.info
-    {
-        color: #84A59A;
-        background: #E5F9F2;
+        background: $bgPanelDim;
     }
 }
