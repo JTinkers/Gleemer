@@ -1,0 +1,44 @@
+//main:../core.scss
+
+@for $i from 0 through 7
+{
+    .m-#{$i}
+    {
+        margin: #{pow(2, $i)}px;
+    }
+
+    .mr-#{$i}
+    {
+        margin-right: #{pow(2, $i)}px;
+    }
+
+    .mt-#{$i}
+    {
+        margin-top: #{pow(2, $i)}px;
+    }
+
+    .mr-#{$i}
+    {
+        margin-right: #{pow(2, $i)}px;
+    }
+
+    .mb-#{$i}
+    {
+        margin-bottom: #{pow(2, $i)}px;
+    }
+
+    .ml-#{$i}
+    {
+        margin-left: #{pow(2, $i)}px;
+    }
+
+    .mv-#{$i}
+    {
+        r, l
+    }
+
+    .mh-#{$i}
+    {
+        t, b
+    }
+}
