@@ -1,0 +1,66 @@
+//main:../core.scss
+
+.p-a
+{
+    padding: auto;
+}
+
+.pt-a
+{
+    padding-top: auto;
+}
+
+.pr-a
+{
+    padding-right: auto;
+}
+
+.pb-a
+{
+    padding-bottom: auto;
+}
+
+.pl-a
+{
+    padding-left: auto;
+}
+
+@for $i from 1 through 7
+{
+    .p-#{pow(2, $i)}
+    {
+        padding: #{pow(2, $i)}px;
+    }
+
+    .pt-#{pow(2, $i)}
+    {
+        padding-top: #{pow(2, $i)}px;
+    }
+
+    .pr-#{pow(2, $i)}
+    {
+        padding-right: #{pow(2, $i)}px;
+    }
+
+    .pb-#{pow(2, $i)}
+    {
+        padding-bottom: #{pow(2, $i)}px;
+    }
+
+    .pl-#{pow(2, $i)}
+    {
+        padding-left: #{pow(2, $i)}px;
+    }
+
+    .pv-#{pow(2, $i)}
+    {
+        padding-left: #{pow(2, $i)}px;
+        padding-right: #{pow(2, $i)}px;
+    }
+
+    .ph-#{pow(2, $i)}
+    {
+        padding-top: #{pow(2, $i)}px;
+        padding-bottom: #{pow(2, $i)}px;
+    }
+}
