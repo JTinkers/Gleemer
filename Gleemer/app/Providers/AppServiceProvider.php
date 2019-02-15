@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::include('components.nav', 'nav');
+        Blade::include('components.header', 'header');
         Blade::include('components.footer', 'footer');
     }
 

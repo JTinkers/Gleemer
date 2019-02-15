@@ -1,0 +1,48 @@
+//main: _all.scss
+
+//1 to 128 step 2
+$props: (margin, margin-top, margin-right, margin-bottom, margin-left,
+padding, padding-top, padding-right, padding-bottom, padding-left, height, width,
+min-height, min-width);
+
+@for $i from 1 through 64
+{
+    @each $prop in $props
+    {
+        .#{$prop}\(#{$i * 2}px\)
+        {
+            #{$prop}: #{$i * 2}px;
+        }
+    }
+}
+
+$props:
+(
+    align-content: (center, flex-start, flex-end, space-around, space-between, stretch),
+    align-items: (baseline, center, flex-start, flex-end, stretch),
+    display: (flex, grid),
+    flex-direction: (row, column),
+    flex-grow: (0, 1),
+    justify-content: (center, flex-start, flex-end, space-around, space-between),
+    margin: (auto, 0),
+    margin-bottom: (auto, 0),
+    margin-left: (auto, 0),
+    margin-right: (auto, 0),
+    margin-top: (auto, 0),
+    padding: (auto, 0),
+    padding-bottom: (auto, 0),
+    padding-left: (auto, 0),
+    padding-right: (auto, 0),
+    padding-top: (auto, 0)
+);
+
+@each $prop, $values in $props
+{
+    @each $value in $values
+    {
+        .#{$prop}\(#{$value}\)
+        {
+            #{$prop}: #{$value};
+        }
+    }
+}

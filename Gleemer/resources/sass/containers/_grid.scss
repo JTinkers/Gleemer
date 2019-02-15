@@ -1,0 +1,19 @@
+//main: _all.scss
+
+%grid
+{
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+}
+
+.grid
+{
+    @extend %grid;
+    display: grid;
+}
+
+.inline-grid
+{
+    @extend %grid;
+    display: inline-grid;
+}
