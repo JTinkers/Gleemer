@@ -5,9 +5,9 @@
         <link rel="stylesheet" href="css/core.min.css">
         <title>@section('title') - Gleemer</title>
     </head>
-    <body class="flex flex-direction(column) margin(0)">
+    <body>
         @header
-        <main class="flex-grow(1)">
+        <main>
             @yield('content')
         </main>
         @footer
