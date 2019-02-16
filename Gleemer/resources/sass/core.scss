@@ -24,7 +24,7 @@ a
     text-decoration: none;
 }
 
-header
+#header
 {
     font-family: $header-font-family;
     display: flex;
@@ -32,45 +32,90 @@ header
     padding: 0 20vw;
     height: 48px;
     background: $header-background;
-
-    > *
-    {
-        flex-grow: 1;
-    }
-}
-
-nav
-{
-    font-size: 16px;
-    display: flex;
-    justify-content: flex-end;
-
-    > a
-    {
-        margin-left: 16px;
-        color: #777F7F;
-
-        &:hover
-        {
-            color: #FF8F3F;
-        }
-    }
-}
-
-main
-{
-    flex-grow: 1;
-}
-
-footer
-{
-
+    align-items: center;
 }
 
 #logo
 {
+    display: flex;
+    align-items: center;
     font-family: $logo-font-family;
     font-size: $logo-font-size;
-
     color: $logo-color;
+}
+
+#search
+{
+    flex-grow: 1;
+    max-width: 256px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background: $search-background;
+    border: $search-border;
+
+    &:hover
+    {
+        border: $search-hover-border;
+
+        > #search-icon
+        {
+            color: $search-hover-icon-color;
+        }
+    }
+}
+
+#search-icon
+{
+    margin-right: 8px;
+    font-size: $search-icon-font-size;
+    color: $search-icon-color;
+}
+
+#search-input
+{
+    flex-grow: 1;
+    display: flex;
+
+    > input
+    {
+        background: none;
+        border: none;
+    }
+}
+
+#nav
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: $nav-font-size;
+    margin-left: 16px;
+
+    > a:not(:first-of-type)
+    {
+        margin-left: 16px;
+    }
+
+    > a
+    {
+        color: $nav-icon-color;
+
+        &:hover
+        {
+            color: $nav-icon-hover-color;
+        }
+    }
+}
+
+#main
+{
+    flex-grow: 1;
+}
+
+#footer
+{
+    background: $footer-background;
 }

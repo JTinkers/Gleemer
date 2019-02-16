@@ -7,9 +7,9 @@
     </head>
     <body>
         @header
-        <main>
+        <div id="main">
             @yield('content')
-        </main>
+        </div>
         @footer
     </body>
 </html>
