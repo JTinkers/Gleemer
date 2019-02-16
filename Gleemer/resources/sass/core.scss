@@ -1,6 +1,7 @@
 @import 'functions';
-@import 'properties/all';
 @import 'theme';
+@import 'properties/all';
+@import 'vendor/all';
 
 *
 {
@@ -10,7 +11,7 @@
 body
 {
     font-family: $body-font-family;
-    font-size: 14px;
+    font-size: $body-font-size;
     color: $body-color;
     background: $body-background-color;
     margin: 0;
@@ -24,8 +25,21 @@ a
     text-decoration: none;
 }
 
+pre
+{
+    margin: 0;
+}
+
+code
+{
+    font-family: $pre-font-family;
+    margin: 0;
+}
+
 #header
 {
+    position: sticky;
+    top: 0;
     font-family: $header-font-family;
     display: flex;
     align-items: center;
@@ -55,6 +69,7 @@ a
     margin-left: auto;
     background: $search-background;
     border: $search-border;
+    transition: all 0.25s;
 
     &:hover
     {
@@ -72,15 +87,19 @@ a
     margin-right: 8px;
     font-size: $search-icon-font-size;
     color: $search-icon-color;
+    transition: all 0.25s;
 }
 
 #search-input
 {
-    flex-grow: 1;
     display: flex;
+    flex-grow: 1;
 
     > input
     {
+        flex-grow: 1;
+        color: $search-input-color;
+        outline: none;
         background: none;
         border: none;
     }
@@ -102,6 +121,7 @@ a
     > a
     {
         color: $nav-icon-color;
+        transition: all 0.25s;
 
         &:hover
         {
@@ -112,10 +132,46 @@ a
 
 #main
 {
+    display: flex;
+    flex-wrap: wrap;
     flex-grow: 1;
+    padding: 0 20vw;
 }
 
 #footer
 {
-    background: $footer-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    font-family: $footer-font-family;
+    font-size: $footer-font-size;
+    color: $footer-color;
+
+    > a
+    {
+        color: inherit;
+        transition: all 0.25s;
+    }
+
+    > a:hover
+    {
+        color: $footer-span-hover-color;
+    }
+}
+
+#snippet-index
+{
+    flex-grow: 1;
+    columns: 2;
+    column-gap: 16px;
+    align-items: flex-start;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    > .panel
+    {
+        break-inside: avoid;
+        margin-bottom: 16px;
+    }
 }

@@ -14,7 +14,8 @@ class SnippetController extends Controller
      */
     public function index()
     {
-        //
+        return view('snippets.index')
+            ->with(['snippets' => Snippet::all()->sortBy('datePosted')]);
     }
 
     /**

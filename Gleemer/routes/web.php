@@ -15,3 +15,5 @@ Route::get('/api', function ()
 {
     return view('pages.api');
 });
+
+Route::get('/snippets', 'SnippetController@index');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSnippetsTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateSnippetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('snippets', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('snippetId');
             $table->integer('userId');
-            $table->string('title');
-            $table->longText('content');
-            $table->string('language');
-            $table->date('datePosted');
+            $table->integer('value');
+            $table->date('ratedOn');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateSnippetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('snippets');
+        Schema::dropIfExists('ratings');
     }
 }

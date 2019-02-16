@@ -1,11 +1,13 @@
 //main: core.scss
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,700|Raleway:200,300,400,700');
-@import url("https://use.fontawesome.com/releases/v5.4.1/css/all.css");
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,700|Raleway:200,300,400,700|Cousine');
+@import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
 
 $body-font-family: Georgia, Cambria, serif;
+$body-font-size: 14px;
 $body-color: #303333;
-$body-background-color: #EDF1F4;
+$body-background-color: #EFF3F4;
+$pre-font-family: 'Cousine', monospace;
 $header-font-family: 'Poppins', sans-serif;
 $header-background: #303338;
 $logo-font-family: 'Raleway', sans-serif;
@@ -14,10 +16,21 @@ $logo-color: #3FDFFF;
 $nav-font-size: 16px;
 $nav-icon-color: #5C626B;
 $nav-icon-hover-color: #FF8F3F;
-$footer-background: #303338;
 $search-hover-icon-color: #FF8F3F;
 $search-hover-border: 1px solid #FF8F3F;
 $search-background: #393C42;
-$search-icon-color: #5C626B;
-$search-icon-font-size: 16px;
 $search-border: 1px solid #4A4F56;
+$search-icon-color: #5C626B;
+$search-icon-font-size: 14px;
+$search-input-color: #939497;
+$footer-color: #A3AFB4;
+$footer-font-size: 14px;
+$footer-font-family: 'Poppins', sans-serif;
+$footer-span-hover-color: #8F3FFF;
+$panel-background: #FFF;
+$panel-content-dim-background: #F4F8F9;
+$panel-font-family: 'Poppins', sans-serif;
+$panel-font-size: 12px;
+$panel-border-bottom: 1px solid transparent;
+$panel-box-shadow:
+    0 1px 2px rgba(158, 182, 193, .75);

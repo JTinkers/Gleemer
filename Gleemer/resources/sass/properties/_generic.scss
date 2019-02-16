@@ -4,7 +4,7 @@
 $props: (margin, margin-top, margin-right, margin-bottom, margin-left,
 padding, padding-top, padding-right, padding-bottom, padding-left);
 
-@for $i from 1 through 128
+@for $i from 1 through 7
 {
     @each $prop in $props
     {
@@ -22,6 +22,7 @@ $props:
     display: (flex, grid),
     flex-direction: (row, column),
     flex-grow: (0, 1),
+    flex-wrap: (wrap),
     justify-content: (center, flex-start, flex-end, space-around, space-between),
     margin: (auto, 0),
     margin-bottom: (auto, 0),
