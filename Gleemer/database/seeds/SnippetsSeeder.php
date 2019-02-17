@@ -15,7 +15,7 @@ class SnippetsSeeder extends Seeder
     {
         DB::table('snippets')->insert([
             'userId' => 1,
-            'title' => Str::random(30),
+            'title' => 'React snippet.. but react is bad tho',
             'content' => "import React from 'react'
 import ReactDOM from 'react-dom'
 class Hello extends React.Component {
@@ -33,7 +33,7 @@ ReactDOM.render(<Hello name='John' />, el)",
 
         DB::table('snippets')->insert([
             'userId' => 1,
-            'title' => Str::random(30),
+            'title' => Str::random(250),
             'content' => "public void PrintStars(object o)
 {
     if (o is null) return;     // constant pattern 'null'
@@ -46,7 +46,7 @@ ReactDOM.render(<Hello name='John' />, el)",
 
         DB::table('snippets')->insert([
             'userId' => 2,
-            'title' => Str::random(30),
+            'title' => 'C# Snippet',
             'content' => "@font-face {
   font-family: Chunkfive; src: url('Chunkfive.otf');
 }
@@ -68,7 +68,7 @@ body, .usertext {
 
         DB::table('snippets')->insert([
             'userId' => 2,
-            'title' => Str::random(30),
+            'title' => 'Cpp snippet',
             'content' => '#include <iostream>
 
 int main(int argc, char *argv[]) {
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 
         DB::table('snippets')->insert([
             'userId' => 2,
-            'title' => Str::random(30),
+            'title' => 'Another js snippet',
             'content' => Str::random(50),
             'language' => 'javascript',
             'datePosted' => Carbon::now()
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
 
         DB::table('snippets')->insert([
             'userId' => 3,
-            'title' => Str::random(30),
+            'title' => 'Js snippet',
             'content' => Str::random(50),
             'language' => 'javascript',
             'datePosted' => Carbon::now()
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
 
         DB::table('snippets')->insert([
             'userId' => 1,
-            'title' => Str::random(30),
+            'title' => 'Cpp again',
             'content' => '#include <iostream>
 
 int main(int argc, char *argv[]) {

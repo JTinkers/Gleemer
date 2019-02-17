@@ -1,0 +1,23 @@
+//main: ../_all.scss
+
+.button
+{
+    cursor: pointer;
+    display: flex;
+    color: $button-color;
+    background: $button-background;
+    border: $button-border;
+    outline: none;
+    font-size: $button-font-size;
+    font-family: $button-font-family;
+    border-radius: 3px;
+    padding: 4px;
+    transition: all 0.25s;
+
+    &:hover
+    {
+        color: $button-hover-color;
+        background: $button-hover-background;
+        border: $button-hover-border;
+    }
+}

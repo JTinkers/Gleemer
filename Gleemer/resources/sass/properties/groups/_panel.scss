@@ -11,17 +11,21 @@
     border-bottom: $panel-border-bottom;
     box-shadow: $panel-box-shadow;
     border-radius: 2px;
+    overflow: hidden;
 }
 
 .panel-header
 {
     display: flex;
+    align-items: center;
     padding: 16px;
+    height: 48px;
 }
 
 .panel-content
 {
     display: flex;
+    flex-grow: 1;
     overflow: hidden;
     padding: 16px;
     border-top: 1px solid #EFF3F4;
@@ -36,6 +40,7 @@
 .panel-footer
 {
     display: flex;
-    justify-content: center;
+    align-items: center;
     padding: 16px;
+    height: 48px;
 }

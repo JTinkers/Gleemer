@@ -11,8 +11,9 @@
         </div>
     </div>
     <div id="nav">
-        <a href="#"><i class="fas fa-fw fa-copy"></i></a>
-        <a href="#"><i class="fas fa-fw fa-clone"></i></a>
+        <a href="/snippets/create"><i class="fas fa-plus-square"></i></a>
+        <a href="/snippets/"><i class="fas fa-file-alt"></i></a>
+        <a href="/api"><i class="fas fa-share-alt"></i></a>
         <a href="#"><i class="fas fa-fw fa-user"></i></a>
     </div>
 </div>

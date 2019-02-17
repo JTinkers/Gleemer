@@ -25,7 +25,8 @@ class SnippetController extends Controller
      */
     public function create()
     {
-        //
+        return view('snippets.create')
+            ->with(['languages' => config('snippets.languages')]);
     }
 
     /**
@@ -45,9 +46,9 @@ class SnippetController extends Controller
      * @param  \App\Snippet  $snippet
      * @return \Illuminate\Http\Response
      */
-    public function show(Snippet $snippet)
+    public function view(Snippet $snippet)
     {
-        //
+
     }
 
     /**

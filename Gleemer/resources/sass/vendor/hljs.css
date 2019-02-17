@@ -55,8 +55,10 @@
 
 .hljs
 {
+    color: #393C42;
     display: block;
     overflow-x: auto;
+    line-height: 1.25;
 }
 
 .hljs-emphasis

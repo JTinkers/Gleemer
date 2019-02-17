@@ -5,8 +5,11 @@
         @foreach($snippets as $snippet)
             @panel
                 @slot('header')
-                    <span>{{ $snippet->title }}</span>
-                    <span>copy</span>
+                    <span class="margin-right(16px) text-overflow(ellipsis) overflow(hidden) white-space(nowrap)">{{ $snippet->title }}</span>
+                    <button class="button flex-shrink(0) margin-left(auto)">
+                        <i class="far fa-copy margin-right(4px)"></i>
+                        <span>copy</span>
+                    </button>
                 @endslot
                 @slot('content')
                     <highlight-code lang="{{ $snippet->language }}">

@@ -17,3 +17,4 @@ Route::get('/api', function ()
 });
 
 Route::get('/snippets', 'SnippetController@index');
+Route::get('/snippets/create', 'SnippetController@create');
