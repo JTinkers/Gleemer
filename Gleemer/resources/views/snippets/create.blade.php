@@ -2,16 +2,16 @@
 
 @section('content')
     <div id="snippet-create">
-        @panel
-            @slot('header')
+        <div class="panel">
+            <div class="panel-header">
                 <input type="text" class="flex-grow(1)"/>
                 <input type="checkbox" class="margin-left(16px)" id="chk-private"/>
                 <label for="chk-private">Private</label>
-            @endslot
-            @slot('content')
+            </div>
+            <div class="panel-content dim">
                 <textarea class="flex-grow(1)"></textarea>
-            @endslot
-            @slot('footer')
+            </div>
+            <div class="panel-footer">
                 <select>
                     <option selected>auto</option>
                     @foreach ($languages as $language)
@@ -19,7 +19,7 @@
                     @endforeach
                 </select>
                 <input type="submit" class="margin-left(auto)" value="Create"/>
-            @endslot
-        @endpanel
+            </div>
+        </div>
     </div>
 @endsection
