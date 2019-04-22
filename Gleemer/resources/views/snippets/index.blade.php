@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Browse')
+
 @section('content')
     <div id="snippet-index">
         @foreach($snippets as $snippet)
@@ -22,11 +24,23 @@
                         @else
                             <i class="far fa-thumbs-down"></i>
                         @endif
-                        <span>{{ $snippet->ratings->sum('value') }}</span>
+                        <span class="margin-right(16px)">{{ $snippet->ratings->sum('value') }}</span>
+						<i class="far fa-fw fa-star"></i>
+						<span class="margin-right(16px)">{{ $snippet->favourites->sum('value') }}</span>
+						<i class="far fa-comment-dots"></i>
+						<span>{{ $snippet->comments->sum('value') }}</span>
                     </div>
-                    <button class="button flex-shrink(0) margin-left(auto)">
-                        <i class="far fa-copy margin-right(4px)"></i>
+                    <button class="button-outlined flex-shrink(0) margin-left(auto)">
+						<i class="far fa-copy margin-right(4px)"></i>
                         <span>copy</span>
+                    </button>
+					<button class="button-outlined flex-shrink(0) margin-left(8px)">
+						<i class="far fa-star margin-right(4px)"></i>
+						<span>save</span>
+					</button>
+                    <button class="button-outlined flex-shrink(0) margin-left(8px)">
+						<i class="fas fa-link margin-right(4px)"></i>
+                        <span>share</span>
                     </button>
                 </div>
             </div>

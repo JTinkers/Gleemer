@@ -1,21 +1,30 @@
 //main: core.scss
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,700|Raleway:200,300,400,700|Cousine');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,700|Raleway:200,300,400,700|Fira+Mono:500');
 @import url("https://use.fontawesome.com/releases/v5.7.2/css/all.css");
 
 $body-font-family: Georgia, Cambria, serif;
 $body-font-size: 14px;
 $body-color: #393C42;
 $body-background-color: #EFF3F4;
-$pre-font-family: 'Cousine', monospace;
+
+$pre-font-family: 'Fira Mono', monospace;
+$pre-font-size: 12px;
+$pre-font-weight: 500;
+$pre-duotone-primary: #CC0070;
+$pre-duotone-secondary: #4300CC;
+
 $header-font-family: 'Poppins', sans-serif;
 $header-background: #393C42;
+
 $logo-font-family: 'Raleway', sans-serif;
 $logo-font-size: 24px;
 $logo-color: #3FDFFF;
+
 $nav-font-size: 16px;
 $nav-icon-color: #6D747F;
 $nav-icon-hover-color: #FF8F3F;
+
 $search-hover-icon-color: #FF8F3F;
 $search-hover-border: 1px solid #FF8F3F;
 $search-background: #464951;
@@ -23,18 +32,32 @@ $search-border: 1px solid #535960;
 $search-icon-color: #6D747F;
 $search-icon-font-size: 14px;
 $search-input-color: #999A9E;
+
 $footer-color: #A3AFB4;
 $footer-font-size: 14px;
 $footer-font-family: 'Poppins', sans-serif;
 $footer-span-hover-color: #8F3FFF;
-$button-color: #829499;
+
+$button-color: #393C42;
 $button-background: transparent;
-$button-border: 1px solid #C3DEE5;
-$button-font-size: 10px;
+$button-border: 1px solid #CCCCCC;
+$button-font-size: 11px;
+$button-font-weight: 400;
 $button-font-family: 'Poppins', sans-serif;
 $button-hover-color: #FFF;
-$button-hover-background: #000;
-$button-hover-border: 1px solid #000;
+$button-hover-background: #00BFE5;
+$button-hover-border: 1px solid #00BFE5;
+
+$button-submit-color: #FFF;
+$button-submit-background: #00E55F;
+$button-submit-border: 1px solid #00E55F;
+$button-submit-font-size: 14px;
+$button-submit-font-weight: 400;
+$button-submit-font-family: 'Poppins', sans-serif;
+$button-submit-hover-color: #FFF;
+$button-submit-hover-background: #00E55F;
+$button-submit-hover-border: 1px solid #00E55F;
+
 $panel-background: #FFF;
 $panel-content-dim-background: #F4F8F9;
 $panel-font-family: 'Poppins', sans-serif;

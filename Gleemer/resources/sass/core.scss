@@ -1,5 +1,6 @@
 @import 'functions';
 @import 'theme';
+@import 'components/all';
 @import 'properties/all';
 @import 'vendor/all';
 
@@ -11,6 +12,8 @@
 
 body
 {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
     font-family: $body-font-family;
     font-size: $body-font-size;
     color: $body-color;
@@ -36,6 +39,8 @@ pre
 code
 {
     font-family: $pre-font-family;
+	font-size: $pre-font-size;
+	font-weight: $pre-font-weight;
     tab-size: 4;
     margin: 0;
 }

@@ -1,0 +1,52 @@
+//main: _all.scss
+
+.button-submit
+{
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: $button-submit-color;
+	background: $button-submit-background;
+	border: $button-submit-border;
+	outline: none;
+	font-size: $button-submit-font-size;
+	font-family: $button-submit-font-family;
+	font-weight: $button-submit-font-weight;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+	border-radius: 3px;
+	padding: 4px;
+	transition: all 0.25s;
+
+	&:hover
+	{
+		color: $button-submit-hover-color;
+		background: $button-submit-hover-background;
+		border: $button-submit-hover-border;
+	}
+}
+
+.button-outlined
+{
+    cursor: pointer;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+    color: $button-color;
+    background: $button-background;
+    border: $button-border;
+    outline: none;
+    font-size: $button-font-size;
+    font-family: $button-font-family;
+	font-weight: $button-font-weight;
+    border-radius: 3px;
+    padding: 4px;
+    transition: all 0.25s;
+
+    &:hover
+    {
+        color: $button-hover-color;
+        background: $button-hover-background;
+        border: $button-hover-border;
+    }
+}

@@ -18,15 +18,19 @@ class SnippetsSeeder extends Seeder
             'title' => 'React snippet.. but react is bad tho',
             'content' => "import React from 'react'
 import ReactDOM from 'react-dom'
-class Hello extends React.Component {
-  render () {
-    return <div className='message-box'>
-      Hello {this.props.name}
-    </div>
-  }
+class Hello extends React.Component
+{
+	render ()
+	{
+		return
+			<div className='message-box'>
+				Hello {this.props.name}
+			</div>
+	}
 }
+
 const el = document.body
-ReactDOM.render(<Hello name='John' />, el)",
+ReactDOM.render(<Hello name='John'/>, el)",
             'language' => 'javascript',
             'datePosted' => Carbon::now()
         ]);
@@ -48,19 +52,19 @@ ReactDOM.render(<Hello name='John' />, el)",
             'userId' => 2,
             'title' => 'C# Snippet',
             'content' => "@font-face {
-  font-family: Chunkfive; src: url('Chunkfive.otf');
+	font-family: Chunkfive; src: url('Chunkfive.otf');
 }
 
 body, .usertext {
-  color: #F0F0F0; background: #600;
-  font-family: Chunkfive, sans;
+	color: #F0F0F0; background: #600;
+	font-family: Chunkfive, sans;
 }
 
 @import url(print.css);
 @media print {
-  a[href^=http]::after {
-    content: attr(href)
-  }
+	a[href^=http]::after {
+	    content: attr(href)
+	}
 }",
             'language' => 'css',
             'datePosted' => Carbon::now()
@@ -71,17 +75,17 @@ body, .usertext {
             'title' => 'Cpp snippet',
             'content' => '#include <iostream>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
+	/* An annoying "Hello World" example */
+	for (auto i = 0; i < 0xFFFF; i++)
+    	cout << "Hello, World!" << endl;
 
-  /* An annoying "Hello World" example */
-  for (auto i = 0; i < 0xFFFF; i++)
-    cout << "Hello, World!" << endl;
+	char c = \'\n\';
+	unordered_map <string, vector<string> > m;
+	m["key"] = "\\\\"; // this is an error
 
-  char c = \'\n\';
-  unordered_map <string, vector<string> > m;
-  m["key"] = "\\\\"; // this is an error
-
-  return -2e3 + 12l;
+	return -2e3 + 12l;
 }',
             'language' => 'cpp',
             'datePosted' => Carbon::now()
@@ -108,17 +112,17 @@ int main(int argc, char *argv[]) {
             'title' => 'Cpp again',
             'content' => '#include <iostream>
 
-int main(int argc, char *argv[]) {
-
-  /* An annoying "Hello World" example */
-  for (auto i = 0; i < 0xFFFF; i++)
+int main(int argc, char *argv[])
+{
+	/* An annoying "Hello World" example */
+	for (auto i = 0; i < 0xFFFF; i++)
     cout << "Hello, World!" << endl;
 
-  char c = \'\n\';
-  unordered_map <string, vector<string> > m;
-  m["key"] = "\\\\"; // this is an error
+	char c = \'\n\';
+	unordered_map <string, vector<string> > m;
+	m["key"] = "\\\\"; // this is an error
 
-  return -2e3 + 12l;
+	return -2e3 + 12l;
 }',
             'language' => 'cpp',
             'datePosted' => Carbon::now()

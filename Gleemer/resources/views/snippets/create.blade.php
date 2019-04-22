@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Submit')
+
 @section('content')
     <div id="snippet-create">
         <div class="panel">
@@ -18,7 +20,7 @@
                         <option value="{{ $language }}">{{ $language }}</option>
                     @endforeach
                 </select>
-                <input type="submit" class="margin-left(auto)" value="Create"/>
+                <input type="submit" class="button-submit margin-left(auto)" value="Create"/>
             </div>
         </div>
     </div>

@@ -1,7 +1,9 @@
+//main: _all.scss
+
 .hljs-comment,
 .hljs-quote
 {
-    color: #B2B2B2;
+    color: #A3B0CC;
 }
 
 .hljs-variable,
@@ -13,7 +15,7 @@
 .hljs-regexp,
 .hljs-deletion
 {
-    color: #BF5656;
+    color: $pre-duotone-primary;
 }
 
 .hljs-number,
@@ -25,12 +27,12 @@
 .hljs-meta,
 .hljs-link
 {
-    color: #BF7056;
+    color: $pre-duotone-primary;
 }
 
 .hljs-attribute
 {
-    color: #BFA456;
+    color: $pre-duotone-primary;
 }
 
 .hljs-string,
@@ -38,19 +40,19 @@
 .hljs-bullet,
 .hljs-addition
 {
-    color: #5EBF56;
+    color: $pre-duotone-secondary;
 }
 
 .hljs-title,
 .hljs-section
 {
-    color: #5679BF;
+    color: $pre-duotone-secondary;
 }
 
 .hljs-keyword,
 .hljs-selector-tag
 {
-    color: #BF56BF;
+    color: $pre-duotone-secondary;
 }
 
 .hljs

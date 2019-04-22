@@ -20,4 +20,14 @@ class Snippet extends Model
     {
         return $this->hasMany('App\Rating', 'snippetId');
     }
+
+	public function favourites()
+	{
+		return $this->hasMany('App\Favourite', 'snippetId');
+	}
+
+	public function comments()
+	{
+		return $this->hasMany('App\Comment', 'snippetId');
+	}
 }
