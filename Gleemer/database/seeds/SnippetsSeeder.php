@@ -30,6 +30,21 @@ class Hello extends React.Component
 }
 
 const el = document.body
+
+ReactDOM.render(<Hello name='John'/>, el)
+
+class Hello extends React.Component
+{
+	render ()
+	{
+		return
+			<div className='message-box'>
+				Hello {this.props.name}
+			</div>
+	}
+}
+
+const el = document.body
 ReactDOM.render(<Hello name='John'/>, el)",
             'language' => 'javascript',
             'datePosted' => Carbon::now()
@@ -86,6 +101,19 @@ int main(int argc, char *argv[])
 	m["key"] = "\\\\"; // this is an error
 
 	return -2e3 + 12l;
+}
+
+int main(int argc, char *argv[])
+{
+	/* An annoying "Hello World" example */
+	for (auto i = 0; i < 0xFFFF; i++)
+    	cout << "Hello, World!" << endl;
+
+	char c = \'\n\';
+	unordered_map <string, vector<string> > m;
+	m["key"] = "\\\\"; // this is an error
+
+	return -2e3 + 12l;
 }',
             'language' => 'cpp',
             'datePosted' => Carbon::now()
@@ -123,7 +151,8 @@ int main(int argc, char *argv[])
 	m["key"] = "\\\\"; // this is an error
 
 	return -2e3 + 12l;
-}',
+}
+</iostream>',
             'language' => 'cpp',
             'datePosted' => Carbon::now()
         ]);

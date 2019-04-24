@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Snippet extends Model
 {
+	protected $guarded = ['_token'];
+
     public function user()
     {
         return $this->belongsTo('App\User', 'userId');
@@ -29,5 +32,12 @@ class Snippet extends Model
 	public function comments()
 	{
 		return $this->hasMany('App\Comment', 'snippetId');
+	}
+
+	public function getDatePosted()
+	{
+		$date = new Carbon($this->datePosted);
+
+		return $date->diffForHumans();
 	}
 }

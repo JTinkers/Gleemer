@@ -1,6 +1,7 @@
 <?php
 
-return [
+return
+[
     'languages' =>
     [
         '1c',

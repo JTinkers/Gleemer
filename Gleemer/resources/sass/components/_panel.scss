@@ -1,4 +1,4 @@
-//main: ../_all.scss
+//main: _all.scss
 
 .panel
 {
@@ -11,7 +11,6 @@
     border-bottom: $panel-border-bottom;
     box-shadow: $panel-box-shadow;
     border-radius: 2px;
-    overflow: hidden;
 }
 
 .panel-header

@@ -19,6 +19,7 @@ class CreateRatingsTable extends Migration
             $table->integer('userId');
             $table->integer('value');
             $table->date('ratedOn');
+			$table->timestamps();
         });
     }
 

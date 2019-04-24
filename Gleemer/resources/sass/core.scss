@@ -38,9 +38,9 @@ pre
 
 code
 {
-    font-family: $pre-font-family;
-	font-size: $pre-font-size;
-	font-weight: $pre-font-weight;
+    font-family: $syntax-font-family;
+	font-size: $syntax-font-size;
+	font-weight: $syntax-font-weight;
     tab-size: 4;
     margin: 0;
 }
@@ -178,7 +178,7 @@ code
     align-items: flex-start;
     padding: 16px 0;
 
-    > .panel
+    > .snippet
     {
         flex-grow: 1;
         break-inside: avoid;
@@ -196,4 +196,28 @@ code
     {
         flex-grow: 1;
     }
+}
+
+.snippet-user
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	margin-left: auto;
+
+	> img
+	{
+		background: #F4F8F9;
+		margin-left: 4px;
+		image-rendering: pixelated;
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.snippet-content
+{
+	max-height: 384px;
+	overflow-y: auto;
 }

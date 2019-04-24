@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('mail')->default('user@gleemer.com');
             $table->date('dateCreated');
             $table->date('lastVisit');
+			$table->timestamps();
         });
     }
 

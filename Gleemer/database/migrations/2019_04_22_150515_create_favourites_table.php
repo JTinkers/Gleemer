@@ -18,6 +18,7 @@ class CreateFavouritesTable extends Migration
 			$table->integer('snippetId');
 			$table->integer('userId');
 			$table->date('favouritedOn');
+			$table->timestamps();
         });
     }
 

@@ -18,6 +18,7 @@ class CreateViewsTable extends Migration
             $table->integer('snippetId');
             $table->integer('userId');
             $table->date('viewedOn');
+			$table->timestamps();
         });
     }
 

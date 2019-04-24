@@ -15,7 +15,7 @@
 .hljs-regexp,
 .hljs-deletion
 {
-    color: $pre-duotone-primary;
+    color: $syntax-palette-three;
 }
 
 .hljs-number,
@@ -27,12 +27,12 @@
 .hljs-meta,
 .hljs-link
 {
-    color: $pre-duotone-primary;
+    color: $syntax-palette-one;
 }
 
 .hljs-attribute
 {
-    color: $pre-duotone-primary;
+    color: $syntax-palette-two;
 }
 
 .hljs-string,
@@ -40,19 +40,19 @@
 .hljs-bullet,
 .hljs-addition
 {
-    color: $pre-duotone-secondary;
+    color: $syntax-palette-three;
 }
 
 .hljs-title,
 .hljs-section
 {
-    color: $pre-duotone-secondary;
+    color: $syntax-palette-one;
 }
 
 .hljs-keyword,
 .hljs-selector-tag
 {
-    color: $pre-duotone-secondary;
+    color: $syntax-palette-two;
 }
 
 .hljs

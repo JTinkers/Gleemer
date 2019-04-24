@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Snippet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SnippetController extends Controller
 {
@@ -25,8 +27,7 @@ class SnippetController extends Controller
      */
     public function create()
     {
-        return view('snippets.create')
-            ->with(['languages' => config('snippets.languages')]);
+        return view('snippets.create');
     }
 
     /**
@@ -37,7 +38,22 @@ class SnippetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$languages = collect(config('snippets.languages'));
+
+		$request->validate(
+		[
+	        'title' => 'required|max:255|min:16',
+	        'content' => 'required|max:4096|min:16',
+	        'language' => ['required', Rule::in($languages)],
+	    ]);
+
+		$entry = new Snippet();
+		$entry->fill($request->all());
+		$entry->datePosted = Carbon::now();
+		$entry->userId = 1; // TODO: get it from session/helper class
+		$entry->save();
+
+		return redirect('/snippets/view/' . $entry->id);
     }
 
     /**
@@ -48,7 +64,7 @@ class SnippetController extends Controller
      */
     public function view(Snippet $snippet)
     {
-
+		return view('snippets.view')->with(['snippet' => $snippet]);
     }
 
     /**
