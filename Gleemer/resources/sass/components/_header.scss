@@ -1,0 +1,46 @@
+//main: ../main.scss
+
+#header
+{
+	height: 48px;
+	width: 100vw;
+	padding: 0 20vw;
+	background: palette('foreground');
+	display: flex;
+
+}
+
+#logo
+{
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	color: palette('primary');
+	font-family: $font-secondary;
+}
+
+#menu
+{
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	margin-left: auto;
+}
+
+.menu-button
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 32px;
+	width: 32px;
+	border-radius: 3px;
+	color: palette('foreground', 'lighter');
+
+	&:hover
+	{
+		color: palette('secondary');
+		background: palette('foreground', 'light');
+		transition: 0.5s all;
+	}
+}

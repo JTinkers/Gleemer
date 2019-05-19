@@ -1,0 +1,33 @@
+//main: main.scss
+
+$numeric:
+(
+	margin, margin-top, margin-right, margin-bottom, margin-left
+);
+
+$regular:
+(
+    align-content: (center, flex-start, flex-end, space-around, space-between, stretch),
+);
+
+@for $i from 1 through 7
+{
+    @each $prop in $numeric
+    {
+        .#{$prop}\(#{pow(2, $i)}px\)
+        {
+            #{$prop}: #{pow(2, $i)}px;
+        }
+    }
+}
+
+@each $prop, $values in $regular
+{
+    @each $value in $values
+    {
+        .#{$prop}\(#{$value}\)
+        {
+            #{$prop}: #{$value};
+        }
+    }
+}

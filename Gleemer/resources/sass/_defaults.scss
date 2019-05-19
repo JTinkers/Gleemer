@@ -1,0 +1,28 @@
+//main: main.scss
+
+*
+{
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+a
+{
+    text-decoration: none;
+	color: palette('complement', 'dark');
+}
+
+pre
+{
+    margin: 0;
+}
+
+body
+{
+	font-family: $font-primary;
+	color: palette('foreground');
+	background: palette('background');
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+}

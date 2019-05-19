@@ -1,0 +1,55 @@
+//main: main.scss
+
+$palette-key: 'base' !default;
+
+$palette:
+(
+	'primary':
+	(
+		'base': 	#06D8FF,
+		'light': 	#73E9FF,
+		'lighter': 	#A6F1FF,
+		'dark': 	#007085,
+		'darker': 	#005767
+	),
+	'secondary':
+	(
+		'base': 	#00FF5F,
+		'light': 	#70FFA5,
+		'lighter': 	#A4FFC6,
+		'dark': 	#009D3B,
+		'darker': 	#00792D
+	),
+	'alternative':
+	(
+		'base': 	#6D18FF,
+		'light': 	#AD7EFF,
+		'lighter': 	#CBACFF,
+		'dark': 	#360094,
+		'darker': 	#2A0072
+	),
+	'complement':
+	(
+		'base': 	#FF7600,
+		'light': 	#FFB270,
+		'lighter': 	#FFCEA4,
+		'dark': 	#D96400,
+		'darker': 	#A74D00
+	),
+	'background':
+	(
+		'base': #EFF3F4,
+		'light': #FFFFFF,
+		'lighter': #FFFFFF,
+		'dark': #CCDADE,
+		'darker': #99B5BC
+	),
+	'foreground':
+	(
+		'base': #393C42,
+		'light': #555961,
+		'lighter': #747880,
+		'dark': #181A1D,
+		'darker': #121720
+	)
+)

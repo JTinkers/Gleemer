@@ -65,43 +65,101 @@ The following frameworks, libraries and technologies have been used:
 
 #### 4.1 Models
 
+Models have a task of describing their fields and relations.
+
 Following models are created and mapped to database:
 
 - **[User]:**
 
-  Mapped: {Id, Nickname, Flags(bitmask), Bio, Login, Password(hashed), E-mail, DateRegistered}
+  Mapped: {id, nickname, flags(bitmask), bio, login, password(hashed), email, date_registered}
 
   Not-mapped: {Slug, Relations}
+
+  **Relations:**
+
+  - 1 to n: User -> Ban
+  - 1 to n: User -> Snippet
+  - 1 to n: User -> Views
+  - 1 to n: User -> Comments
+  - 1 to n: User -> Ratings
+  - 1 to n: User -> Favourites
 
 - **[Ban]:**
 
-  Mapped: {Id, UserId, AdminId, Reason, Length, DateBanned}
+  Mapped: {id, user_id, admin_id, reason, length, date_banned}
 
   Not-mapped: {Relations}
+
+  **Relations:**
+
+  - 1 to 1: Ban -> User
+  - 1 to 1: Ban -> User (Admin)
 
 - **[Snippet] :** 
 
-  Mapped: {Id, UserId, IsPrivate, Title, Contents, LanguageId, DatePosted, DateUpdated}
+  Mapped: {id, user_id, visibility_mode, title, contents, language_id, date_posted, date_updated}
 
   Not-mapped: {Slug, Relations}
+
+  **Relations:**
+
+  - 1 to 1: Snippet -> User
+  - 1 to n: Snippet -> Views
+  - 1 to n: Snippet -> Comments
+  - 1 to n: Snippet -> Ratings
+  - 1 to n: Snippet -> Favourites
 
 - **[Comment]:**
 
-  Mapped: {Id, SnippetId, UserId, IsDeleted, Content, DatePosted}
+  Mapped: {id, snippet_id, user_id, is_deleted, content, date_posted}
 
   Not-mapped: {Slug, Relations}
 
+  **Relations:**
+
+  - 1 to 1: Comment -> Snippet
+  - 1 to 1: Comment -> User
+
 - **[Rating]:**
 
-  Mapped: {Id, SnippetId, UserId, Modifier, DateRated, DateUpdated}
+  Mapped: {id, snippet_id, user_id, value, date_rated}
 
   Not-mapped: {Relations}
+
+  **Relations:**
+
+  - 1 to 1: Rating -> Snippet
+  - 1 to 1: Rating -> User
 
 - **[View]:**
 
-  Mapped: {Id, SnippetId, UserId, DateViewed}
+  Mapped: {id, snippet_id, user_id, date_viewed}
 
   Not-mapped: {Relations}
+  
+  **Relations: **
+  
+  - 1 to 1: View -> Snippet
+  - 1 to 1: View -> User
+  
+- **[Favourite]:**
+
+  Mapped: {id, user_id, snippet_id, date_favourited}
+
+  Not-mapped: {Relations}
+
+  **Relations:**
+
+  - 1 to 1: Favourite -> Snippet
+  - 1 to 1: Favourite -> User
+
+
+
+**Pattern:**
+
+**Controller: **Stores methods and rules for CRUD of data. Defines which models should be displayed (including relationships).
+
+**Model:** Defines rules for a singular instance (like hiding fields when access is denied).
 
 ------
 
@@ -143,15 +201,23 @@ Responsible for fetching snippets, comments and ratings in real-time.
 
 #### 4.4 Style
 
-Style files have been broken-down and stored in folders named after their categories:
+Files required to generate the style are as follows:
 
-`main` - stores: imports (s.e), palette (s.e), defaults (font-families ..), tags (styling for default tags)
+`main.scss` - output file, also contains layout and elements that shouldn't have separate files - like view-specific type of content wrapper.
 
-`generics` - stores: margins, paddings, displays ..
+`variables.scss` - contains all variables used across the style
 
-`components` - stores: components and uniques (like logo, nav, footer, inputs (buttons), snippet panel, etc.)
+`palette.scss` - contains colors and shaded
 
-`vendor` - stores: third party styles
+`generics.scss` - contains generic (generated) properties
+
+`functions.scss` - contains functions used across the style
+
+`defaults.scss` - contains styling for default html tags
+
+`components/*` - contains styling for reusable components like nav, footer, snippet, panel, button, button group
+
+`vendor/*` - contains files related to styling third-party libraries
 
 ##### 4.4.1 Generic Properties
 
@@ -182,8 +248,6 @@ Is now defined as:
 Admins are equipped with tools to edit and remove snippets, ban or unban users, delete comments and view logs. 
 
 
-
-## To-Do's:
 
 ## Tasks:
 

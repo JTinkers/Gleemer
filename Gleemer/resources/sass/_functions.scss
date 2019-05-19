@@ -1,0 +1,32 @@
+//main: main.scss
+
+@function pow($x, $y)
+{
+    $output: 1;
+
+    @if $y == 0
+    {
+        @return $output;
+    }
+
+    @for $i from 1 through $y
+    {
+        $output: $output * $x;
+    }
+
+    @return $output;
+}
+
+@function palette($name: 'primary', $variant: $palette-key)
+{
+	$color: null;
+
+	$color-spectrum: map-get($palette, $name);
+
+	@if $color-spectrum
+	{
+		$color: map-get($color-spectrum, $variant);
+	}
+
+	@return $color;
+}
