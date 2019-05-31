@@ -2,6 +2,12 @@
 	<div id="logo">
 		<span>Gleemer</span>
 	</div>
+	<div id="search">
+		<div id="search-icon">
+			<i class="fas fa-search"></i>
+		</div>
+		<input id="search-input" type="text"/>
+	</div>
 	<div id="menu">
 		<a class="menu-button" href="/">
 			<div>

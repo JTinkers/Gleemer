@@ -14,8 +14,37 @@
 	display: flex;
 	align-items: center;
 	font-size: 24px;
-	color: palette('blue', 'light');
+	color: palette('blue');
 	font-family: $font-secondary;
+}
+
+#search
+{
+	height: 28px;
+	display: flex;
+	align-self: center;
+	margin-left: auto;
+	color: palette('background', '1');
+	background: palette('foreground', '1');
+	border: 1px solid palette('foreground', '2');
+	border-radius: 2px;
+}
+
+#search-icon
+{
+	width: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: palette('foreground', '3');
+}
+
+#search-input
+{
+	color: palette('background', '1');
+	outline: none;
+	background: transparent;
+	border: none;
 }
 
 #menu
@@ -23,7 +52,7 @@
 	display: flex;
 	align-items: center;
 	font-size: 16px;
-	margin-left: auto;
+	margin-left: 8px;
 }
 
 .menu-button
@@ -34,14 +63,14 @@
 	height: 32px;
 	width: 32px;
 	border-radius: 3px;
-	color: palette('foreground', 'lighter');
+	color: palette('foreground', '4');
 	background: transparent;
 	transition: 0.5s all;
 
 	&:hover
 	{
 		color: palette('teal');
-		background: palette('foreground', 'light');
+		background: palette('foreground', '1');
 		transition: 0.5s all;
 	}
 }

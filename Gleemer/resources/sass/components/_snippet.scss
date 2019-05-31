@@ -5,12 +5,12 @@
 	display: flex;
 	flex-direction: column;
 	align-content: flex-start;
-	background: palette('background', 'lighter');
+	background: white;
 	font-family: $font-primary;
 	font-size: 13px;
 	border-radius: 2px;
 	break-inside: avoid;
-	box-shadow: 0 1px 2px palette('background', 'dark');
+	box-shadow: 0 1px 2px palette('background', '-1');
 }
 
 .snippet-header
@@ -27,8 +27,9 @@
 	flex-grow: 1;
 	overflow: hidden;
 	padding: 16px;
-	border-top: 1px solid palette('background', 'light');
-	border-bottom: 1px solid palette('background', 'light');
+	background: palette('background', '8');
+	border-top: 1px solid palette('background', '6');
+	border-bottom: 1px solid palette('background', '6');
 }
 
 .snippet-footer

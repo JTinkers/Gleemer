@@ -9,12 +9,12 @@
 
 	> a
 	{
-		color: palette('background', 'dark');
+		color: palette('background', '-1');
 		transition: 0.5s all;
 
 		&:hover
 		{
-			color: palette('purple', 'lighter');
+			color: palette('purple', '2');
 			transition: all 0.5s;
 		}
 	}

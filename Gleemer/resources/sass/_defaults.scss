@@ -9,7 +9,6 @@
 a
 {
     text-decoration: none;
-	color: palette('complement', 'dark');
 }
 
 pre
@@ -22,8 +21,8 @@ body
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-family: $font-primary;
-	color: palette('foreground');
-	background: palette('background', 'light');
+	color: palette('foreground', '-5');
+	background: palette('background', '7');
 	margin: 0;
 	display: flex;
 	flex-direction: column;

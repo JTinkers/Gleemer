@@ -2,7 +2,7 @@
 
 @section('content')
 	<div id="snippet-index-content-wrapper">
-		@for ($i=0; $i < 10; $i++)			
+		@for ($i=0; $i < 20; $i++)			
 			<div class="snippet">
 				<div class="snippet-header">
 					Header
