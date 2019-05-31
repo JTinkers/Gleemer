@@ -4,52 +4,52 @@ $palette-key: 'base' !default;
 
 $palette:
 (
-	'primary':
+	'blue':
 	(
-		'base': 	#06D8FF,
-		'light': 	#73E9FF,
-		'lighter': 	#A6F1FF,
-		'dark': 	#007085,
-		'darker': 	#005767
+		'base': 	#00D4FC,
+		'light': 	#2DDBFC,
+		'lighter': 	#7DDFF2,
+		'dark': 	#006E82,
+		'darker': 	#00404C
 	),
-	'secondary':
+	'magenta':
 	(
-		'base': 	#00FF5F,
-		'light': 	#70FFA5,
-		'lighter': 	#A4FFC6,
-		'dark': 	#009D3B,
-		'darker': 	#00792D
+		'base': 	#FE004D,
+		'light': 	#FE2869,
+		'lighter': 	#FB7FA5,
+		'dark': 	#BD0039,
+		'darker': 	#6E0021
 	),
-	'alternative':
+	'teal':
 	(
-		'base': 	#6D18FF,
-		'light': 	#AD7EFF,
-		'lighter': 	#CBACFF,
-		'dark': 	#360094,
-		'darker': 	#2A0072
+		'base': 	#00FC90,
+		'light': 	#28FCA1,
+		'lighter': 	#7BF4C0,
+		'dark': 	#009153,
+		'darker': 	#005430
 	),
-	'complement':
+	'purple':
 	(
-		'base': 	#FF7600,
-		'light': 	#FFB270,
-		'lighter': 	#FFCEA4,
-		'dark': 	#D96400,
-		'darker': 	#A74D00
+		'base': 	#A300FC,
+		'light': 	#B533FC,
+		'lighter': 	#CB82F4,
+		'dark': 	#5B008D,
+		'darker': 	#350152
 	),
 	'background':
 	(
-		'base': #EFF3F4,
-		'light': #FFFFFF,
-		'lighter': #FFFFFF,
-		'dark': #CCDADE,
-		'darker': #99B5BC
+		'base': 	#D8D8D8,
+		'light': 	#F3F3F3,
+		'lighter': 	#FFFFFF,
+		'dark': 	#CCCCCC,
+		'darker': 	#BFBFBF
 	),
 	'foreground':
 	(
-		'base': #393C42,
-		'light': #555961,
-		'lighter': #747880,
-		'dark': #181A1D,
-		'darker': #121720
+		'base': 	#363C40,
+		'light': 	#565D62,
+		'lighter': 	#7B8287,
+		'dark': 	#161A1E,
+		'darker': 	#0F1920
 	)
 )

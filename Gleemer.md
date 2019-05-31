@@ -8,7 +8,7 @@
 
 The idea behind this project is to create a robust code snippet hosting service.
 
-Every snippet can have its' language or visibility adjusted according to users' needs.
+Every snippet can have its' language or public visibility adjusted according to users' needs.
 
 Additionally, every snippet can be rated, commented or favourited.
 
@@ -23,7 +23,7 @@ The portal used as a main driver is compact, responsive and written according to
 The following frameworks, libraries and technologies have been used:
 
 - **Laravel** - main framework, ORM, microservice development, templating engine
-- **Vue.js** - asynchronous containers
+- **Vue.js** - TBD
 - **SASS** - stylesheet generation/development
 - **HLJS** - syntax highlighting
 
@@ -48,7 +48,7 @@ The following frameworks, libraries and technologies have been used:
   - Responsive
   - Made as combination of AtomicCSS and functional programming
   - Scalable
-  - Broken into modules
+  - Single palette
 - **Admin Panel:**
   - Snippet editting/deleting
   - Comment deleting
@@ -155,7 +155,7 @@ Following models are created and mapped to database:
 
 
 
-**Pattern:**
+**Ruleset:**
 
 **Controller: **Stores methods and rules for CRUD of data. Defines which models should be displayed (including relationships).
 
@@ -187,7 +187,6 @@ Every unique or reusable chunk of code was turned into a component, as well as g
 
 - Nav
 - Footer
-- Snippet Panel
 - Panel
 - Button
 - Button Group
@@ -203,11 +202,11 @@ Responsible for fetching snippets, comments and ratings in real-time.
 
 Files required to generate the style are as follows:
 
-`main.scss` - output file, also contains layout and elements that shouldn't have separate files - like view-specific type of content wrapper.
+`main.scss` - output file, contains styling unique to one or few subpages like snippet.index or snippet.create
 
 `variables.scss` - contains all variables used across the style
 
-`palette.scss` - contains colors and shaded
+`palette.scss` - contains the main palette with multiple shades
 
 `generics.scss` - contains generic (generated) properties
 
@@ -233,7 +232,7 @@ Is now defined as:
 
 
 
-Properties with numeric value have classes generated for values from 2 to 256, with step equal to 2.
+Properties with numeric values have classes generated for values from 1 to 128 (step being power of 2)
 
 **Example:**
 
@@ -252,3 +251,9 @@ Admins are equipped with tools to edit and remove snippets, ban or unban users, 
 ## Tasks:
 
 <https://app.clickup.com/2187943/d/t?p=2285400&c=2825717>
+
+
+
+CHECK ENLIGHTERJS
+
+Adjust color palette, more shades of same color (up to 8 maybe?)

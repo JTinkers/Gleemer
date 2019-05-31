@@ -19,10 +19,13 @@ pre
 
 body
 {
-	font-family: $font-primary;
-	color: palette('foreground');
-	background: palette('background');
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	font-family: $font-primary;
+	color: palette('foreground');
+	background: palette('background', 'light');
 	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }

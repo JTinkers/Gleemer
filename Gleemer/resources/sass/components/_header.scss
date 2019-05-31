@@ -7,7 +7,6 @@
 	padding: 0 20vw;
 	background: palette('foreground');
 	display: flex;
-
 }
 
 #logo
@@ -15,7 +14,7 @@
 	display: flex;
 	align-items: center;
 	font-size: 24px;
-	color: palette('primary');
+	color: palette('blue', 'light');
 	font-family: $font-secondary;
 }
 
@@ -36,10 +35,12 @@
 	width: 32px;
 	border-radius: 3px;
 	color: palette('foreground', 'lighter');
+	background: transparent;
+	transition: 0.5s all;
 
 	&:hover
 	{
-		color: palette('secondary');
+		color: palette('teal');
 		background: palette('foreground', 'light');
 		transition: 0.5s all;
 	}

@@ -1,0 +1,21 @@
+//main: ../main.scss
+
+#footer
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48px;
+
+	> a
+	{
+		color: palette('background', 'dark');
+		transition: 0.5s all;
+
+		&:hover
+		{
+			color: palette('purple', 'lighter');
+			transition: all 0.5s;
+		}
+	}
+}

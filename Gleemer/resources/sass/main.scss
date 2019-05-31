@@ -5,3 +5,23 @@
 @import '_generics';
 @import 'components/all';
 @import 'vendor/all';
+
+#content
+{
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 96px);
+}
+
+#snippet-index-content-wrapper
+{
+	flex-grow: 1;
+	columns: 2;
+	column-gap: 16px;
+	padding: 16px 20vw 0 20vw;
+
+	> .snippet
+	{
+		margin-bottom: 16px;
+	}
+}
