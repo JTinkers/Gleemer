@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Snippet extends Model
 {
@@ -29,5 +30,12 @@ class Snippet extends Model
 	public function user()
 	{
 		return $this->belongsTo('App\User');
+	}
+
+	public function getDatePostedAttribute()
+	{
+		$date = new Carbon($this->attributes['date_posted']);
+
+		return $date->diffForHumans();
 	}
 }

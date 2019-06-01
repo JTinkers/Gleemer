@@ -14,7 +14,7 @@ class SnippetController extends Controller
      */
     public function index()
     {
-        return view('snippet.index');
+        return view('snippet.index', ['models' => Snippet::all()]);
     }
 
     /**

@@ -9,10 +9,10 @@
         <title>@yield('title') - Gleemer</title>
     </head>
     <body>
-		@include('components/header')
+		@header
         <div id="content">
             @yield('content')
         </div>
-		@include('components/footer')
+		@footer
     </body>
 </html>

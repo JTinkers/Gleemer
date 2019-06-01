@@ -39,3 +39,28 @@
 	padding: 16px;
 	height: 48px;
 }
+
+.snippet-footer-date
+{
+	margin-left: auto;
+}
+
+.snippet-footer-user
+{
+	border: 1px solid palette('background', '4');
+	border-radius: 3px;
+	padding: 4px;
+	display: flex;
+	align-items: center;
+}
+
+.snippet-footer-user-avatar
+{
+	image-rendering: pixelated;
+	margin-right: 4px;
+}
+
+.snippet-footer-user-nickname
+{
+
+}
