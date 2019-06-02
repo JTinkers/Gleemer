@@ -25,3 +25,10 @@
 		margin-bottom: 16px;
 	}
 }
+
+#snippet-create-content-wrapper
+{
+	display: flex;
+	flex-grow: 1;
+	padding: 16px 20vw 0 20vw;
+}

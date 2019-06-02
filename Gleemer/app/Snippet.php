@@ -7,6 +7,10 @@ use Carbon\Carbon;
 
 class Snippet extends Model
 {
+	protected $guarded = ['_token'];
+
+	public $timestamps = false;
+
 	public function views()
 	{
 		return $this->hasMany('App\View');

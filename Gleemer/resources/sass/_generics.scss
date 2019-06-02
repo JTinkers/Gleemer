@@ -8,6 +8,16 @@ $numeric:
 $regular:
 (
     align-content: (center, flex-start, flex-end, space-around, space-between, stretch),
+	align-items: (flex-start),
+	align-self: (stretch),
+	display: (flex),
+	flex-direction: (column),
+	flex-grow: (1),
+	margin: (auto),
+	margin-left: (auto),
+	margin-top: (auto),
+	margin-right: (auto),
+	margin-bottom: (auto),
 );
 
 @for $i from 1 through 7

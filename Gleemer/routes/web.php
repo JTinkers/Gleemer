@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'SnippetController@index');
+Route::get('/snippets/create', 'SnippetController@create');
+Route::post('/snippets/store', 'SnippetController@store');

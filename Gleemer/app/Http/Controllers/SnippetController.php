@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Snippet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SnippetController extends Controller
 {
@@ -24,7 +26,7 @@ class SnippetController extends Controller
      */
     public function create()
     {
-        //
+        return view('snippet.create');
     }
 
     /**
@@ -35,7 +37,23 @@ class SnippetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$languages = collect(config('gleemer.languages'));
+
+		$request->validate(
+		[
+	        'title' => 'required|max:255|min:16',
+	        'contents' => 'required|max:4096|min:16',
+	        'language' => ['required', Rule::in($languages)],
+	    ]);
+
+		$entry = new Snippet();
+		$entry->fill($request->all());
+		$entry->date_posted = Carbon::now();
+		$entry->date_updated = Carbon::now();
+		$entry->user_id = 1; // TODO: get it from session/helper class
+		$entry->save();
+
+		return redirect('/snippets/' . $entry->id);
     }
 
     /**
