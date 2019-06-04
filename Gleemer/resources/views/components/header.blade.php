@@ -14,7 +14,7 @@
 				<i class="fas fa-file-alt"></i>
 			</div>
 		</a>
-		<a class="menu-button" href="/snippets/create">
+		<a class="menu-button" href="/snippet/create">
 	        <div>
 				<i class="fas fa-plus-square"></i>
 			</div>
@@ -24,7 +24,7 @@
 				<i class="fas fa-share-alt"></i>
 			</div>
 		</a>
-		<a class="menu-button" href="#">
+		<a class="menu-button" href="/user">
 	        <div>
 				<i class="fas fa-fw fa-user"></i>
 			</div>

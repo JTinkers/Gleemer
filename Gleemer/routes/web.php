@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'SnippetController@index');
-Route::get('/snippets/create', 'SnippetController@create');
-Route::post('/snippets/store', 'SnippetController@store');
+Route::get('/snippet/create', 'SnippetController@create');
+Route::post('/snippet/store', 'SnippetController@store');
+Route::get('/user/', 'UserController@index');

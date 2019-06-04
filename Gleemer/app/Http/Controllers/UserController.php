@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // if isn't logged in
+        return view('user.index');
     }
 
     /**
