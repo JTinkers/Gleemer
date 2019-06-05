@@ -1,6 +1,6 @@
 <div class="snippet">
 	<div class="snippet-header">
-		<span>{{ $snippet->title }}</span>
+		<a href="/snippet/show/{{ $snippet->id }}">{{ $snippet->title }}</a>
 	</div>
 	<div class="snippet-content">
 		<span>{{ $snippet->contents }}</span>
