@@ -53,7 +53,6 @@ The following frameworks, libraries and technologies have been used:
   - Snippet editting/deleting
   - Comment deleting
   - User banning
-  - 
 - **Misc**
   - URL Slugs - with alphanumeric generator for unlisted snippets
   - Searching
@@ -250,10 +249,8 @@ Admins are equipped with tools to edit and remove snippets, ban or unban users, 
 
 ## Tasks:
 
-<https://app.clickup.com/2187943/d/t?p=2285400&c=2825717>
-
-
-
 CHECK ENLIGHTERJS
 
-Adjust color palette, more shades of same color (up to 8 maybe?)
+
+
+# BARDZIEJ NIEBIESKIE TLO!

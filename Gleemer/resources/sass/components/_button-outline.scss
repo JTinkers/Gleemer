@@ -1,0 +1,15 @@
+//main: ../main.scss
+
+.button-outline
+{
+	display: flex;
+	align-items: center;
+	font-size: 12px;
+	font-family: $font-secondary;
+	color: palette('foreground');
+	border-radius: 3px;
+	border: 1px solid palette('background');
+	padding: 4px;
+
+	transition: 0.5s all;
+}

@@ -1,5 +1,7 @@
 @extends('layouts/default')
 
+@section('title', 'Submit')
+
 @section('content')
 	<div id="snippet-create-content-wrapper">
 		<form class="display(flex) flex-direction(column) flex-grow(1)" method="post" action="/snippets/store">

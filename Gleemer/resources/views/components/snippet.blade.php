@@ -3,7 +3,7 @@
 		<a href="/snippet/show/{{ $snippet->id }}">{{ $snippet->title }}</a>
 	</div>
 	<div class="snippet-content">
-		<span>{{ $snippet->contents }}</span>
+		<pre>{{ $snippet->contents }}</pre>
 	</div>
 	<div class="snippet-footer">
 		<div class="snippet-footer-user">

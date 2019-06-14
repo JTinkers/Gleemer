@@ -1,5 +1,7 @@
 @extends('layouts/default')
 
+@section('title', 'Snippets')
+
 @section('content')
 	<div id="snippet-index-content-wrapper">
 		@foreach ($models as $model)

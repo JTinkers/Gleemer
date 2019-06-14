@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script defer src="{{ asset('js/app.js') }}"></script>
         <link rel="stylesheet" href="/css/main.min.css">
-        <title>@yield('title') - Gleemer</title>
+        <title>Gleemer - @yield('title')</title>
     </head>
     <body>
 		@header

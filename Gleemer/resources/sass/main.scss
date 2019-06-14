@@ -15,9 +15,7 @@
 
 #snippet-index-content-wrapper
 {
-	flex-grow: 1;
 	columns: 2;
-	column-gap: 16px;
 	padding: 16px 20vw 0 20vw;
 
 	> .snippet
@@ -31,6 +29,52 @@
 	display: flex;
 	flex-grow: 1;
 	padding: 16px 20vw 0 20vw;
+}
+
+#snippet-show-content-wrapper
+{
+	display: grid;
+	flex-grow: 1;
+	columns: 4;
+	grid-auto-flow: row;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	grid-column-gap: 16px;
+	grid-row-gap: 16px;
+	padding: 16px 20vw 0 20vw;
+}
+
+#snippet-view-panel
+{
+	grid-column-start: 1;
+	grid-column-end: 4;
+}
+
+#snippet-toolbar-copy-button:hover
+{
+	background: palette('blue', '-1');
+	border: 1px solid palette('blue', '-1');
+	color: white;
+
+	transition: 0.5s all;
+}
+
+#snippet-toolbar-share-button:hover
+{
+	background: palette('magenta', '-1');
+	border: 1px solid palette('magenta', '-1');
+	color: white;
+
+	transition: 0.5s all;
+}
+
+#snippet-toolbar-save-button:hover
+{
+	background: palette('purple', '-1');
+	border: 1px solid palette('purple', '-1');
+	color: white;
+
+	transition: 0.5s all;
 }
 
 #user-index-content-wrapper
