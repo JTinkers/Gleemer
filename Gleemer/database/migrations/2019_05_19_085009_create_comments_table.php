@@ -18,9 +18,9 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('snippet_id');
             $table->integer('user_id');
-            $table->boolean('is_deleted');
+            $table->boolean('is_deleted')->default(false);
             $table->longText('content');
-            $table->date('date_posted');
+            $table->datetime('date_posted');
         });
     }
 

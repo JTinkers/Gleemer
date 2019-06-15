@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favourite extends Model
 {
+	public $timestamps = false;
+
 	public function snippet()
 	{
 		return $this->belongsTo('App\Snippet');

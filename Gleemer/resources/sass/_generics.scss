@@ -8,9 +8,10 @@ $numeric:
 $regular:
 (
     align-content: (center, flex-start, flex-end, space-around, space-between, stretch),
-	align-items: (flex-start),
+	align-items: (flex-start, flex-end),
 	align-self: (stretch),
 	display: (flex),
+	justify-content: (space-between), 
 	flex-direction: (column),
 	flex-grow: (1),
 	margin: (auto),
@@ -27,6 +28,17 @@ $regular:
         .#{$prop}\(#{pow(2, $i)}px\)
         {
             #{$prop}: #{pow(2, $i)}px;
+        }
+    }
+}
+
+@for $i from 1 through 7
+{
+    @each $prop in $numeric
+    {
+        .#{$prop}\(-#{pow(2, $i)}px\)
+        {
+            #{$prop}: -#{pow(2, $i)}px;
         }
     }
 }

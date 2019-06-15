@@ -11,6 +11,13 @@ class Snippet extends Model
 
 	public $timestamps = false;
 
+	public function getDatePostedAttribute()
+	{
+		$date = new Carbon($this->attributes['date_posted']);
+
+		return $date->diffForHumans();
+	}
+
 	public function views()
 	{
 		return $this->hasMany('App\View');
@@ -34,12 +41,5 @@ class Snippet extends Model
 	public function user()
 	{
 		return $this->belongsTo('App\User');
-	}
-
-	public function getDatePostedAttribute()
-	{
-		$date = new Carbon($this->attributes['date_posted']);
-
-		return $date->diffForHumans();
 	}
 }

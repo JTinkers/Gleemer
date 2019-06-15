@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
+	protected $guarded = ['_token'];
+
+	public $timestamps = false;
+
 	public function getContentAttribute()
 	{
 		if($this->is_deleted)
@@ -14,6 +19,13 @@ class Comment extends Model
 		}
 
 		return $this->attributes['content'];
+	}
+
+	public function getDatePostedAttribute()
+	{
+		$date = new Carbon($this->attributes['date_posted']);
+
+		return $date->diffForHumans();
 	}
 
 	public function snippet()

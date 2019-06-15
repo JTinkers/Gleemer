@@ -4,7 +4,7 @@
 
 @section('content')
 	<div id="snippet-create-content-wrapper">
-		<form class="display(flex) flex-direction(column) flex-grow(1)" method="post" action="/snippets/store">
+		<form class="display(flex) flex-direction(column) flex-grow(1)" method="post" action="/snippet/store">
 			@csrf
 			<div class="snippet-create-form-row display(flex) align-items(flex-start) margin-bottom(8px)">
 				<input class="flex-grow(1) margin-right(8px)" type="text" name="title"/>

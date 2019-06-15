@@ -8,6 +8,8 @@ class User extends Model
 {
 	protected $hidden = ['login', 'password', 'email'];
 
+	public $timestamps = false;
+
 	public function bans()
 	{
 		return $this->hasMany('App\Ban');

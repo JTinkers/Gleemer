@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -33,11 +34,21 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+	 public function store(Request $request)
+     {
+ 		$request->validate(
+ 		[
+ 	        'content' => 'required|max:1024|min:1'
+ 	    ]);
 
+ 		$entry = new Comment();
+ 		$entry->fill($request->all());
+ 		$entry->date_posted = Carbon::now();
+ 		$entry->user_id = 1; // TODO: get it from session/helper class
+ 		$entry->save();
+
+ 		return redirect('/snippet/show/' . $entry->snippet_id);
+     }
     /**
      * Display the specified resource.
      *

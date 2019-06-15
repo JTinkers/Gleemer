@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ban extends Model
 {
+	public $timestamps = false;
+
 	public function admin()
 	{
 		return $this->belongsTo('App\User', 'admin_id');

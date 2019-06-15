@@ -53,7 +53,7 @@ class SnippetController extends Controller
 		$entry->user_id = 1; // TODO: get it from session/helper class
 		$entry->save();
 
-		return redirect('/snippets/' . $entry->id);
+		return redirect('/snippet/show/' . $entry->id);
     }
 
     /**

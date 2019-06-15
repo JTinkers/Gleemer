@@ -1,0 +1,32 @@
+//main: ../main.scss
+
+.usertag
+{
+	border: 1px solid palette('background', '4');
+	border-radius: 3px;
+	padding: 4px;
+	display: flex;
+	align-items: center;
+
+	transition: 0.5s all;
+
+	&:hover
+	{
+		background: palette('magenta', '-1');
+		border: 1px solid palette('magenta');
+		color: white;
+
+		transition: 0.5s all;
+	}
+}
+
+.usertag-avatar
+{
+	image-rendering: pixelated;
+	margin-right: 4px;
+}
+
+.usertag-nickname
+{
+	font-size: 12px;
+}
