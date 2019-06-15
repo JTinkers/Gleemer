@@ -7,12 +7,20 @@
 		<div id="snippet-view-panel" class="panel flex-grow(1)">
 			<div class="panel-header">
 				<span>{{ $snippet->title }}</span>
+				<span class="margin-left(auto)">{{ $snippet->language }}</span>
 			</div>
 			<div class="panel-content">
 				<pre>{{ $snippet->contents }}</pre>
 			</div>
 			<div class="panel-footer">
-				<span>{{ $snippet->language }}</span>
+				<a class="display(flex) align-items(center)" href="#">
+					<i class="far fa-thumbs-up"></i>
+					<span class="margin-left(4px)">{{ $snippet->ratings->where('value', 1)->count() }}</span>
+				</a>
+				<a class="display(flex) align-items(center) margin-left(16px)" href="#">
+					<i class="far fa-thumbs-down"></i>
+					<span class="margin-left(4px)">{{ $snippet->ratings->where('value', -1)->count() }}</span>
+				</a>
 				<div class="display(flex) margin-left(auto) margin-right(-4px)">
 					<a id="snippet-toolbar-copy-button" class="button-outline margin-right(4px)" href="#">
 						<i class="margin-right(4px) far fa-copy"></i>

@@ -18,6 +18,20 @@ class Snippet extends Model
 		return $date->diffForHumans();
 	}
 
+	public function getSlugAttribute()
+	{
+		$url = str_replace(" ", "-", $this->title);
+		$url = strtolower($url);
+		$url = str_replace("&", "_", $url);
+		$url = str_replace(";", "_", $url);
+		$url = str_replace("\\", "_", $url);
+		$url = str_replace("/", "_", $url);
+
+		$url = "/snippet/show/" . $url;
+
+		return $url;
+	}
+
 	public function views()
 	{
 		return $this->hasMany('App\View');

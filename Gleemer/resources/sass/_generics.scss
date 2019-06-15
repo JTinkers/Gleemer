@@ -8,10 +8,10 @@ $numeric:
 $regular:
 (
     align-content: (center, flex-start, flex-end, space-around, space-between, stretch),
-	align-items: (flex-start, flex-end),
+	align-items: (center, flex-start, flex-end),
 	align-self: (stretch),
 	display: (flex),
-	justify-content: (space-between), 
+	justify-content: (space-between),
 	flex-direction: (column),
 	flex-grow: (1),
 	margin: (auto),
