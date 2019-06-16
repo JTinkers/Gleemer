@@ -24,7 +24,6 @@
 	display: flex;
 	align-self: center;
 	margin-left: auto;
-	color: palette('background', '1');
 	background: palette('foreground', '1');
 	border: 1px solid palette('foreground', '2');
 	border-radius: 2px;
@@ -42,7 +41,7 @@
 #search-input
 {
 	padding: 4px;
-	color: palette('background', '1');
+	color: white;
 	outline: none;
 	background: transparent;
 	border: none;

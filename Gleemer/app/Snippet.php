@@ -11,6 +11,11 @@ class Snippet extends Model
 
 	public $timestamps = false;
 
+	public function getLanguageAttribute()
+	{
+		return ucfirst($this->attributes['language']);
+	}
+
 	public function getDatePostedAttribute()
 	{
 		$date = new Carbon($this->attributes['date_posted']);

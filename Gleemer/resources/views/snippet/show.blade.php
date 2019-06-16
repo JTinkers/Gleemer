@@ -6,7 +6,9 @@
 	<div id="snippet-show-content-wrapper">
 		<div id="snippet-view-panel" class="panel flex-grow(1)">
 			<div class="panel-header">
-				<span>{{ $snippet->title }}</span>
+				<span>
+					<b>{{ $snippet->title }}</b>
+				</span>
 				<span class="margin-left(auto)">{{ $snippet->language }}</span>
 			</div>
 			<div class="panel-content">
