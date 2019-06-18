@@ -29,3 +29,42 @@ body
 	flex-direction: column;
 	min-height: 100vh;
 }
+
+input, button, select
+{
+	font-family: $font-primary;
+}
+
+input[type=text], input[type=password]
+{
+	outline: none;
+	border-style: inset;
+	border: none;
+	border-top: 2px solid palette('background', '3');
+	background: palette('background', '7');
+	border-radius: 3px;
+	padding: 8px;
+}
+
+input[type=submit], button[type=submit]
+{
+	height: 36px;
+	cursor: pointer;
+	background: linear-gradient(to bottom, palette('teal'), palette('teal', '-2'));
+	border: 1px solid palette('teal', '-3');
+	border-radius: 3px;
+	color: white;
+	text-shadow: 1px 1px black;
+	font-weight: bold;
+	outline: none;
+
+	transition: 0.5s all;
+
+	&:hover
+	{
+		background: linear-gradient(to bottom, palette('teal', '-2'), palette('teal', '-4'));
+		border: 1px solid palette('teal', '-5');
+
+		transition: 0.5s all;
+	}
+}

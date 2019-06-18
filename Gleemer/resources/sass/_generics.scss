@@ -2,7 +2,8 @@
 
 $numeric:
 (
-	margin, margin-top, margin-right, margin-bottom, margin-left
+	margin, margin-top, margin-right, margin-bottom, margin-left,
+	padding, padding-top, padding-right, padding-bottom, padding-left
 );
 
 $regular:
@@ -30,6 +31,14 @@ $regular:
             #{$prop}: #{pow(2, $i)}px;
         }
     }
+}
+
+@each $prop in $numeric
+{
+	.#{$prop}\(0\)
+	{
+		#{$prop}: 0;
+	}
 }
 
 @for $i from 1 through 7

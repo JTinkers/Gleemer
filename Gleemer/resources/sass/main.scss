@@ -57,9 +57,14 @@
 	grid-column-start: 1;
 	grid-column-end: 4;
 
-	> .snippet-comment
+	> .panel-section
 	{
-		margin-bottom: 16px;
+		padding: 0;
+	}
+
+	> .panel-footer
+	{
+		padding: 8px;
 	}
 }
 
@@ -67,10 +72,13 @@
 {
 	display: flex;
 	padding: 8px;
-	background: white;
-	box-shadow: 0 1px 2px palette('background', '-1');
-	border-radius: 3px;
+	border-bottom: 1px solid palette('background', '6');
 	font-size: 12px;
+
+	&:last-child
+	{
+		border-bottom: none;
+	}
 }
 
 #snippet-toolbar-copy-button:hover

@@ -2,7 +2,8 @@
 
 .usertag
 {
-	border: 1px solid palette('background', '4');
+	border: 1px solid palette('foreground', '8');
+	background: palette('background', '9');
 	border-radius: 3px;
 	padding: 4px;
 	display: flex;

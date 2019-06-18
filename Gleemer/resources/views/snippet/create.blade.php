@@ -35,7 +35,7 @@
 						<option>{{ $language }}</option>
 					@endforeach
 				</select>
-				<input class="margin-left(auto)" type="submit"/>
+				<input class="margin-left(auto)" type="submit" value="Submit"/>
 			</div>
 		</form>
 	</div>

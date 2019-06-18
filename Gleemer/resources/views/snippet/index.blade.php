@@ -7,15 +7,10 @@
 		@foreach ($models as $snippet)
 			<div class="panel">
 				<div class="panel-header">
-					<a href="/snippet/show/{{ $snippet->id }}">
-						<b>{{ $snippet->title }}</b>
-					</a>
-					<a href="#" class="usertag margin-left(auto) margin-right(-4px)">
-						<img class="usertag-avatar" src="https://secure.gravatar.com/avatar/cc29879d431a1d31aa636bd50ba97614?s=16&d=retro&r=g"/>
-						<span class="usertag-nickname">{{ $snippet->user->nickname }}</span>
-					</a>
+					<a href="/snippet/show/{{ $snippet->id }}"><i class="fas fa-code margin-right(8px)"></i><b>{{ $snippet->title }}</b></a>
+					@usertag(['id' => $snippet->user->id, 'class' => 'margin-left(auto) margin-right(-4px)'])
 				</div>
-				<div class="panel-content">
+				<div class="panel-section dim">
 					<pre>{{ $snippet->contents }}</pre>
 				</div>
 				<div class="panel-footer">

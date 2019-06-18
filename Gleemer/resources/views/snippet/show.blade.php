@@ -6,12 +6,10 @@
 	<div id="snippet-show-content-wrapper">
 		<div id="snippet-view-panel" class="panel flex-grow(1)">
 			<div class="panel-header">
-				<span>
-					<b>{{ $snippet->title }}</b>
-				</span>
+				<span><i class="fas fa-code margin-right(8px)"></i><b>{{ $snippet->title }}</b></span>
 				<span class="margin-left(auto)">{{ $snippet->language }}</span>
 			</div>
-			<div class="panel-content">
+			<div class="panel-section dim">
 				<pre>{{ $snippet->contents }}</pre>
 			</div>
 			<div class="panel-footer">
@@ -41,15 +39,12 @@
 		</div>
 		<div class="panel">
 			<div class="panel-header">
-				<a href="#" class="usertag margin-left(-4px)">
-					<img class="usertag-avatar" src="https://secure.gravatar.com/avatar/cc29879d431a1d31aa636bd50ba97614?s=16&d=retro&r=g"/>
-					<span class="usertag-nickname">{{ $snippet->user->nickname }}</span>
-				</a>
+				@usertag(['id' => $snippet->user->id, 'class' => 'margin-left(-4px)'])
 				<div class="margin-left(auto)">
 					<span>{{ $snippet->date_posted }}</span>
 				</div>
 			</div>
-			<div class="panel-content flex-direction(column)">
+			<div class="panel-section dim flex-direction(column)">
 				<div class="display(flex) margin-bottom(16px)">
 					<span>Views</span>
 					<span class="margin-left(auto)">{{ $snippet->views->count() }}</span>
@@ -68,25 +63,29 @@
 				</div>
 			</div>
 		</div>
-		<div id="snippet-comment-container">
-			@foreach ($snippet->comments as $comment)
-				<div class="snippet-comment">
-					<span>{{ $comment->content }}</span>
-					<div class="display(flex) flex-direction(column) align-items(flex-end) margin-left(auto)">
-						<a href="#" class="usertag margin-bottom(8px)">
-							<img class="usertag-avatar" src="https://secure.gravatar.com/avatar/cc29879d431a1d31aa636bd50ba97614?s=16&d=retro&r=g"/>
-							<span class="usertag-nickname">{{ $comment->user->nickname }}</span>
-						</a>
-						<span>{{ $comment->date_posted }}</span>
+		<div id="snippet-comment-container" class="panel">
+			<div class="panel-header">
+				<span><i class="far fa-comments margin-right(8px)"></i><b>Comments</b></span>
+			</div>
+			<div class="panel-section dim display(flex) flex-direction(column)">
+				@foreach ($snippet->comments as $comment)
+					<div class="snippet-comment">
+						<span>{{ $comment->content }}</span>
+						<div class="display(flex) flex-direction(column) align-items(flex-end) margin-left(auto)">
+							@usertag(['id' => $snippet->user->id, 'class' => 'margin-bottom(8px)'])
+							<span>{{ $comment->date_posted }}</span>
+						</div>
 					</div>
-				</div>
-			@endforeach
-			<form class="display(flex)" method="post" action="/comment/store">
-				@csrf
-				<input type="hidden" name="snippet_id" value="{{ $snippet->id }}"/>
-				<input class="flex-grow(1)" name="content" type="text"/>
-				<input class="margin-left(4px)" type="submit"/>
-			</form>
+				@endforeach
+			</div>
+			<div class="panel-footer">
+				<form class="display(flex) flex-grow(1)" method="post" action="/comment/store">
+					@csrf
+					<input type="hidden" name="snippet_id" value="{{ $snippet->id }}"/>
+					<input class="flex-grow(1)" name="content" type="text"/>
+					<input class="margin-left(8px)" type="submit" value="Send">
+				</form>
+			</div>
 		</div>
 	</div>
 @endsection

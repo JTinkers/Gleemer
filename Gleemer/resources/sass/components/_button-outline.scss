@@ -8,7 +8,7 @@
 	font-family: $font-secondary;
 	color: palette('foreground');
 	border-radius: 3px;
-	border: 1px solid palette('background');
+	border: 1px solid palette('foreground', '8');
 	padding: 4px;
 
 	transition: 0.5s all;
