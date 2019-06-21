@@ -44,7 +44,7 @@
 					<span>{{ $snippet->date_posted }}</span>
 				</div>
 			</div>
-			<div class="panel-section dim flex-direction(column)">
+			<div class="panel-section flex-direction(column)">
 				<div class="display(flex) margin-bottom(16px)">
 					<span>Views</span>
 					<span class="margin-left(auto)">{{ $snippet->views->count() }}</span>
@@ -67,7 +67,7 @@
 			<div class="panel-header">
 				<span><i class="far fa-comments margin-right(8px)"></i><b>Comments</b></span>
 			</div>
-			<div class="panel-section dim display(flex) flex-direction(column)">
+			<div class="panel-section display(flex) flex-direction(column)">
 				@foreach ($snippet->comments as $comment)
 					<div class="snippet-comment">
 						<span>{{ $comment->content }}</span>
