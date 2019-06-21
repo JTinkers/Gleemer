@@ -16,7 +16,7 @@ class Snippet extends Model
 		return ucfirst($this->attributes['language']);
 	}
 
-	public function getDatePostedAttribute()
+	public function getHumanDatePostedAttribute()
 	{
 		$date = new Carbon($this->attributes['date_posted']);
 

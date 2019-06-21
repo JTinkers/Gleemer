@@ -47,7 +47,7 @@ class CommentController extends Controller
  		$entry->user_id = 1; // TODO: get it from session/helper class
  		$entry->save();
 
- 		return redirect('/snippet/show/' . $entry->snippet_id);
+ 		return redirect()->back();
      }
     /**
      * Display the specified resource.

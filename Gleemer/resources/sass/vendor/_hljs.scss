@@ -1,0 +1,74 @@
+//main: ../main.scss
+
+.hljs-comment,
+.hljs-quote
+{
+    color: palette('foreground', '5');
+}
+
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-params
+{
+	color: palette('purple');
+}
+
+.hljs-selector-class,
+.hljs-deletion,
+.hljs-name,
+.hljs-tag,
+.hljs-template-variable,
+.hljs-keyword,
+.hljs-variable
+{
+	color: palette('magenta');
+}
+
+.hljs-string
+{
+	color: palette('teal', '-3');
+}
+
+.hljs-type,
+.hljs-regexp,
+.hljs-attribute,
+.hljs-meta,
+.hljs-link,
+.hljs-literal
+{
+	color: palette('blue', '-2');
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-title,
+.hljs-section,
+.hljs-selector-tag
+.hljs-number
+{
+	//
+}
+
+.hljs
+{
+    color: palette('foreground');
+	font-family: $font-mono;
+	font-size: 13px;
+	font-weight: 500;
+    display: block;
+    overflow-x: auto;
+    line-height: 1.5;
+	tab-size: 4;
+}
+
+.hljs-emphasis
+{
+    font-style: italic;
+}
+
+.hljs-strong
+{
+    font-weight: bold;
+}

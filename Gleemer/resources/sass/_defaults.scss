@@ -37,9 +37,10 @@ input, button, select
 
 select
 {
+	outline: none;
 	height: 32px;
 	border-radius: 3px;
-	border: 1px solid palette('foreground', '8');
+	border: 1px solid palette('foreground', '7');
 	padding: 4px;
 }
 
@@ -47,10 +48,10 @@ input[type=text], input[type=password], textarea
 {
 	outline: none;
 	border-style: inset;
-	border: none;
+	border: 1px solid palette('background', '6');
 	border-top: 2px solid palette('background', '3');
-	background: palette('background', '7');
 	border-radius: 3px;
+	background: palette('background', '7');
 	padding: 6px;
 }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rating;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -35,7 +36,19 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$request->validate(
+		[
+			'snippet_id' => 'required',
+			'value' => 'required|in:1,-1'
+		]);
+
+		$entry = new Rating();
+		$entry->fill($request->all());
+		$entry->user_id = 1; // TODO: get it from session/helper class
+		$entry->date_rated = Carbon::now();
+		$entry->save();
+
+		return redirect()->back();
     }
 
     /**

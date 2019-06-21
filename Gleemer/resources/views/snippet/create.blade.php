@@ -9,8 +9,8 @@
 				@csrf
 				<div class="panel-header">
 					<input class="flex-grow(1) margin-left(-8px) margin-right(8px)" type="text" name="title"/>
-					<select name="visibility_mode">
-						<option disabled selected>Select visibility..</option>
+					<select class="margin-right(-8px)" name="visibility_mode">
+						<option disabled selected>@lang('snippets.select_visibility')</option>
 						@foreach(config('gleemer.visibility_modes') as $mode)
 							<option>{{ $mode }}</option>
 						@endforeach
@@ -30,13 +30,13 @@
 }				</textarea>
 				</div>
 				<div class="panel-footer">
-					<select name="language">
-						<option disabled selected>Select language..</option>
+					<select class="margin-left(-8px)" name="language">
+						<option disabled selected>@lang('snippets.select_language')</option>
 						@foreach(config('gleemer.languages') as $i => $language)
 							<option>{{ $language }}</option>
 						@endforeach
 					</select>
-					<input class="margin-left(auto) margin-right(-8px)" type="submit" value="Submit"/>
+					<input class="margin-left(auto) margin-right(-8px)" type="submit" value="@lang('inputs.submit')"/>
 				</div>
 			</div>
 		</form>

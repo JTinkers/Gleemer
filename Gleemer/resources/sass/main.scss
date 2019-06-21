@@ -16,12 +16,18 @@
 #snippet-index-content-wrapper
 {
 	columns: 2;
+	column-gap: 16px;
 	padding: 16px 20vw 0 20vw;
 
-	> .panel
+	> *
 	{
 		margin-bottom: 16px;
 	}
+}
+
+.snippet-code
+{
+	max-height: 445px;
 }
 
 #snippet-create-content-wrapper
