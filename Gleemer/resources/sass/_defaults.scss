@@ -44,7 +44,7 @@ select
 	padding: 4px;
 }
 
-input[type=text], input[type=password], textarea
+input[type=text], input[type=password], input[type=email], textarea
 {
 	outline: none;
 	border-style: inset;
@@ -75,5 +75,33 @@ input[type=submit], button[type=submit]
 		border: 1px solid palette('teal', '-4');
 
 		transition: 0.5s all;
+	}
+
+	&.purple
+	{
+		background: linear-gradient(to bottom, palette('purple'), palette('purple', '-1'));
+		border: 1px solid palette('purple', '-2');
+
+		&:hover
+		{
+			background: linear-gradient(to bottom, palette('purple', '-1'), palette('purple', '-2'));
+			border: 1px solid palette('purple', '-3');
+
+			transition: 0.5s all;
+		}
+	}
+
+	&.blue
+	{
+		background: linear-gradient(to bottom, palette('blue'), palette('blue', '-1'));
+		border: 1px solid palette('blue', '-2');
+
+		&:hover
+		{
+			background: linear-gradient(to bottom, palette('blue', '-1'), palette('blue', '-2'));
+			border: 1px solid palette('blue', '-3');
+
+			transition: 0.5s all;
+		}
 	}
 }

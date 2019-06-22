@@ -1,0 +1,34 @@
+//main: ../main.scss
+
+.grid
+{
+	display: grid !important;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: repeat(10, 10%);
+}
+
+@for $i from 0 through 12
+{
+    .column-start\(#{$i}\)
+    {
+        grid-column-start: #{$i+1};
+    }
+
+    .column-end\(#{$i}\)
+    {
+        grid-column-end: #{$i+1};
+    }
+}
+
+@for $i from 0 through 10
+{
+    .row-start\(#{$i}\)
+    {
+        grid-row-start: #{$i+1};
+    }
+
+    .row-end\(#{$i}\)
+    {
+        grid-row-end: #{$i+1};
+    }
+}
