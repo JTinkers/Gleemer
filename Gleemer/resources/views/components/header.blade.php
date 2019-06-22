@@ -2,12 +2,12 @@
 	<div id="logo">
 		<span>Gleemer</span>
 	</div>
-	<div id="search">
+	<dynform id="search" method="get" pattern="/search/{phrase}">
 		<div id="search-icon">
 			<i class="fas fa-search"></i>
 		</div>
-		<input id="search-input" type="text"/>
-	</div>
+		<input id="search-input" type="text" name="phrase"/>
+	</dynform>
 	<div id="menu">
 		<a class="menu-button" href="/">
 			<div>

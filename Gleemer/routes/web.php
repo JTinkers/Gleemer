@@ -24,6 +24,8 @@ Route::get('/user/show/{user}', 'UserController@show');
 
 Route::get('/user/', 'UserController@index');
 
+Route::get('/search/{pattern}', 'SearchController@find');
+
 Route::get('/locale/{locale}', function($locale)
 {
 	session(['locale' => $locale]);

@@ -1,8 +1,10 @@
 @extends('layouts/default')
 
+@section('title', 'Sign-in/Sign-Up')
+
 @section('content')
 	<div id="user-index-content-wrapper">
-		<form class="panel flex-grow(1) margin-right(128px)">
+		<form class="user-sign-panel panel flex-grow(1)">
 			<div class="panel-header">
 				<h3><i class="fas fa-sign-in-alt margin-right(8px)"></i>Sign-in</h3>
 			</div>
@@ -20,7 +22,7 @@
 				<input class="blue margin-left(-8px) flex-grow(1) margin-right(-8px)" type="submit" value="@lang('user.signin')"/>
 			</div>
 		</form>
-		<form class="panel flex-grow(1) margin-left(128px)">
+		<form class="user-sign-panel panel flex-grow(1)">
 			<div class="panel-header">
 				<h3><i class="fas fa-sign-in-alt margin-right(8px)"></i>Sign-up</h3>
 			</div>

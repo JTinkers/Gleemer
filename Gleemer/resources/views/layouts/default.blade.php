@@ -9,10 +9,12 @@
         <title>Gleemer - @yield('title')</title>
     </head>
     <body>
-		@header
-        <div id="content">
-            @yield('content')
-        </div>
-		@footer
+		<div id="app">
+			@header
+	        <div id="content">
+	            @yield('content')
+	        </div>
+			@footer
+		</div>
     </body>
 </html>
