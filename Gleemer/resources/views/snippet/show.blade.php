@@ -20,7 +20,7 @@
 					@csrf
 					<input type="hidden" name="value" value="1"/>
 					<input type="hidden" name="snippet_id" value="{{ $snippet->id }}"/>
-					<a class="display(flex) align-items(center)" href="#" onclick="this.parentNode.submit()">
+					<a class="rating-thumbs display(flex) align-items(center)" href="#" onclick="this.parentNode.submit()"  @if($rating_value == 1) checked @endif>
 						<i class="far fa-thumbs-up"></i>
 						<span class="margin-left(4px)">{{ $snippet->ratings->where('value', 1)->count() }}</span>
 					</a>
@@ -29,7 +29,7 @@
 					@csrf
 					<input type="hidden" name="value" value="-1"/>
 					<input type="hidden" name="snippet_id" value="{{ $snippet->id }}"/>
-					<a class="display(flex) align-items(center)" href="#" onclick="this.parentNode.submit()">
+					<a class="rating-thumbs display(flex) align-items(center)" href="#" onclick="this.parentNode.submit()"  @if($rating_value == -1) checked @endif>
 						<i class="far fa-thumbs-down"></i>
 						<span class="margin-left(4px)">{{ $snippet->ratings->where('value', -1)->count() }}</span>
 					</a>

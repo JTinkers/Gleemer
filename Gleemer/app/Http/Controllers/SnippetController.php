@@ -71,6 +71,8 @@ class SnippetController extends Controller
      */
     public function show(Snippet $snippet)
     {
+		$ratingValue = 0;
+
 		if(UserManager::get())
 		{
 			$view = View::where('snippet_id', $snippet->id)->where('user_id', UserManager::get()->id)->first();
@@ -83,9 +85,17 @@ class SnippetController extends Controller
 				$view->date_viewed = Carbon::now();
 				$view->save();
 			}
+
+			$rating = $snippet->ratings()->where('user_id', UserManager::get()->id)->first();
+
+			if($rating)
+			{
+				$ratingValue = $rating->value;
+			}
 		}
 
-        return view('snippet.show', ['snippet' => $snippet]);
+
+        return view('snippet.show', ['snippet' => $snippet, 'rating_value' => $ratingValue]);
     }
 
     public function showSlug($slug)

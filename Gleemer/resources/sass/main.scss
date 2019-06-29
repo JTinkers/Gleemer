@@ -51,6 +51,16 @@
 	padding: 16px 20vw 0 20vw;
 }
 
+.rating-thumbs
+{
+	color: palette('foreground', '6');
+}
+
+.rating-thumbs[checked]
+{
+	color: inherit;
+}
+
 #snippet-view-panel
 {
 	grid-column-start: 1;
