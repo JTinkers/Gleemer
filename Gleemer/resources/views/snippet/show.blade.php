@@ -5,12 +5,15 @@
 @section('content')
 	<div id="snippet-show-content-wrapper">
 		<div id="snippet-view-panel" class="panel flex-grow(1)">
+			<span id="copy-slug-source" hidden>
+				{{ url('/') . $snippet->slug }}
+			</span>
 			<div class="panel-header">
 				<span><b>{{ $snippet->title }}</b></span>
 				<span class="margin-left(auto)">{{ $snippet->language }}</span>
 			</div>
 			<div class="panel-section dim">
-				<pre v-highlightjs><code class="{{ $snippet->language }}">{{ $snippet->contents }}</code></pre>
+				<pre v-highlightjs><code class="{{ $snippet->language }}" id="code-copy-source">{{ $snippet->contents }}</code></pre>
 			</div>
 			<div class="panel-footer">
 				<form class="display(flex)" method="post" action="/rating/store">
@@ -32,18 +35,26 @@
 					</a>
 				</form>
 				<div class="display(flex) margin-left(auto) margin-right(-4px)">
-					<a id="snippet-toolbar-copy-button" class="button-outline margin-right(4px)" href="#">
+					<clipboarder source="#code-copy-source" id="snippet-toolbar-copy-button" class="button-outline margin-right(4px)">
 						<i class="margin-right(4px) far fa-copy"></i>
 						<span>@lang('snippets.toolbar_copy')</span>
-					</a>
-					<a id="snippet-toolbar-save-button" class="button-outline margin-right(4px)" href="#">
-						<i class="margin-right(4px) far fa-star"></i>
-						<span>@lang('snippets.toolbar_save')</span>
-					</a>
-					<a id="snippet-toolbar-share-button" class="button-outline" href="#">
+					</clipboarder>
+					<form class="display(flex) margin-right(4px)" method="post" action="/favourite/store">
+						@csrf
+						<input type="hidden" name="snippet_id" value="{{ $snippet->id }}"/>
+						<a id="snippet-toolbar-save-button" class="button-outline" href="#" onclick="this.parentNode.submit()">
+							<i class="margin-right(4px) far fa-star"></i>
+							@if($snippet->isFavourited)
+								<span>@lang('snippets.toolbar_unsave')</span>
+							@else
+								<span>@lang('snippets.toolbar_save')</span>
+							@endif
+						</a>
+					</form>
+					<clipboarder source="#copy-slug-source" id="snippet-toolbar-share-button" class="button-outline" href="#">
 						<i class="margin-right(4px) fas fa-link"></i>
 						<span>@lang('snippets.toolbar_share')</span>
-					</a>
+					</clipboarder>
 				</div>
 			</div>
 		</div>
@@ -61,7 +72,7 @@
 				</div>
 				<div class="display(flex) margin-bottom(16px)">
 					<span>@lang('snippets.favourites')</span>
-					<span class="margin-left(auto)">{{ $snippet->views->count() }}</span>
+					<span class="margin-left(auto)">{{ $snippet->favourites->count() }}</span>
 				</div>
 				<div class="display(flex) margin-bottom(16px)">
 					<span>@lang('snippets.comments')</span>

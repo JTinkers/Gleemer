@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Facades\UserManager;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
@@ -10,6 +11,23 @@ class Snippet extends Model
 	protected $guarded = ['_token'];
 
 	public $timestamps = false;
+
+	public function getIsFavouritedAttribute()
+	{
+		if(!UserManager::get())
+		{
+			return false;
+		}
+
+		$favourite = $this->favourites()->where('snippet_id', $this->id)->where('user_id', UserManager::get()->id)->first();
+
+		if($favourite)
+		{
+			return true;
+		}
+
+		return false;
+	}
 
 	public function getLanguageAttribute()
 	{
@@ -32,7 +50,7 @@ class Snippet extends Model
 		$url = str_replace("\\", "_", $url);
 		$url = str_replace("/", "_", $url);
 
-		$url = "/snippet/show/" . $url;
+		$url = "/snippet/show/slug/" . $url;
 
 		return $url;
 	}

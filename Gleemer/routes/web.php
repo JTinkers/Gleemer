@@ -14,11 +14,14 @@
 Route::get('/', 'SnippetController@index');
 Route::get('/snippet/create', 'SnippetController@create');
 Route::get('/snippet/show/{snippet}', 'SnippetController@show');
+Route::get('/snippet/show/slug/{slug}', 'SnippetController@showSlug');
 Route::post('/snippet/store', 'SnippetController@store');
 
 Route::post('/rating/store', 'RatingController@store');
 
 Route::post('/comment/store', 'CommentController@store');
+
+Route::post('/favourite/store', 'FavouriteController@store');
 
 Route::post('/user/store', 'UserController@store');
 

@@ -25,7 +25,7 @@
 			</div>
 		</a>
 		@if(!UserManager::get())
-			<a class="menu-button" href="/user"
+			<a class="menu-button" href="/user">
 	    	    <div>
 					<i class="fas fa-fw fa-user"></i>
 				</div>

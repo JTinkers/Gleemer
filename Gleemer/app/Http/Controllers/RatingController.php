@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rating;
+use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -36,15 +37,37 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
 		$request->validate(
 		[
 			'snippet_id' => 'required',
 			'value' => 'required|in:1,-1'
 		]);
 
+		$rating = Rating::where('snippet_id', $request->snippet_id)->where('user_id', UserManager::get()->id)->first();
+
+		if($rating)
+		{
+			if($rating->value == $request->value)
+			{
+				$rating->delete();
+
+				return redirect()->back();
+			}
+
+			$rating->value = $request->value;
+			$rating->save();
+
+			return redirect()->back();
+		}
+
 		$entry = new Rating();
 		$entry->fill($request->all());
-		$entry->user_id = 1; // TODO: get it from session/helper class
+		$entry->user_id = UserManager::get()->id;
 		$entry->date_rated = Carbon::now();
 		$entry->save();
 

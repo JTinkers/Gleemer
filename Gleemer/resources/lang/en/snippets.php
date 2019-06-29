@@ -11,4 +11,5 @@ return [
 	'toolbar_copy' => 'copy',
 	'toolbar_share' => 'share',
 	'toolbar_save' => 'save',
+	'toolbar_unsave' => 'unsave',
 ];

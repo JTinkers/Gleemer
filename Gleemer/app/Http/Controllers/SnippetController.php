@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Snippet;
+use App\View;
+use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -37,6 +39,11 @@ class SnippetController extends Controller
      */
     public function store(Request $request)
     {
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
 		$languages = collect(config('gleemer.languages'));
 
 		$request->validate(
@@ -50,7 +57,7 @@ class SnippetController extends Controller
 		$entry->fill($request->all());
 		$entry->date_posted = Carbon::now();
 		$entry->date_updated = Carbon::now();
-		$entry->user_id = 1; // TODO: get it from session/helper class
+		$entry->user_id = UserManager::get()->id; // TODO: get it from session/helper class
 		$entry->save();
 
 		return redirect('/snippet/show/' . $entry->id);
@@ -64,7 +71,33 @@ class SnippetController extends Controller
      */
     public function show(Snippet $snippet)
     {
+		if(UserManager::get())
+		{
+			$view = View::where('snippet_id', $snippet->id)->where('user_id', UserManager::get()->id)->first();
+
+			if(!$view)
+			{
+				$view = new View();
+				$view->snippet_id = $snippet->id;
+				$view->user_id = UserManager::get()->id;
+				$view->date_viewed = Carbon::now();
+				$view->save();
+			}
+		}
+
         return view('snippet.show', ['snippet' => $snippet]);
+    }
+
+    public function showSlug($slug)
+    {
+		$snippet = Snippet::all()->where('slug', $slug)->first();
+
+		if($snippet)
+		{
+			$this->show($snippet);
+		}
+
+		return redirect()->back();
     }
 
     /**

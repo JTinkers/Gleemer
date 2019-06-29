@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Favourite;
+use App\Http\Facades\UserManager;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FavouriteController extends Controller
@@ -35,7 +37,32 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
+		$request->validate(
+		[
+			'snippet_id' => 'required',
+		]);
+
+		$favourite = Favourite::where('snippet_id', $request->snippet_id)->where('user_id', UserManager::get()->id)->first();
+
+		if($favourite)
+		{
+			$favourite->delete();
+
+			return redirect()->back();
+		}
+
+		$entry = new Favourite();
+		$entry->fill($request->all());
+		$entry->user_id = UserManager::get()->id;
+		$entry->date_favourited = Carbon::now();
+		$entry->save();
+
+		return redirect()->back();
     }
 
     /**

@@ -27,6 +27,7 @@ Vue.use(VueHighlightJS)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('dynform', require('./components/DynForm.vue').default);
+Vue.component('clipboarder', require('./components/Clipboarder.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

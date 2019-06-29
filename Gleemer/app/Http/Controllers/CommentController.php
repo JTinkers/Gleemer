@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,11 @@ class CommentController extends Controller
      */
 	 public function store(Request $request)
      {
+		 if(!UserManager::get())
+		 {
+			 return redirect()->back();
+		 }
+
  		$request->validate(
  		[
  	        'content' => 'required|max:1024|min:1'
@@ -44,7 +50,7 @@ class CommentController extends Controller
  		$entry = new Comment();
  		$entry->fill($request->all());
  		$entry->date_posted = Carbon::now();
- 		$entry->user_id = 1; // TODO: get it from session/helper class
+ 		$entry->user_id = UserManager::get()->id;
  		$entry->save();
 
  		return redirect()->back();
