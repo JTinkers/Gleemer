@@ -20,6 +20,10 @@ Route::post('/rating/store', 'RatingController@store');
 
 Route::post('/comment/store', 'CommentController@store');
 
+Route::post('/user/store', 'UserController@store');
+
+Route::post('/user/login', 'UserController@login');
+
 Route::get('/user/show/{user}', 'UserController@show');
 
 Route::get('/user/', 'UserController@index');

@@ -4,7 +4,8 @@
 
 @section('content')
 	<div id="user-index-content-wrapper">
-		<form class="user-sign-panel panel flex-grow(1)">
+		<form class="user-sign-panel panel flex-grow(1)" action="/user/login" method="post">
+			@csrf
 			<div class="panel-header">
 				<h3><i class="fas fa-sign-in-alt margin-right(8px)"></i>Sign-in</h3>
 			</div>
@@ -22,7 +23,8 @@
 				<input class="blue margin-left(-8px) flex-grow(1) margin-right(-8px)" type="submit" value="@lang('user.signin')"/>
 			</div>
 		</form>
-		<form class="user-sign-panel panel flex-grow(1)">
+		<form class="user-sign-panel panel flex-grow(1)" action="/user/store" method="post">
+			@csrf
 			<div class="panel-header">
 				<h3><i class="fas fa-sign-in-alt margin-right(8px)"></i>Sign-up</h3>
 			</div>

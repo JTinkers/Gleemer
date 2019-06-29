@@ -19,6 +19,22 @@
 
 		transition: 0.5s all;
 	}
+
+	&.dark
+	{
+		border: 1px solid palette('foreground', '2');
+		background: palette('foreground', '1');
+		color: white;
+
+		&:hover
+		{
+			background: palette('teal', '-2');
+			border: 1px solid palette('teal', '-1');
+			color: white;
+
+			transition: 0.5s all;
+		}
+	}
 }
 
 .usertag-avatar

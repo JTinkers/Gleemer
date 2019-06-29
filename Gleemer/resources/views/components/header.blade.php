@@ -24,10 +24,14 @@
 				<i class="fas fa-share-alt"></i>
 			</div>
 		</a>
-		<a class="menu-button" href="/user">
-	        <div>
-				<i class="fas fa-fw fa-user"></i>
-			</div>
-		</a>
+		@if(!UserManager::get())
+			<a class="menu-button" href="/user"
+	    	    <div>
+					<i class="fas fa-fw fa-user"></i>
+				</div>
+			</a>
+		@else
+			@usertag(['id' => UserManager::get()->id, 'class' => 'dark margin-left(8px)'])
+		@endif
 	</div>
 </div>

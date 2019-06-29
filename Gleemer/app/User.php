@@ -8,6 +8,8 @@ class User extends Model
 {
 	protected $hidden = ['login', 'password', 'email'];
 
+	protected $guarded = ['_token'];
+
 	public $timestamps = false;
 
 	public function bans()

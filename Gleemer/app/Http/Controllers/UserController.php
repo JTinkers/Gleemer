@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Http\Facades\UserManager;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +16,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        // if isn't logged in
         return view('user.index');
     }
 
@@ -36,8 +37,42 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$request->validate(
+		[
+	        'login' => 'required|max:64|min:4|unique:users,login',
+	        'password' => 'required|max:64|min:8',
+	        'email' => 'required|email|unique:users,email',
+	        'nickname' => 'required|unique:users,nickname',
+	    ]);
+
+		$entry = new User();
+		$entry->fill($request->all());
+		$entry->date_registered = Carbon::now();
+		$entry->bio = '';
+		$entry->save();
+
+		return 'created';
     }
+
+	public function login(Request $request)
+	{
+		$request->validate(
+		[
+			'login' => 'required|exists:users,login',
+			'password' => 'required'
+		]);
+
+		$user = User::where('login', $request->login)->first();
+
+		if($user->password == $request->password)
+		{
+			UserManager::set($user);
+
+			return redirect('/');
+		}
+
+		return 'invalid';
+	}
 
     /**
      * Display the specified resource.
