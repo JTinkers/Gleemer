@@ -12,7 +12,7 @@ class SnippetsTableSeeder extends Seeder
     public function run()
     {
 		$entries = array(
-			array(6, 'cpp', 1, 'Hx-uterus malignancy NEC', '#include <iostream>
+			array(6, 'cpp', 2, 'Hx-uterus malignancy NEC', '#include <iostream>
 using namespace std;
 int main()
 {
@@ -39,7 +39,7 @@ namespace HelloWorld
         }
     }
 }', '2019-04-09', '2019-02-12'),
-			array(2, 'html', 2, 'Delay conjugat jaund NOS', '<html>
+			array(2, 'html', 3, 'Delay conjugat jaund NOS', '<html>
 	<header>
 		<title>This is title</title>
 	</header>

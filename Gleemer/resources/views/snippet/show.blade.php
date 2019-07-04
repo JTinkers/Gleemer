@@ -6,7 +6,7 @@
 	<div id="snippet-show-content-wrapper">
 		<div id="snippet-view-panel" class="panel flex-grow(1)">
 			<span id="copy-slug-source" hidden>
-				{{ url('/') . $snippet->slug }}
+				{{ url('/') . '/snippet/show/slug/' . $snippet->slug }}
 			</span>
 			<div class="panel-header">
 				<span><b>{{ $snippet->title }}</b></span>

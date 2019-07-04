@@ -18,7 +18,9 @@ class SnippetController extends Controller
      */
     public function index()
     {
-        return view('snippet.index', ['models' => Snippet::all()->sortByDesc('date_posted')]);
+        return view('snippet.index', ['models' => Snippet::where('visibility_mode', '!=', 'unlisted')->get()
+			->where('is_visible_to_user', true)
+			->sortByDesc('date_posted')]);
     }
 
     /**
@@ -48,7 +50,7 @@ class SnippetController extends Controller
 
 		$request->validate(
 		[
-	        'title' => 'required|max:255|min:16',
+	        'title' => 'required|unique:snippets|max:255|min:16',
 	        'contents' => 'required|max:4096|min:16',
 	        'language' => ['required', Rule::in($languages)],
 	    ]);
@@ -57,7 +59,7 @@ class SnippetController extends Controller
 		$entry->fill($request->all());
 		$entry->date_posted = Carbon::now();
 		$entry->date_updated = Carbon::now();
-		$entry->user_id = UserManager::get()->id; // TODO: get it from session/helper class
+		$entry->user_id = UserManager::get()->id;
 		$entry->save();
 
 		return redirect('/snippet/show/' . $entry->id);
@@ -104,7 +106,7 @@ class SnippetController extends Controller
 
 		if($snippet)
 		{
-			$this->show($snippet);
+			return $this->show($snippet);
 		}
 
 		return redirect()->back();

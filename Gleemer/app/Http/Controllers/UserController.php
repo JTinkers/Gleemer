@@ -49,6 +49,7 @@ class UserController extends Controller
 		$entry->fill($request->all());
 		$entry->date_registered = Carbon::now();
 		$entry->bio = '';
+		$entry->apikey = '';
 		$entry->save();
 
 		return 'created';

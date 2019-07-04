@@ -12,6 +12,30 @@ class Snippet extends Model
 
 	public $timestamps = false;
 
+	public function getIsVisibleToUserAttribute()
+	{
+		switch ($this->visibility_mode)
+		{
+			case 'public':
+				return true;
+				break;
+
+			case 'private':
+				return UserManager::get() && UserManager::get()->id == $snippet->user_id;
+				break;
+
+			case 'unlisted':
+				return true;
+				break;
+
+			default:
+				return false;
+				break;
+		}
+
+		return true;
+	}
+
 	public function getIsFavouritedAttribute()
 	{
 		if(!UserManager::get())
@@ -49,8 +73,6 @@ class Snippet extends Model
 		$url = str_replace(";", "_", $url);
 		$url = str_replace("\\", "_", $url);
 		$url = str_replace("/", "_", $url);
-
-		$url = "/snippet/show/slug/" . $url;
 
 		return $url;
 	}

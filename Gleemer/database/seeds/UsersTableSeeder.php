@@ -87,7 +87,8 @@ class UsersTableSeeder extends Seeder
 				'email' => $entry[3],
 				'bio' => $entry[4],
 				'flags' => $entry[5],
-				'date_registered' => $entry[6]
+				'date_registered' => $entry[6],
+				'api_key' => ''
 			]);
 		}
     }
