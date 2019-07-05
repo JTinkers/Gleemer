@@ -8,6 +8,7 @@ use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use \Validator;
 
 class SnippetController extends Controller
 {
@@ -43,17 +44,28 @@ class SnippetController extends Controller
     {
 		if(!UserManager::get())
 		{
+			session()->flash('alert', 'You aren\'t logged in!');
+			session()->flash('alert_type', 'error');
+
 			return redirect()->back();
 		}
 
 		$languages = collect(config('gleemer.languages'));
 
-		$request->validate(
+		$validator = Validator::make($request->all(),
 		[
-	        'title' => 'required|unique:snippets|max:255|min:16',
+			'title' => 'required|unique:snippets|max:255|min:16',
 	        'contents' => 'required|max:4096|min:16',
 	        'language' => ['required', Rule::in($languages)],
-	    ]);
+   		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+            return redirect()->back();
+       	}
 
 		$entry = new Snippet();
 		$entry->fill($request->all());

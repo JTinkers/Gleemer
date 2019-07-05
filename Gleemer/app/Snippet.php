@@ -21,7 +21,7 @@ class Snippet extends Model
 				break;
 
 			case 'private':
-				return UserManager::get() && UserManager::get()->id == $snippet->user_id;
+				return UserManager::get() && UserManager::get()->id == $this->user_id;
 				break;
 
 			case 'unlisted':

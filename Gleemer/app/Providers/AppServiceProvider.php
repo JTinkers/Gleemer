@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::include('components.footer', 'footer');
         Blade::include('components.header', 'header');
+		Blade::include('components.alert', 'alert');
 		Blade::include('components.usertag', 'usertag');
     }
 }

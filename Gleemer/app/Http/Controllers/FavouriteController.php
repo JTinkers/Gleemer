@@ -6,6 +6,7 @@ use App\Favourite;
 use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use \Validator;
 
 class FavouriteController extends Controller
 {
@@ -39,13 +40,24 @@ class FavouriteController extends Controller
     {
 		if(!UserManager::get())
 		{
+			session()->flash('alert', 'You aren\'t logged in!');
+			session()->flash('alert_type', 'error');
+
 			return redirect()->back();
 		}
 
-		$request->validate(
+		$validator = Validator::make($request->all(),
 		[
 			'snippet_id' => 'required',
 		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
 
 		$favourite = Favourite::where('snippet_id', $request->snippet_id)->where('user_id', UserManager::get()->id)->first();
 

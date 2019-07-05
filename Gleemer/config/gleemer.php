@@ -2,6 +2,7 @@
 
 return
 [
+	'alert_types' => ['success', 'warning', 'error', 'info'],
     'visibility_modes' => ['public', 'private', 'unlisted'],
 	'languages' =>
     [

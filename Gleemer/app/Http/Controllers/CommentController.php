@@ -6,6 +6,7 @@ use App\Comment;
 use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use \Validator;
 
 class CommentController extends Controller
 {
@@ -39,13 +40,26 @@ class CommentController extends Controller
      {
 		 if(!UserManager::get())
 		 {
+			 session()->flash('alert', 'You aren\'t logged in!');
+			 session()->flash('alert_type', 'error');
+
 			 return redirect()->back();
 		 }
 
- 		$request->validate(
- 		[
- 	        'content' => 'required|max:1024|min:1'
- 	    ]);
+		$validator = Validator::make($request->all(),
+		[
+			'title' => 'required|unique:snippets|max:255|min:16',
+	        'contents' => 'required|max:4096|min:16',
+			'content' => 'required|max:1024|min:1'
+   		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+            return redirect()->back();
+       	}
 
  		$entry = new Comment();
  		$entry->fill($request->all());

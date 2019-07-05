@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use \Validator;
 
 class UserController extends Controller
 {
@@ -37,31 +38,50 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-		$request->validate(
+		$validator = Validator::make($request->all(),
 		[
-	        'login' => 'required|max:64|min:4|unique:users,login',
+			'login' => 'required|max:64|min:4|unique:users,login|alpha_num',
 	        'password' => 'required|max:64|min:8',
 	        'email' => 'required|email|unique:users,email',
-	        'nickname' => 'required|unique:users,nickname',
-	    ]);
+	        'nickname' => 'required|unique:users,nickname|alpha_num',
+		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
 
 		$entry = new User();
 		$entry->fill($request->all());
 		$entry->date_registered = Carbon::now();
 		$entry->bio = '';
-		$entry->apikey = '';
+		$entry->api_key = '';
 		$entry->save();
 
-		return 'created';
+		session()->flash('alert', 'User created successfully!');
+		session()->flash('alert_type', 'success');
+
+		return redirect()->back();
     }
 
 	public function login(Request $request)
 	{
-		$request->validate(
+		$validator = Validator::make($request->all(),
 		[
 			'login' => 'required|exists:users,login',
 			'password' => 'required'
 		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
 
 		$user = User::where('login', $request->login)->first();
 
@@ -72,7 +92,10 @@ class UserController extends Controller
 			return redirect('/');
 		}
 
-		return 'invalid';
+		session()->flash('alert', 'Password mismatch!');
+		session()->flash('alert_type', 'error');
+
+		return redirect()->back();
 	}
 
     /**

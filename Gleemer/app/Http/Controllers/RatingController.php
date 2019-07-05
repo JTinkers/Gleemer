@@ -6,6 +6,7 @@ use App\Rating;
 use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use \Validator;
 
 class RatingController extends Controller
 {
@@ -39,14 +40,25 @@ class RatingController extends Controller
     {
 		if(!UserManager::get())
 		{
+			session()->flash('alert', 'You aren\'t logged in!');
+			session()->flash('alert_type', 'error');
+
 			return redirect()->back();
 		}
 
-		$request->validate(
+		$validator = Validator::make($request->all(),
 		[
 			'snippet_id' => 'required',
 			'value' => 'required|in:1,-1'
 		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
 
 		$rating = Rating::where('snippet_id', $request->snippet_id)->where('user_id', UserManager::get()->id)->first();
 

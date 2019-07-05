@@ -10,6 +10,9 @@
     </head>
     <body>
 		<div id="app">
+			@if(session('alert') != null)
+				@alert(['alert' => session('alert'), 'alert_type' => session('alert_type')])
+			@endif
 			@header
 	        <div id="content">
 	            @yield('content')

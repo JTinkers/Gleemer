@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\View;
 use Illuminate\Http\Request;
+use \Validator;
 
 class ViewController extends Controller
 {

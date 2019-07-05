@@ -137,3 +137,80 @@
 {
 	max-width: 384px;
 }
+
+.alert
+{
+	display: flex;
+
+	> p
+	{
+		margin: 0;
+		padding: 16px;
+	}
+
+	&.error
+	{
+		color: palette('error', '2');
+		background: palette('error', '-1');
+	}
+
+	&.success
+	{
+		color: palette('success', '2');
+		background: palette('success', '-1');
+	}
+
+	&.info
+	{
+		color: palette('info', '2');
+		background: palette('info', '-1');
+	}
+
+	&.warning
+	{
+		color: black;
+		background: palette('warning', '-1');
+	}
+}
+
+.alert-icon
+{
+	cursor: pointer;;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+
+	&.error
+	{
+		color: palette('error', '2');
+		background: palette('error');
+	}
+
+	&.success
+	{
+		color: palette('success', '2');
+		background: palette('success');
+	}
+
+	&.info
+	{
+		color: palette('info', '2');
+		background: palette('info');
+	}
+
+	&.warning
+	{
+		color: black;
+		background: palette('warning');
+	}
+}
+
+.alert-close
+{
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+}
