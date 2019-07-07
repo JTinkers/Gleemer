@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\View;
 use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -56,8 +57,9 @@ class UserController extends Controller
 
 		$entry = new User();
 		$entry->fill($request->all());
+		$entry->password = Hash::make($request->password);
 		$entry->date_registered = Carbon::now();
-		$entry->bio = '';
+		$entry->bio = 'This user hasn\'t filled the bio yet.';
 		$entry->api_key = '';
 		$entry->save();
 
@@ -85,7 +87,7 @@ class UserController extends Controller
 
 		$user = User::where('login', $request->login)->first();
 
-		if($user->password == $request->password)
+		if(Hash::check($request->password, $user->password))
 		{
 			UserManager::set($user);
 
@@ -106,7 +108,17 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+		$snippets = $user->snippets->where('is_visible_to_user', true);
+		$snippet_views = $user->snippets->pluck('views')->collapse()->count();
+		$snippet_ratings = $user->snippets->pluck('ratings')->collapse()->sum('value');
+
+        return view('user.show',
+		[
+			'user' => $user,
+			'snippets' => $snippets,
+			'snippet_views' => $snippet_views,
+			'snippet_ratings' => $snippet_ratings
+		]);
     }
 
     /**

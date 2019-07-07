@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
@@ -40,5 +41,12 @@ class User extends Model
 	public function favourites()
 	{
 		return $this->hasMany('App\Favourite');
+	}
+
+	public function getHumanDateRegisteredAttribute()
+	{
+		$date = new Carbon($this->attributes['date_registered']);
+
+		return $date->diffForHumans();
 	}
 }

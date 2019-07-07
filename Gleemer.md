@@ -34,16 +34,16 @@ The following frameworks, libraries and technologies have been used:
 - **Microservices**
   - Permissions Middleware
   - Logs Middleware
-  - Public/Private API
+  - Public/Private API [check]
 - **Snippets**
-  - CRUD
-  - Commenting, rating, viewing, favouriting
-  - Syntax highlighting
-  - Visibility modes: public, private (posting user only), unlisted (only with link)
+  - CRUD [check]
+  - Commenting, rating, viewing, favouriting [check]
+  - Syntax highlighting [check]
+  - Visibility modes: public, private (posting user only), unlisted (only with link) [check]
 - **Users**
-  - Sign-up, sign-in
+  - Sign-up, sign-in [check]
   - 16x16 avatars, (image-rendering: pixelated)
-  - Display stats for user, like: total snippet rating
+  - Display stats for user, like: total snippet rating [check]
 - **Style**
   - Responsive
   - Made as combination of AtomicCSS and functional programming
@@ -54,9 +54,9 @@ The following frameworks, libraries and technologies have been used:
   - Comment deleting
   - User banning
 - **Misc**
-  - URL Slugs - with alphanumeric generator for unlisted snippets
+  - URL Slugs - with alphanumeric generator for unlisted snippets [check]
   - Searching
-  - Permalinks with slugs
+  - Permalinks with slugs [check]
 
 
 

@@ -85,6 +85,14 @@ class SnippetController extends Controller
      */
     public function show(Snippet $snippet)
     {
+		if(!$snippet->is_visible_to_user)
+		{
+			session()->flash('alert', 'You can\'t view this snippet.');
+			session()->flash('alert_type', 'error');
+
+			return redirect('/');
+		}
+
 		$ratingValue = 0;
 
 		if(UserManager::get())
@@ -107,7 +115,6 @@ class SnippetController extends Controller
 				$ratingValue = $rating->value;
 			}
 		}
-
 
         return view('snippet.show', ['snippet' => $snippet, 'rating_value' => $ratingValue]);
     }

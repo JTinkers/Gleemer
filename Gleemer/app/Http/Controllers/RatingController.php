@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Rating;
+use App\Snippet;
 use App\Http\Facades\UserManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -73,6 +74,14 @@ class RatingController extends Controller
 
 			$rating->value = $request->value;
 			$rating->save();
+
+			return redirect()->back();
+		}
+
+		if(Snippet::find($request->snippet_id)->user_id == UserManager::get()->id)
+		{
+			session()->flash('alert', 'You can\'t rate your own snippets!');
+			session()->flash('alert_type', 'error');
 
 			return redirect()->back();
 		}

@@ -4,7 +4,7 @@
 
 @section('content')
 	<div id="snippet-show-content-wrapper">
-		<div id="snippet-view-panel" class="panel flex-grow(1)">
+		<div class="panel flex-grow(1) align-self(stretch) column-start(0) column-end(3)">
 			<span id="copy-slug-source" hidden>
 				{{ url('/') . '/snippet/show/slug/' . $snippet->slug }}
 			</span>

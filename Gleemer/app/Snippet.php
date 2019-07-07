@@ -10,6 +10,8 @@ class Snippet extends Model
 {
 	protected $guarded = ['_token'];
 
+	protected $appends = ['is_visible_to_user'];
+
 	public $timestamps = false;
 
 	public function getIsVisibleToUserAttribute()
