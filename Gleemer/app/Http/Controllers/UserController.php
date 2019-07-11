@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\User;
 use App\View;
 use App\Http\Facades\UserManager;
+use App\Http\Helpers\AlphanumericGenerator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use \Validator;
 
 class UserController extends Controller
@@ -129,7 +131,15 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+		if(UserManager::get()->id != $user->id)
+		{
+			session()->flash('alert', 'You can\'t view edit page for this user.');
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -141,7 +151,45 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+		if(UserManager::get()->id != $user->id)
+		{
+			session()->flash('alert', 'You can\'t update this user.');
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$validator = Validator::make($request->all(),
+		[
+			'bio' => 'max:1024',
+		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		if($request->generateKey)
+		{
+			$user->api_key = AlphanumericGenerator::Generate(64);
+			$user->save();
+
+			session()->flash('alert', 'New API Key has been generated!');
+			session()->flash('alert_type', 'success');
+
+			return redirect()->back();
+		}
+
+        $user->bio = $request->bio or $user->bio;
+		$user->save();
+
+		session()->flash('alert', 'Changes saved!');
+		session()->flash('alert_type', 'success');
+
+		return redirect()->back();
     }
 
     /**

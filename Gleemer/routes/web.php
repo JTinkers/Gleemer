@@ -21,7 +21,9 @@ Route::post('/comment/store', 'CommentController@store');
 Route::post('/favourite/store', 'FavouriteController@store');
 Route::post('/user/store', 'UserController@store');
 Route::post('/user/login', 'UserController@login');
+Route::post('/user/update/{user}', 'UserController@update');
 Route::get('/user/show/{user}', 'UserController@show');
+Route::get('/user/edit/{user}', 'UserController@edit');
 Route::get('/user/', 'UserController@index');
 Route::get('/search/{pattern}', 'SearchController@find');
 Route::get('/locale/{locale}', function($locale)

@@ -8,6 +8,9 @@
 			<div class="panel-header">
 				<img id="user-show-avatar" src="https://secure.gravatar.com/avatar/cc29879d431a1d31aa636bd50ba97614?s=16&d=retro&r=g"/>
 				<span class="margin-left(8px)">{{ $user->nickname }}</span>
+				@if(UserManager::get() && UserManager::get()->id == $user->id)
+					<a href="/user/edit/{{ $user->id }}" class="margin-left(auto)"><i class="fas fa-pencil-alt margin-right(4px)"></i>Edit</a>
+				@endif
 			</div>
 			<div class="panel-section dim flex-direction(column)">
 				<div class="display(flex)">
