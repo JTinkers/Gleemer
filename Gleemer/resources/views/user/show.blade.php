@@ -6,7 +6,7 @@
 	<div id="user-show-content-wrapper">
 		<div class="column-start(0) column-end(1) panel flex-grow(1)">
 			<div class="panel-header">
-				<img id="user-show-avatar" src="https://secure.gravatar.com/avatar/cc29879d431a1d31aa636bd50ba97614?s=16&d=retro&r=g"/>
+				<img id="user-show-avatar" src="/storage/users/avatars/{{ $user->id }}.png"/>
 				<span class="margin-left(8px)">{{ $user->nickname }}</span>
 				@if(UserManager::get() && UserManager::get()->id == $user->id)
 					<a href="/user/edit/{{ $user->id }}" class="margin-left(auto)"><i class="fas fa-pencil-alt margin-right(4px)"></i>Edit</a>

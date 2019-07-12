@@ -7,11 +7,11 @@
 		<form class="panel align-self(stretch) column-start(0) column-end(1)" action="/user/update/{{ $user->id }}" method="POST" enctype="multipart/form-data">
 			@csrf
 			<div class="panel-header">
-				<span><i class="fas fa-user margin-right(8px)"></i><b>Avatar</b></span>
+				<span><i class="fas fa-user margin-right(8px)"></i><b>Avatar (16x16)</b></span>
 			</div>
 			<div class="panel-section dim flex-direction(column)">
 				<div class="margin-bottom(16px)">
-					<img src="https://secure.gravatar.com/avatar/cc29879d431a1d31aa636bd50ba97614?s=16&d=retro&r=g"/>
+					<img id="user-edit-avatar" src="/storage/users/avatars/{{ $user->id }}.png"/>
 				</div>
 				<input type="file" name="avatar">
 			</div>

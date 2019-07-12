@@ -140,6 +140,20 @@
 	padding: 16px 20vw 0 20vw;
 }
 
+#user-edit-avatar
+{
+	image-rendering: pixelated;
+	max-width: 16px;
+	max-height: 16px;
+}
+
+#user-show-avatar
+{
+	image-rendering: pixelated;
+	max-width: 16px;
+	max-height: 16px;
+}
+
 #user-show-content-wrapper
 {
 	display: grid;

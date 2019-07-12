@@ -9,6 +9,7 @@ use App\Http\Helpers\AlphanumericGenerator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use \Validator;
 
 class UserController extends Controller
@@ -162,6 +163,7 @@ class UserController extends Controller
 		$validator = Validator::make($request->all(),
 		[
 			'bio' => 'max:1024',
+			'avatar' => 'image|max:512',
 		]);
 
 		if ($validator->fails())
@@ -178,6 +180,16 @@ class UserController extends Controller
 			$user->save();
 
 			session()->flash('alert', 'New API Key has been generated!');
+			session()->flash('alert_type', 'success');
+
+			return redirect()->back();
+		}
+
+		if($request->avatar)
+		{
+			Storage::disk('public')->put('/users/avatars/' . $user->id . '.png', file_get_contents($request->avatar));
+
+			session()->flash('alert', 'Changes saved!');
 			session()->flash('alert_type', 'success');
 
 			return redirect()->back();
