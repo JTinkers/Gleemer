@@ -44,7 +44,7 @@ class SnippetController extends Controller
     {
 		if(!UserManager::get())
 		{
-			session()->flash('alert', 'You aren\'t logged in!');
+			session()->flash('alert', __('user.not_logged'));
 			session()->flash('alert_type', 'error');
 
 			return redirect()->back();
@@ -87,7 +87,7 @@ class SnippetController extends Controller
     {
 		if(!$snippet->is_visible_to_user)
 		{
-			session()->flash('alert', 'You can\'t view this snippet.');
+			session()->flash('alert', __('snippet.cant_view'));
 			session()->flash('alert_type', 'error');
 
 			return redirect('/');

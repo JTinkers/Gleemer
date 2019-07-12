@@ -40,7 +40,7 @@ class FavouriteController extends Controller
     {
 		if(!UserManager::get())
 		{
-			session()->flash('alert', 'You aren\'t logged in!');
+			session()->flash('alert', __('user.not_logged'));
 			session()->flash('alert_type', 'error');
 
 			return redirect()->back();

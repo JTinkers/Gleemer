@@ -9,26 +9,26 @@
 				<img id="user-show-avatar" src="/storage/users/avatars/{{ $user->id }}.png"/>
 				<span class="margin-left(8px)">{{ $user->nickname }}</span>
 				@if(UserManager::get() && UserManager::get()->id == $user->id)
-					<a href="/user/edit/{{ $user->id }}" class="margin-left(auto)"><i class="fas fa-pencil-alt margin-right(4px)"></i>Edit</a>
+					<a href="/user/edit/{{ $user->id }}" class="margin-left(auto)"><i class="fas fa-pencil-alt margin-right(4px)"></i>@lang('user.edit')</a>
 				@endif
 			</div>
 			<div class="panel-section dim flex-direction(column)">
 				<div class="display(flex)">
-					<span>Registered </span>
+					<span>@lang('user.registered')</span>
 					<span class="margin-left(auto)">{{ $user->human_date_registered }}</span>
 				</div>
 			</div>
 			<div class="panel-section dim flex-direction(column)">
 				<div class="display(flex) margin-bottom(16px)">
-					<span>Snippets</span>
+					<span>@lang('general.snippets')</span>
 					<span class="margin-left(auto)">{{ $user->snippets()->count() }}</span>
 				</div>
 				<div class="display(flex) margin-bottom(16px)">
-					<span>Views</span>
+					<span>@lang('snippets.views')</span>
 					<span class="margin-left(auto)">{{ $snippet_views }}</span>
 				</div>
 				<div class="display(flex)">
-					<span>Ratings</span>
+					<span>@lang('snippets.ratings')</span>
 					<span class="margin-left(auto)">{{ $snippet_ratings }}</span>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 		</div>
 		<div class="column-start(0) column-end(4) panel flex-grow(1)">
 			<div class="panel-header">
-				<span><i class="fas fa-file-alt margin-right(8px)"></i><b>Snippets</b></span>
+				<span><i class="fas fa-file-alt margin-right(8px)"></i><b>@lang('general.snippets')</b></span>
 			</div>
 			@foreach($snippets->sortBy('date_posted') as $snippet)
 				<div class="panel-section dim">

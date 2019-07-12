@@ -41,7 +41,7 @@ class RatingController extends Controller
     {
 		if(!UserManager::get())
 		{
-			session()->flash('alert', 'You aren\'t logged in!');
+			session()->flash('alert', __('user.not_logged'));
 			session()->flash('alert_type', 'error');
 
 			return redirect()->back();
@@ -80,7 +80,7 @@ class RatingController extends Controller
 
 		if(Snippet::find($request->snippet_id)->user_id == UserManager::get()->id)
 		{
-			session()->flash('alert', 'You can\'t rate your own snippets!');
+			session()->flash('alert', __('snippets.cant_rate_own'));
 			session()->flash('alert_type', 'error');
 
 			return redirect()->back();

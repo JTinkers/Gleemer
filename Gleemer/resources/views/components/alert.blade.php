@@ -16,5 +16,5 @@
 		@endswitch
 	</div>
 	<p>{{ $alert }}</p>
-	<span class="alert-close" onclick="$(this).closest('.alert').remove()">Close</span>
+	<span class="alert-close" onclick="$(this).closest('.alert').remove()">@lang('general.close')</span>
 </div>

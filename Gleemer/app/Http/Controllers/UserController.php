@@ -66,7 +66,7 @@ class UserController extends Controller
 		$entry->api_key = '';
 		$entry->save();
 
-		session()->flash('alert', 'User created successfully!');
+		session()->flash('alert', __('user.creation_success'));
 		session()->flash('alert_type', 'success');
 
 		return redirect()->back();
@@ -97,7 +97,7 @@ class UserController extends Controller
 			return redirect('/');
 		}
 
-		session()->flash('alert', 'Password mismatch!');
+		session()->flash('alert', __('user.password_mismatch'));
 		session()->flash('alert_type', 'error');
 
 		return redirect()->back();
@@ -134,7 +134,7 @@ class UserController extends Controller
     {
 		if(UserManager::get()->id != $user->id)
 		{
-			session()->flash('alert', 'You can\'t view edit page for this user.');
+			session()->flash('alert', __('user.edit_page_locked'));
 			session()->flash('alert_type', 'error');
 
 			return redirect()->back();
@@ -154,7 +154,7 @@ class UserController extends Controller
     {
 		if(UserManager::get()->id != $user->id)
 		{
-			session()->flash('alert', 'You can\'t update this user.');
+			session()->flash('alert', __('user.cant_update_not_self'));
 			session()->flash('alert_type', 'error');
 
 			return redirect()->back();
@@ -179,7 +179,7 @@ class UserController extends Controller
 			$user->api_key = AlphanumericGenerator::Generate(64);
 			$user->save();
 
-			session()->flash('alert', 'New API Key has been generated!');
+			session()->flash('alert', __('user.api_key_generated'));
 			session()->flash('alert_type', 'success');
 
 			return redirect()->back();
@@ -189,7 +189,7 @@ class UserController extends Controller
 		{
 			Storage::disk('public')->put('/users/avatars/' . $user->id . '.png', file_get_contents($request->avatar));
 
-			session()->flash('alert', 'Changes saved!');
+			session()->flash('alert', __('user.changes_saved'));
 			session()->flash('alert_type', 'success');
 
 			return redirect()->back();
@@ -198,7 +198,7 @@ class UserController extends Controller
         $user->bio = $request->bio or $user->bio;
 		$user->save();
 
-		session()->flash('alert', 'Changes saved!');
+		session()->flash('alert', __('user.changes_saved'));
 		session()->flash('alert_type', 'success');
 
 		return redirect()->back();

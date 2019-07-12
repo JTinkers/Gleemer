@@ -2,4 +2,5 @@
 
 return [
     'submit' => 'Wyślij',
+	'save' => 'Zapisz',
 ];

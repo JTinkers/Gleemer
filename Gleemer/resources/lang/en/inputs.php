@@ -2,4 +2,5 @@
 
 return [
     'submit' => 'Submit',
+	'save' => 'Save',
 ];

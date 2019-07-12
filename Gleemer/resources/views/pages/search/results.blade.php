@@ -4,10 +4,10 @@
 
 @section('content')
 	<div id="search-content-wrapper">
-		<h3>Search results for phrase: "{{ $phrase }}" </h3>
+		<h3>@lang('general.search_results_for') "{{ $phrase }}" </h3>
 		<div class="panel margin-bottom(16px)">
 			<div class="panel-header">
-				<span><i class="fas fa-file-alt margin-right(8px)"></i><b>Snippets</b></span>
+				<span><i class="fas fa-file-alt margin-right(8px)"></i><b>@lang('general.snippets')</b></span>
 			</div>
 			@foreach($snippets->sortBy('date_posted') as $snippet)
 				<div class="panel-section dim">
@@ -18,7 +18,7 @@
 		</div>
 		<div class="panel">
 			<div class="panel-header">
-				<span><i class="fas fa-user margin-right(8px)"></i><b>Users</b></span>
+				<span><i class="fas fa-user margin-right(8px)"></i><b>@lang('general.users')</b></span>
 			</div>
 			@foreach($users->sortBy('nickname') as $user)
 				<div class="panel-section dim">
