@@ -21,6 +21,14 @@
 	padding: 16px 20vw 0 20vw;
 }
 
+#search-content-wrapper
+{
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+	padding: 16px 20vw 0 20vw;
+}
+
 #snippet-index-content-wrapper
 {
 	columns: 2;

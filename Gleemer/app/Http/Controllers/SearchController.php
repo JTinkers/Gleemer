@@ -13,7 +13,8 @@ class SearchController extends Controller
 		return view('pages.search.results',
 		[
 			'snippets' => Snippet::where('title', 'like', '%' . $phrase . '%')->get(),
-			'users' => User::where('nickname', 'like', '%' . $phrase . '%')->get()
+			'users' => User::where('nickname', 'like', '%' . $phrase . '%')->get(),
+			'phrase' => $phrase
 		]);
 	}
 }

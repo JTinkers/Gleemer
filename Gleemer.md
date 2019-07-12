@@ -172,10 +172,6 @@ Provides CRUD functionality to all models in the database.
 
 Whenever a HTTP request is made to a private portion of API, the RM will check whether it should or shouldn't go through.
 
-##### 4.2.3 Logs Middleware
-
-Logs every user, snippet, comment, rating and ban.
-
 ------
 
 #### 4.3 Components
