@@ -32,18 +32,18 @@ The following frameworks, libraries and technologies have been used:
 ## 3. Features
 
 - **Microservices**
-  - Permissions Middleware
-  - Logs Middleware
-  - Public/Private API [check]
+  - Permissions Middleware **[check]**
+  - Public/Private API **[check]**
+  - API Timeout
 - **Snippets**
   - CRUD [check]
-  - Commenting, rating, viewing, favouriting [check]
-  - Syntax highlighting [check]
-  - Visibility modes: public, private (posting user only), unlisted (only with link) [check]
+  - Commenting, rating, viewing, favouriting **[check]**
+  - Syntax highlighting **[check]**
+  - Visibility modes: public, private (posting user only), unlisted (only with link) **[check]**
 - **Users**
-  - Sign-up, sign-in [check]
-  - 16x16 avatars, (image-rendering: pixelated)
-  - Display stats for user, like: total snippet rating [check]
+  - Sign-up, sign-in **[check]**
+  - 16x16 avatars, (image-rendering: pixelated) **[check]**
+  - Display stats for user, like: total snippet rating **[check]**
 - **Style**
   - Responsive
   - Made as combination of AtomicCSS and functional programming

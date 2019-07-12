@@ -12,6 +12,11 @@
 */
 
 Route::get('/', 'SnippetController@index');
+Route::get('/api', function()
+{
+	return view('pages.api.index');	
+});
+
 Route::get('/snippet/create', 'SnippetController@create');
 Route::get('/snippet/show/{snippet}', 'SnippetController@show');
 Route::get('/snippet/show/slug/{slug}', 'SnippetController@showSlug');
