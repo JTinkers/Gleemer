@@ -1,6 +1,8 @@
 <div id="header">
 	<div id="logo">
-		<span>Gleemer</span>
+		<a href="/">
+			<span>Gleemer</span>
+		</a>
 	</div>
 	<dynform id="search" method="get" pattern="/search/{phrase}">
 		<div id="search-icon">

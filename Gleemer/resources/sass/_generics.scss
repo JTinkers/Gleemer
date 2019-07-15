@@ -11,7 +11,7 @@ $regular:
     align-content: (center, flex-start, flex-end, space-around, space-between, stretch),
 	align-items: (center, flex-start, flex-end),
 	align-self: (stretch),
-	display: (flex, none),
+	display: (flex, inline-block, none),
 	justify-content: (space-between),
 	flex-direction: (column),
 	flex-grow: (1),
@@ -20,6 +20,11 @@ $regular:
 	margin-top: (auto),
 	margin-right: (auto),
 	margin-bottom: (auto),
+	overflow: (hidden),
+	text-overflow: (ellipsis),
+	word-break: (break-all),
+	word-wrap: (break-word),
+	white-space: (nowrap),
 );
 
 @for $i from 1 through 7

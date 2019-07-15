@@ -5,6 +5,7 @@ return [
 	'search_results_for' => 'Wyniki wyszukiwania dla frazy: ',
 	'users' => 'Użytkownicy',
 	'snippets' => 'Wrzutki',
+	'favourites' => 'Zapisane',
 	'about_api' => 'O API',
 	'close' => 'Zamknij',
 	'public_api' => 'Publiczne API',

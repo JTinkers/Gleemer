@@ -8,7 +8,7 @@
 			<div class="panel-header">
 				<img id="user-show-avatar" src="/storage/users/avatars/{{ $user->id }}.png"/>
 				<span class="margin-left(8px)">{{ $user->nickname }}</span>
-				@if(UserManager::get() && UserManager::get()->id == $user->id)
+				@if(UserManager::get()->id == $user->id)
 					<a href="/user/edit/{{ $user->id }}" class="margin-left(auto)"><i class="fas fa-pencil-alt margin-right(4px)"></i>@lang('user.edit')</a>
 				@endif
 			</div>
@@ -41,14 +41,27 @@
 				<p>{{ $user->bio }}</p>
 			</div>
 		</div>
-		<div class="column-start(0) column-end(4) panel flex-grow(1)">
-			<div class="panel-header">
-				<span><i class="fas fa-file-alt margin-right(8px)"></i><b>@lang('general.snippets')</b></span>
+		@if(UserManager::get()->id == $user->id)
+			<div class="column-start(0) column-end(2) panel flex-grow(1)">
+				<div class="panel-header">
+					<span><i class="fas fa-file-alt margin-right(8px)"></i><b>@lang('general.snippets')</b></span>
+				</div>
+				@foreach($snippets->sortBy('date_posted') as $snippet)
+					<div class="panel-section dim">
+						<b><a href="/snippet/show/slug/{{ $snippet->slug }}">{{ $snippet->title }}</a></b>
+						<span class="margin-left(auto)">{{ $snippet->language }}</span>
+					</div>
+				@endforeach
 			</div>
-			@foreach($snippets->sortBy('date_posted') as $snippet)
+		@endif
+		<div class="column-start(2) column-end(4) panel flex-grow(1)">
+			<div class="panel-header">
+				<span><i class="fas fa-star margin-right(8px)"></i><b>@lang('general.favourites')</b></span>
+			</div>
+			@foreach($favourites->sortBy('date_posted') as $favourite)
 				<div class="panel-section dim">
-					<b><a href="/snippet/show/slug/{{ $snippet->slug }}">{{ $snippet->title }}</a></b>
-					<span class="margin-left(auto)">{{ $snippet->language }}</span>
+					<b><a href="/snippet/show/slug/{{ $favourite->slug }}">{{ $favourite->title }}</a></b>
+					<span class="margin-left(auto)">{{ $favourite->language }}</span>
 				</div>
 			@endforeach
 		</div>

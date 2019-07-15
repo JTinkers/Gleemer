@@ -48,8 +48,6 @@ class CommentController extends Controller
 
 		$validator = Validator::make($request->all(),
 		[
-			'title' => 'required|unique:snippets|max:255|min:16',
-	        'contents' => 'required|max:4096|min:16',
 			'content' => 'required|max:1024|min:1'
    		]);
 

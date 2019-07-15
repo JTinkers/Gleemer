@@ -18,7 +18,7 @@
 			</div>
 			<div class="panel-section flex-direction(column)">
 				<input type="text" class="margin-bottom(8px)" readonly value="/api/snippets">
-				@lang('general.public_api.snippets')
+				@lang('general.public_api_snippets')
 			</div>
 		</div>
 		<div class="panel">

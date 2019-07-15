@@ -9,7 +9,9 @@
 				{{ url('/') . '/snippet/show/slug/' . $snippet->slug }}
 			</span>
 			<div class="panel-header">
-				<span><b>{{ $snippet->title }}</b></span>
+				<span class="margin-right(8px) overflow(hidden) text-overflow(ellipsis) white-space(nowrap)">
+					<b>{{ $snippet->title }}</b>
+				</span>
 				<span class="margin-left(auto)">{{ $snippet->language }}</span>
 			</div>
 			<div class="panel-section dim">
@@ -91,7 +93,9 @@
 			<div class="panel-section dim display(flex) flex-direction(column)">
 				@foreach ($snippet->comments as $comment)
 					<div class="snippet-comment">
-						<span>{{ $comment->content }}</span>
+						<div class="display(flex) overflow(hidden)">
+							<p class="word-break(break-all) margin-right(4px)">{{ $comment->content }}</p>
+						</div>
 						<div class="display(flex) flex-direction(column) align-items(flex-end) margin-left(auto)">
 							@usertag(['id' => $snippet->user->id, 'class' => 'margin-bottom(8px)'])
 							<span>{{ $comment->date_posted }}</span>

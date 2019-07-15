@@ -5,8 +5,9 @@ return [
 	'search_results_for' => 'Search results for phrase: ',
 	'users' => 'Users',
 	'snippets' => 'Snippets',
+	'favourites' => 'Favourites',
 	'about_api' => 'About API',
-	'close' => 'Zamknij',
+	'close' => 'Close',
 	'public_api' => 'Public API',
 	'private_api' => 'Private API',
 	'api_description' => "<p>Gleemer hosts a variety of public and private APIs.</p>

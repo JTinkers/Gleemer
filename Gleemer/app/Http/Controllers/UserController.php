@@ -112,6 +112,7 @@ class UserController extends Controller
     public function show(User $user)
     {
 		$snippets = $user->snippets->where('is_visible_to_user', true);
+		$favourites = $user->favourites->pluck('snippet');
 		$snippet_views = $user->snippets->pluck('views')->collapse()->count();
 		$snippet_ratings = $user->snippets->pluck('ratings')->collapse()->sum('value');
 
@@ -119,8 +120,9 @@ class UserController extends Controller
 		[
 			'user' => $user,
 			'snippets' => $snippets,
+			'favourites' => $favourites,
 			'snippet_views' => $snippet_views,
-			'snippet_ratings' => $snippet_ratings
+			'snippet_ratings' => $snippet_ratings,
 		]);
     }
 
