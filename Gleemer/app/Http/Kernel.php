@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'apiauth' => \App\Http\Middleware\APIAuth::class,
+        'gdprnote' => \App\Http\Middleware\GDRPComplianceNotification::class,
     ];
 
     /**
