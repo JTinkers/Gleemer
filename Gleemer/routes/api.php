@@ -24,10 +24,10 @@ use Illuminate\Http\Request;
 Route::get('/snippets/page/{page}', function($page)
 {
 	return App\Snippet::with('user')
+		->orderByDesc('date_posted')
 		->where('visibility_mode', '!=', 'unlisted')->get()
 		->where('is_visible_to_user', true)
-		->forPage($page, 6)
-		->sortBy('date_posted');
+		->forPage($page, 8);
 });
 
 //Private API

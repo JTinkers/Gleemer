@@ -33,7 +33,13 @@
 #snippet-index-content-wrapper
 {
 	display: flex;
+	flex-direction: column;
 	padding: 16px calc(20vw - 17px) 0 20vw;
+}
+
+#snippet-index-panes
+{
+	display: flex;
 }
 
 #snippet-index-left-pane

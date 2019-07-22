@@ -1,6 +1,8 @@
 <template>
     <div>
-        <slot :resultsLeft="sortedResultsLeft" :resultsRight="sortedResultsRight"></slot>
+		<div id="snippet-index-panes">
+        	<slot :resultsLeft="sortedResultsLeft" :resultsRight="sortedResultsRight"></slot>
+		</div>
 		<div v-observe-visibility="bottomReached"></div>
     </div>
 </template>
@@ -42,12 +44,11 @@
 			sortedResultsLeft: function()
 			{
 				return this.results.filter((value, index, arr) => index % 2 != 0)
-					.sort((a, b) => new Date(b.date_posted) - new Date(a.date_posted))
+
 			},
 			sortedResultsRight: function()
 			{
 				return this.results.filter((value, index, arr) => index % 2 == 0)
-					.sort((a, b) => new Date(b.date_posted) - new Date(a.date_posted))
 			}
 		}
     }

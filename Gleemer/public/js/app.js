@@ -1949,6 +1949,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['url'],
   data: function data() {
@@ -1978,15 +1980,11 @@ __webpack_require__.r(__webpack_exports__);
     sortedResultsLeft: function sortedResultsLeft() {
       return this.results.filter(function (value, index, arr) {
         return index % 2 != 0;
-      }).sort(function (a, b) {
-        return new Date(b.date_posted) - new Date(a.date_posted);
       });
     },
     sortedResultsRight: function sortedResultsRight() {
       return this.results.filter(function (value, index, arr) {
         return index % 2 == 0;
-      }).sort(function (a, b) {
-        return new Date(b.date_posted) - new Date(a.date_posted);
       });
     }
   }
@@ -61783,27 +61781,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._t("default", null, {
-        resultsLeft: _vm.sortedResultsLeft,
-        resultsRight: _vm.sortedResultsRight
-      }),
-      _vm._v(" "),
-      _c("div", {
-        directives: [
-          {
-            name: "observe-visibility",
-            rawName: "v-observe-visibility",
-            value: _vm.bottomReached,
-            expression: "bottomReached"
-          }
-        ]
-      })
-    ],
-    2
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { attrs: { id: "snippet-index-panes" } },
+      [
+        _vm._t("default", null, {
+          resultsLeft: _vm.sortedResultsLeft,
+          resultsRight: _vm.sortedResultsRight
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", {
+      directives: [
+        {
+          name: "observe-visibility",
+          rawName: "v-observe-visibility",
+          value: _vm.bottomReached,
+          expression: "bottomReached"
+        }
+      ]
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -5,8 +5,8 @@
 @section('content')
 	<snippetapicontainer id="snippet-index-content-wrapper" url="http://gleemer.test/api/snippets/page/">
 		<template slot-scope="data">
-			<div id="snippet-index-left-pane">
-				<div v-for="snippet in data.resultsLeft" class="panel display(inline-block)">
+			<transition-group name="fade" id="snippet-index-left-pane" name="slide-fade">
+				<div v-for="snippet in data.resultsLeft" :key="snippet.id" class="panel">
 					<div class="panel-header">
 						<a class="margin-right(8px) overflow(hidden) text-overflow(ellipsis) white-space(nowrap)" :href="'/snippet/show/'+snippet.id"><b>@{{ snippet.title }}</b></a>
 						<a :href="'/user/show/'+snippet.user.id" class="usertag margin-left(auto)">
@@ -25,9 +25,9 @@
 						<span class="margin-left(auto)">@{{ snippet.human_date_posted }}</span>
 					</div>
 				</div>
-			</div>
-			<div id="snippet-index-right-pane">
-				<div v-for="snippet in data.resultsRight" class="panel display(inline-block)">
+			</transition-group>
+			<transition-group name="fade" id="snippet-index-right-pane">
+				<div v-for="snippet in data.resultsRight" :key="snippet.id" class="panel">
 					<div class="panel-header">
 						<a class="margin-right(8px) overflow(hidden) text-overflow(ellipsis) white-space(nowrap)" :href="'/snippet/show/'+snippet.id"><b>@{{ snippet.title }}</b></a>
 						<a :href="'/user/show/'+snippet.user.id" class="usertag margin-left(auto)">
@@ -46,7 +46,7 @@
 						<span class="margin-left(auto)">@{{ snippet.human_date_posted }}</span>
 					</div>
 				</div>
-			</div>
+			</transition-group>
 		</template>
 	</snippetapicontainer>
 @endsection
