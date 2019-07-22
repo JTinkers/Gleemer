@@ -14,11 +14,20 @@ use Illuminate\Http\Request;
 */
 
 //Public API
-Route::get('/snippets', function()
+/*Route::get('/snippets', function()
 {
 	return App\Snippet::where('visibility_mode', '!=', 'unlisted')->get()
 		->where('is_visible_to_user', true)
 		->sortByDesc('date_posted');
+});*/
+
+Route::get('/snippets/page/{page}', function($page)
+{
+	return App\Snippet::with('user')
+		->where('visibility_mode', '!=', 'unlisted')->get()
+		->where('is_visible_to_user', true)
+		->forPage($page, 6)
+		->sortBy('date_posted');
 });
 
 //Private API

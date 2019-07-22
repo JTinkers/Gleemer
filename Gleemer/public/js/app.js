@@ -1933,6 +1933,67 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\babel-loader\\lib\\index.js?!E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\index.js?!E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** E:/GitProjects/Gleemer/Gleemer/node_modules/babel-loader/lib??ref--4-0!E:/GitProjects/Gleemer/Gleemer/node_modules/vue-loader/lib??vue-loader-options!E:/GitProjects/Gleemer/Gleemer/resources/js/components/SnippetAPIContainer.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['url'],
+  data: function data() {
+    return {
+      results: [],
+      resultsLeft: [],
+      resultsRight: [],
+      page: 0
+    };
+  },
+  methods: {
+    bottomReached: function bottomReached(isVisible) {
+      if (!isVisible) return;
+      this.fetch();
+    },
+    fetch: function fetch() {
+      var elem = this;
+      this.page++;
+      axios.get(this.url + this.page).then(function (response) {
+        return Object.entries(response.data).forEach(function (el, i, arr) {
+          elem.results.push(el[1]);
+        });
+      });
+    }
+  },
+  computed: {
+    sortedResultsLeft: function sortedResultsLeft() {
+      return this.results.filter(function (value, index, arr) {
+        return index % 2 != 0;
+      }).sort(function (a, b) {
+        return new Date(b.date_posted) - new Date(a.date_posted);
+      });
+    },
+    sortedResultsRight: function sortedResultsRight() {
+      return this.results.filter(function (value, index, arr) {
+        return index % 2 == 0;
+      }).sort(function (a, b) {
+        return new Date(b.date_posted) - new Date(a.date_posted);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\bootstrap\\dist\\js\\bootstrap.js":
 /*!**********************************************************************************!*\
   !*** E:/GitProjects/Gleemer/Gleemer/node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -41386,7 +41447,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -41397,7 +41458,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.13';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -44056,16 +44117,10 @@ return jQuery;
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -44989,8 +45044,8 @@ return jQuery;
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -46807,7 +46862,7 @@ return jQuery;
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -47990,7 +48045,7 @@ return jQuery;
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -47998,6 +48053,10 @@ return jQuery;
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -51798,6 +51857,7 @@ return jQuery;
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -56184,9 +56244,12 @@ return jQuery;
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -56219,7 +56282,9 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -58424,10 +58489,11 @@ return jQuery;
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -61702,6 +61768,50 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\loaders\\templateLoader.js?!E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\index.js?!E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=template&id=b8e750b8&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** E:/GitProjects/Gleemer/Gleemer/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!E:/GitProjects/Gleemer/Gleemer/node_modules/vue-loader/lib??vue-loader-options!E:/GitProjects/Gleemer/Gleemer/resources/js/components/SnippetAPIContainer.vue?vue&type=template&id=b8e750b8& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._t("default", null, {
+        resultsLeft: _vm.sortedResultsLeft,
+        resultsRight: _vm.sortedResultsRight
+      }),
+      _vm._v(" "),
+      _c("div", {
+        directives: [
+          {
+            name: "observe-visibility",
+            rawName: "v-observe-visibility",
+            value: _vm.bottomReached,
+            expression: "bottomReached"
+          }
+        ]
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\runtime\\componentNormalizer.js":
 /*!*************************************************************************************************!*\
   !*** E:/GitProjects/Gleemer/Gleemer/node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -61806,6 +61916,295 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-observe-visibility\\dist\\vue-observe-visibility.esm.js":
+/*!*************************************************************************************************************!*\
+  !*** E:/GitProjects/Gleemer/Gleemer/node_modules/vue-observe-visibility/dist/vue-observe-visibility.esm.js ***!
+  \*************************************************************************************************************/
+/*! exports provided: default, ObserveVisibility, install */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ObserveVisibility", function() { return ObserveVisibility; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  }
+}
+
+function _iterableToArray(iter) {
+  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function processOptions(value) {
+  var options;
+
+  if (typeof value === 'function') {
+    // Simple options (callback-only)
+    options = {
+      callback: value
+    };
+  } else {
+    // Options object
+    options = value;
+  }
+
+  return options;
+}
+function throttle(callback, delay) {
+  var timeout;
+  var lastState;
+  var currentArgs;
+
+  var throttled = function throttled(state) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    currentArgs = args;
+    if (timeout && state === lastState) return;
+    lastState = state;
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      callback.apply(void 0, [state].concat(_toConsumableArray(currentArgs)));
+      timeout = 0;
+    }, delay);
+  };
+
+  throttled._clear = function () {
+    clearTimeout(timeout);
+  };
+
+  return throttled;
+}
+function deepEqual(val1, val2) {
+  if (val1 === val2) return true;
+
+  if (_typeof(val1) === 'object') {
+    for (var key in val1) {
+      if (!deepEqual(val1[key], val2[key])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+var VisibilityState =
+/*#__PURE__*/
+function () {
+  function VisibilityState(el, options, vnode) {
+    _classCallCheck(this, VisibilityState);
+
+    this.el = el;
+    this.observer = null;
+    this.frozen = false;
+    this.createObserver(options, vnode);
+  }
+
+  _createClass(VisibilityState, [{
+    key: "createObserver",
+    value: function createObserver(options, vnode) {
+      var _this = this;
+
+      if (this.observer) {
+        this.destroyObserver();
+      }
+
+      if (this.frozen) return;
+      this.options = processOptions(options);
+
+      this.callback = function (result, entry) {
+        _this.options.callback(result, entry);
+
+        if (result && _this.options.once) {
+          _this.frozen = true;
+
+          _this.destroyObserver();
+        }
+      }; // Throttle
+
+
+      if (this.callback && this.options.throttle) {
+        this.callback = throttle(this.callback, this.options.throttle);
+      }
+
+      this.oldResult = undefined;
+      this.observer = new IntersectionObserver(function (entries) {
+        var entry = entries[0];
+
+        if (_this.callback) {
+          // Use isIntersecting if possible because browsers can report isIntersecting as true, but intersectionRatio as 0, when something very slowly enters the viewport.
+          var result = entry.isIntersecting && entry.intersectionRatio >= _this.threshold;
+          if (result === _this.oldResult) return;
+          _this.oldResult = result;
+
+          _this.callback(result, entry);
+        }
+      }, this.options.intersection); // Wait for the element to be in document
+
+      vnode.context.$nextTick(function () {
+        if (_this.observer) {
+          _this.observer.observe(_this.el);
+        }
+      });
+    }
+  }, {
+    key: "destroyObserver",
+    value: function destroyObserver() {
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      } // Cancel throttled call
+
+
+      if (this.callback && this.callback._clear) {
+        this.callback._clear();
+
+        this.callback = null;
+      }
+    }
+  }, {
+    key: "threshold",
+    get: function get() {
+      return this.options.intersection && this.options.intersection.threshold || 0;
+    }
+  }]);
+
+  return VisibilityState;
+}();
+
+function bind(el, _ref, vnode) {
+  var value = _ref.value;
+  if (!value) return;
+
+  if (typeof IntersectionObserver === 'undefined') {
+    console.warn('[vue-observe-visibility] IntersectionObserver API is not available in your browser. Please install this polyfill: https://github.com/w3c/IntersectionObserver/tree/master/polyfill');
+  } else {
+    var state = new VisibilityState(el, value, vnode);
+    el._vue_visibilityState = state;
+  }
+}
+
+function update(el, _ref2, vnode) {
+  var value = _ref2.value,
+      oldValue = _ref2.oldValue;
+  if (deepEqual(value, oldValue)) return;
+  var state = el._vue_visibilityState;
+
+  if (!value) {
+    unbind(el);
+    return;
+  }
+
+  if (state) {
+    state.createObserver(value, vnode);
+  } else {
+    bind(el, {
+      value: value
+    }, vnode);
+  }
+}
+
+function unbind(el) {
+  var state = el._vue_visibilityState;
+
+  if (state) {
+    state.destroyObserver();
+    delete el._vue_visibilityState;
+  }
+}
+
+var ObserveVisibility = {
+  bind: bind,
+  update: update,
+  unbind: unbind
+};
+
+function install(Vue) {
+  Vue.directive('observe-visibility', ObserveVisibility);
+  /* -- Add more components here -- */
+}
+/* -- Plugin definition & Auto-install -- */
+
+/* You shouldn't have to modify the code below */
+// Plugin
+
+var plugin = {
+  // eslint-disable-next-line no-undef
+  version: "0.4.4",
+  install: install
+};
+
+var GlobalVue = null;
+
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue;
+}
+
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (plugin);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\webpack\\buildin\\global.js")))
 
 /***/ }),
 
@@ -73851,6 +74250,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_highlightjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-highlightjs */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-highlightjs\\index.js");
 /* harmony import */ var vue_highlightjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_highlightjs__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_observe_visibility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-observe-visibility */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-observe-visibility\\dist\\vue-observe-visibility.esm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -73861,9 +74261,11 @@ __webpack_require__(/*! ./bootstrap */ "E:\\GitProjects\\Gleemer\\Gleemer\\resou
 window.Vue = __webpack_require__(/*! vue */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue\\dist\\vue.common.js"); // Import Vue and vue-highlgihtjs
 
 
+
  // Tell Vue.js to use vue-highlightjs
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_highlightjs__WEBPACK_IMPORTED_MODULE_1___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_observe_visibility__WEBPACK_IMPORTED_MODULE_2__["default"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -73874,6 +74276,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_highlightjs__WEBPACK_IMPORTED
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('snippetapicontainer', __webpack_require__(/*! ./components/SnippetAPIContainer.vue */ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('dynform', __webpack_require__(/*! ./components/DynForm.vue */ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\DynForm.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('clipboarder', __webpack_require__(/*! ./components/Clipboarder.vue */ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\Clipboarder.vue")["default"]);
 /**
@@ -74079,6 +74482,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DynForm_vue_vue_type_template_id_14a48686___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DynForm_vue_vue_type_template_id_14a48686___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue":
+/*!**************************************************************************************!*\
+  !*** E:/GitProjects/Gleemer/Gleemer/resources/js/components/SnippetAPIContainer.vue ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SnippetAPIContainer_vue_vue_type_template_id_b8e750b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SnippetAPIContainer.vue?vue&type=template&id=b8e750b8& */ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=template&id=b8e750b8&");
+/* harmony import */ var _SnippetAPIContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SnippetAPIContainer.vue?vue&type=script&lang=js& */ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\runtime\\componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SnippetAPIContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SnippetAPIContainer_vue_vue_type_template_id_b8e750b8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SnippetAPIContainer_vue_vue_type_template_id_b8e750b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "E:/GitProjects/Gleemer/Gleemer/resources/js/components/SnippetAPIContainer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************!*\
+  !*** E:/GitProjects/Gleemer/Gleemer/resources/js/components/SnippetAPIContainer.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SnippetAPIContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SnippetAPIContainer.vue?vue&type=script&lang=js& */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\babel-loader\\lib\\index.js?!E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\index.js?!E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SnippetAPIContainer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=template&id=b8e750b8&":
+/*!*********************************************************************************************************************!*\
+  !*** E:/GitProjects/Gleemer/Gleemer/resources/js/components/SnippetAPIContainer.vue?vue&type=template&id=b8e750b8& ***!
+  \*********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnippetAPIContainer_vue_vue_type_template_id_b8e750b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SnippetAPIContainer.vue?vue&type=template&id=b8e750b8& */ "E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\loaders\\templateLoader.js?!E:\\GitProjects\\Gleemer\\Gleemer\\node_modules\\vue-loader\\lib\\index.js?!E:\\GitProjects\\Gleemer\\Gleemer\\resources\\js\\components\\SnippetAPIContainer.vue?vue&type=template&id=b8e750b8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnippetAPIContainer_vue_vue_type_template_id_b8e750b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SnippetAPIContainer_vue_vue_type_template_id_b8e750b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

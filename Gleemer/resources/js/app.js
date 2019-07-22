@@ -11,9 +11,11 @@ window.Vue = require('vue');
 // Import Vue and vue-highlgihtjs
 import Vue from 'vue'
 import VueHighlightJS from 'vue-highlightjs'
+import VueObserveVisibility from 'vue-observe-visibility'
 
 // Tell Vue.js to use vue-highlightjs
 Vue.use(VueHighlightJS)
+Vue.use(VueObserveVisibility)
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,6 +28,7 @@ Vue.use(VueHighlightJS)
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component('snippetapicontainer', require('./components/SnippetAPIContainer.vue').default);
 Vue.component('dynform', require('./components/DynForm.vue').default);
 Vue.component('clipboarder', require('./components/Clipboarder.vue').default);
 

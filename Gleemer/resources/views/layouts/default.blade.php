@@ -16,8 +16,8 @@
 			@header
 	        <div id="content">
 	            @yield('content')
+				@footer
 	        </div>
-			@footer
 		</div>
     </body>
 </html>

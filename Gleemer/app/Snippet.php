@@ -10,9 +10,21 @@ class Snippet extends Model
 {
 	protected $guarded = ['_token'];
 
-	protected $appends = ['is_visible_to_user'];
+	protected $hidden = ['favourites', 'comments'];
+
+	protected $appends = ['is_visible_to_user', 'human_date_posted', 'favourites_count', 'comments_count'];
 
 	public $timestamps = false;
+
+	public function getFavouritesCountAttribute()
+	{
+		return $this->favourites->count();
+	}
+
+	public function getCommentsCountAttribute()
+	{
+		return $this->comments->count();
+	}
 
 	public function getIsVisibleToUserAttribute()
 	{
