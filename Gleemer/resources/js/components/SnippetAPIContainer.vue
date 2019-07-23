@@ -1,7 +1,7 @@
 <template>
     <div>
 		<div id="snippet-index-panes">
-        	<slot :resultsLeft="sortedResultsLeft" :resultsRight="sortedResultsRight"></slot>
+        	<slot :results="results" :resultsLeft="sortedResultsLeft" :resultsRight="sortedResultsRight"></slot>
 		</div>
 		<div v-observe-visibility="bottomReached"></div>
     </div>
@@ -44,7 +44,6 @@
 			sortedResultsLeft: function()
 			{
 				return this.results.filter((value, index, arr) => index % 2 != 0)
-
 			},
 			sortedResultsRight: function()
 			{

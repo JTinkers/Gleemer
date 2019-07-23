@@ -63,6 +63,7 @@ class UserController extends Controller
 		$entry->password = Hash::make($request->password);
 		$entry->date_registered = Carbon::now();
 		$entry->bio = 'This user hasn\'t filled the bio yet.';
+		$entry->default_avatar = true;
 		$entry->api_key = '';
 		$entry->save();
 
@@ -193,6 +194,8 @@ class UserController extends Controller
 
 			session()->flash('alert', __('user.changes_saved'));
 			session()->flash('alert_type', 'success');
+
+			$user->default_avatar = false;
 
 			return redirect()->back();
 		}

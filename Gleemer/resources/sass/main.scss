@@ -12,6 +12,7 @@
 	flex-direction: column;
 	height: calc(100vh - 48px);
 	overflow-y: scroll;
+	padding: 16px 20vw 0 20vw;
 }
 
 #api-index-content-wrapper
@@ -19,7 +20,6 @@
 	display: flex;
 	flex-grow: 1;
 	flex-direction: column;
-	padding: 16px 20vw 0 20vw;
 }
 
 #search-content-wrapper
@@ -27,14 +27,30 @@
 	display: flex;
 	flex-grow: 1;
 	flex-direction: column;
-	padding: 16px 20vw 0 20vw;
 }
 
 #snippet-index-content-wrapper
 {
 	display: flex;
 	flex-direction: column;
-	padding: 16px calc(20vw - 17px) 0 20vw;
+}
+
+#snippet-index-content-wrapper-compact
+{
+	display: none;
+	flex-direction: column;
+}
+
+#snippet-index-compact-pane
+{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+
+	> *:not(:last-of-type)
+	{
+		margin-bottom: 16px;
+	}
 }
 
 #snippet-index-panes
@@ -77,7 +93,6 @@
 {
 	display: flex;
 	flex-grow: 1;
-	padding: 16px 20vw 0 20vw;
 }
 
 #snippet-show-content-wrapper
@@ -91,7 +106,6 @@
 	grid-template-rows: auto;
 	grid-column-gap: 16px;
 	grid-row-gap: 16px;
-	padding: 16px 20vw 0 20vw;
 }
 
 .rating-thumbs
@@ -166,7 +180,6 @@
 	align-items: center;
 	justify-content: space-around;
 	flex-grow: 1;
-	padding: 16px 20vw 0 20vw;
 }
 
 #user-edit-content-wrapper
@@ -179,7 +192,6 @@
 	grid-template-rows: auto;
 	grid-column-gap: 16px;
 	grid-row-gap: 16px;
-	padding: 16px 20vw 0 20vw;
 }
 
 #user-edit-avatar
@@ -206,12 +218,12 @@
 	grid-template-rows: auto;
 	grid-column-gap: 16px;
 	grid-row-gap: 16px;
-	padding: 16px 20vw 0 20vw;
 }
 
 .user-sign-panel
 {
 	max-width: 384px;
+	margin: 8px;
 }
 
 .alert
@@ -289,4 +301,41 @@
 	align-items: center;
 	justify-content: center;
 	padding: 16px;
+}
+
+@media only screen and (max-width: 1200px)
+{
+	#snippet-index-content-wrapper
+	{
+		display: none;
+	}
+
+	#snippet-index-content-wrapper-compact
+	{
+		display: flex !important;
+	}
+
+	#user-index-content-wrapper
+	{
+		flex-direction: column;
+		align-content: space-between;
+		align-items: stretch;
+
+		> *
+		{
+			margin: 0;
+			flex-grow: 0;
+			max-width: none;
+		}
+
+		.user-sign-panel:first-of-type
+		{
+			margin-bottom: 16px;
+		}
+	}
+
+	#content
+	{
+		padding: 16px 16px 0 16px;
+	}
 }
