@@ -1,0 +1,146 @@
+//main: main.scss
+
+@media only screen and (max-width: 1200px)
+{
+	#header
+	{
+		padding: 0 16px;
+	}
+
+	#snippet-index-content-wrapper
+	{
+		display: none;
+	}
+
+	#snippet-show-content-wrapper
+	{
+		display: flex;
+		flex-direction: column;
+
+		.snippet-code
+		{
+			padding: 0;
+		}
+
+		.hljs
+		{
+			overflow-y: hidden;
+		}
+
+		pre
+		{
+			overflow-y: hidden;
+			overflow-x: scroll;
+		}
+
+		code
+		{
+			max-height: 100%;
+			padding: 16px;
+		}
+
+		> *:not(:last-of-type)
+		{
+			margin-bottom: 16px;
+		}
+
+		.panel
+		{
+			align-self: stretch;
+		}
+	}
+
+	#snippet-index-content-wrapper-compact
+	{
+		display: flex !important;
+	}
+
+	#user-index-content-wrapper
+	{
+		flex-direction: column;
+		align-content: space-between;
+		align-items: stretch;
+
+		> *
+		{
+			margin: 0;
+			flex-grow: 0;
+			max-width: none;
+		}
+
+		.user-sign-panel:first-of-type
+		{
+			margin-bottom: 16px;
+		}
+	}
+
+	#user-show-content-wrapper
+	{
+		display: flex;
+		flex-direction: column;
+
+		> *:not(:last-of-type)
+		{
+			margin-bottom: 16px;
+		}
+
+		.panel
+		{
+			align-self: stretch;
+		}
+	}
+
+	#user-edit-content-wrapper
+	{
+		display: flex;
+		flex-direction: column;
+
+		> *:not(:last-of-type)
+		{
+			margin-bottom: 16px;
+		}
+
+		.panel
+		{
+			align-self: stretch;
+		}
+	}
+
+	#content
+	{
+		padding: 16px 16px 0 16px;
+	}
+}
+
+@media only screen and (max-width: 765px)
+{
+	#content
+	{
+		height: calc(100vh - 116px);
+	}
+
+	#header
+	{
+		height: auto;
+		flex-direction: column;
+	}
+
+	#logo
+	{
+		justify-content: center;
+		padding: 8px;
+	}
+
+	#search
+	{
+		align-self: auto;
+		margin: 0;
+	}
+
+	#menu
+	{
+		align-self: center;
+		margin: 0;
+		padding: 8px;
+	}
+}

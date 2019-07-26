@@ -11,7 +11,7 @@
 			</div>
 			<div class="panel-section dim flex-direction(column)">
 				<div class="margin-bottom(16px)">
-					<img id="user-edit-avatar" src="/storage/users/avatars/{{ $user->id }}.png"/>
+					<img id="user-edit-avatar" src="/storage/users/avatars/{{ $user->default_avatar ? 'default' : $user->id }}.png"/>
 				</div>
 				<input type="file" name="avatar">
 			</div>

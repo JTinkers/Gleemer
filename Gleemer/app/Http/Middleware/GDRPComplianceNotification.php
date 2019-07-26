@@ -20,9 +20,9 @@ class GDRPComplianceNotification
 		{
 			session()->flash('alert', 'This website uses cookies. To consent - continue using the website.');
 			session()->flash('alert_type', 'info');
-
-			session(['gdpr_notified' => true]);
 		}
+
+		session(['gdpr_notified' => true]);
 
         return $next($request);
     }

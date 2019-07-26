@@ -196,6 +196,7 @@ class UserController extends Controller
 			session()->flash('alert_type', 'success');
 
 			$user->default_avatar = false;
+			$user->save();
 
 			return redirect()->back();
 		}

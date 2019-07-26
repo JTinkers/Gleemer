@@ -14,7 +14,7 @@
 				</span>
 				<span class="margin-left(auto)">{{ $snippet->language }}</span>
 			</div>
-			<div class="panel-section dim">
+			<div class="snippet-code panel-section dim">
 				<pre v-highlightjs><code class="{{ $snippet->language }}" id="code-copy-source">{{ $snippet->contents }}</code></pre>
 			</div>
 			<div class="panel-footer">
