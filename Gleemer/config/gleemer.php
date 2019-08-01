@@ -37,7 +37,11 @@ return
 		'snippet_submission', 'comment_submission'],
 	'timeout_lengths' =>
 	[
-
+		'api_key_generation' => 600,
+		'user_creation' => 14400,
+		'user_sign_in' => 15,
+		'snippet_submission' => 30,
+		'comment_submission' => 15
 	],
 	'alert_types' => ['success', 'warning', 'error', 'info'],
     'visibility_modes' => ['public', 'private', 'unlisted'],

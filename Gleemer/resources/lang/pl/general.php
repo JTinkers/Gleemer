@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'timedout' => 'Zostałeś czasowo ograniczony w wykonywaniu tej czynności, spróbuj ponownie za :time.',
 	'no_power' => 'Za mało mocy admina aby wykonać to zadanie.',
     'credits' => 'Stworzone z <i class="fas fa-heart"></i> napędzane <i class="fas fa-coffee"></i>',
 	'search_results_for' => 'Wyniki wyszukiwania dla frazy: ',

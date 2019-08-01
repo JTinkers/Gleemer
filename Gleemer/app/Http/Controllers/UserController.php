@@ -6,6 +6,7 @@ use App\User;
 use App\View;
 use App\Ban;
 use App\Http\Facades\UserManager;
+use App\Http\Facades\TimeoutManager;
 use App\Http\Helpers\AlphanumericGenerator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -97,6 +98,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+		$timeoutExpiry = TimeoutManager::getTimeoutExpiryDate('user_creation');
+
+		if($timeoutExpiry >= Carbon::now())
+		{
+			session()->flash('alert', __('general.timedout', ['time' => $timeoutExpiry->diffForHumans()]));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		TimeoutManager::addTimeout('user_creation');
+
 		$validator = Validator::make($request->all(),
 		[
 			'login' => 'required|max:64|min:4|unique:users,login|alpha_num',
@@ -130,6 +143,18 @@ class UserController extends Controller
 
 	public function login(Request $request)
 	{
+		$timeoutExpiry = TimeoutManager::getTimeoutExpiryDate('user_sign_in');
+
+		if($timeoutExpiry >= Carbon::now())
+		{
+			session()->flash('alert', __('general.timedout', ['time' => $timeoutExpiry->diffForHumans()]));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		TimeoutManager::addTimeout('user_sign_in');
+
 		$validator = Validator::make($request->all(),
 		[
 			'login' => 'required|exists:users,login',
@@ -234,6 +259,18 @@ class UserController extends Controller
 
 		if($request->generateKey)
 		{
+			$timeoutExpiry = TimeoutManager::getTimeoutExpiryDate('api_key_generation');
+
+			if($timeoutExpiry >= Carbon::now())
+			{
+				session()->flash('alert', __('general.timedout', ['time' => $timeoutExpiry->diffForHumans()]));
+				session()->flash('alert_type', 'error');
+
+				return redirect()->back();
+			}
+
+			TimeoutManager::addTimeout('api_key_generation');
+
 			$user->api_key = AlphanumericGenerator::Generate(64);
 			$user->save();
 
@@ -262,7 +299,7 @@ class UserController extends Controller
 
         $user->bio = $request->bio or $user->bio;
 		$user->save();
-		
+
 		UserManager::set($user);
 
 		session()->flash('alert', __('user.changes_saved'));

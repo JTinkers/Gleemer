@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Http\Facades\UserManager;
+use App\Http\Facades\TimeoutManager;
 use Illuminate\Support\ServiceProvider;
 
-class UserManagerServiceProvider extends ServiceProvider
+class TimeoutManagerServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,9 +14,9 @@ class UserManagerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-		$this->app->bind('usermanager', function()
+		$this->app->bind('timeoutmanager', function()
         {
-            return new \App\Http\Facades\UserManager;
+            return new \App\Http\Facades\TimeoutManager;
         });
     }
 

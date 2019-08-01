@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Timeout;
 use App\Http\Facades\UserManager;
+use App\Http\Facades\TimeoutManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use \Validator;
@@ -38,6 +40,18 @@ class CommentController extends Controller
      */
 	 public function store(Request $request)
      {
+		 $timeoutExpiry = TimeoutManager::getTimeoutExpiryDate('comment_submission');
+
+		 if($timeoutExpiry >= Carbon::now())
+		 {
+			 session()->flash('alert', __('general.timedout', ['time' => $timeoutExpiry->diffForHumans()]));
+			 session()->flash('alert_type', 'error');
+
+			 return redirect()->back();
+		 }
+
+		 TimeoutManager::addTimeout('comment_submission');
+
 		 if(!UserManager::get())
 		 {
 			 session()->flash('alert', __('user.not_logged'));

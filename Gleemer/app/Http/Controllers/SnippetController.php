@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Snippet;
 use App\View;
 use App\Http\Facades\UserManager;
+use App\Http\Facades\TimeoutManager;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -42,6 +43,18 @@ class SnippetController extends Controller
      */
     public function store(Request $request)
     {
+		$timeoutExpiry = TimeoutManager::getTimeoutExpiryDate('snippet_submission');
+
+		if($timeoutExpiry >= Carbon::now())
+		{
+			session()->flash('alert', __('general.timedout', ['time' => $timeoutExpiry->diffForHumans()]));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		TimeoutManager::addTimeout('snippet_submission');
+
 		if(!UserManager::get())
 		{
 			session()->flash('alert', __('user.not_logged'));
