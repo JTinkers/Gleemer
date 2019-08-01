@@ -49,4 +49,15 @@ class User extends Model
 
 		return $date->diffForHumans();
 	}
+
+	public function getIsBannedAttribute()
+	{
+		return !$this->bans->every(function ($ban, $i)
+		{
+			$date_unban = new Carbon($ban->date_banned);
+			$date_unban->addSeconds($ban->length);
+
+			return $date_unban <= Carbon::now();
+		});
+	}
 }

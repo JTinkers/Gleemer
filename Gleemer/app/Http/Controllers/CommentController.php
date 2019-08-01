@@ -109,6 +109,21 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
+		if(!boolval(UserManager::get()->flags & config('gleemer.power_flags')::DeleteComment))
+		{
+			session()->flash('alert', __('general.no_power'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$comment->delete();
+
+		return redirect()->back();
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBansTable extends Migration
+class CreateTimeoutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateBansTable extends Migration
      */
     public function up()
     {
-        Schema::create('bans', function (Blueprint $table)
-		{
+        Schema::create('timeouts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('admin_id');
-            $table->string('reason');
-            $table->integer('length');
-            $table->datetime('date_banned');
-		});
+            $table->enum('type', config('gleemer.timeout_types'));
+			$table->string('session_token');
+			$table->datetime('date_issued');
+        });
     }
 
     /**
@@ -31,6 +28,6 @@ class CreateBansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bans');
+        Schema::dropIfExists('timeouts');
     }
 }

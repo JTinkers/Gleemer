@@ -16,6 +16,17 @@
 			</div>
 			<div class="snippet-code panel-section dim">
 				<pre v-highlightjs><code class="{{ $snippet->language }}" id="code-copy-source">{{ $snippet->contents }}</code></pre>
+				@if(UserManager::get() && boolval(UserManager::get()->flags & config('gleemer.power_flags')::Panel))
+					@admintoolbar
+						@slot('buttons')
+							@if(UserManager::get()->flags & config('gleemer.power_flags')::DeleteSnippet)
+								<a href="/snippet/destroy/{{ $snippet->id }}">
+									<i class="margin-left(8px) far fa-trash-alt"></i>
+								</a>
+							@endif
+						@endslot
+					@endadmintoolbar
+				@endif
 			</div>
 			<div class="panel-footer">
 				<form class="display(flex)" method="post" action="/rating/store">
@@ -100,6 +111,17 @@
 							@usertag(['id' => $snippet->user->id, 'class' => 'margin-bottom(8px)'])
 							<span>{{ $comment->date_posted }}</span>
 						</div>
+						@if(UserManager::get() && boolval(UserManager::get()->flags & config('gleemer.power_flags')::Panel))
+							@admintoolbar
+								@slot('buttons')
+									@if(UserManager::get()->flags & config('gleemer.power_flags')::DeleteComment)
+										<a href="/comment/destroy/{{ $comment->id }}">
+											<i class="margin-left(8px) far fa-trash-alt"></i>
+										</a>
+									@endif
+								@endslot
+							@endadmintoolbar
+						@endif
 					</div>
 				@endforeach
 			</div>

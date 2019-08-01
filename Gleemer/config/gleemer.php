@@ -28,14 +28,17 @@ abstract class PowerFlag
 
 	// Unban users
     const UnbanUser = 128;
-
-	// View detailed user info like API key
-	const ViewUserDetails = 256;
 }
 
 return
 [
 	'power_flags' => PowerFlag::class,
+	'timeout_types' => ['api_key_generation', 'api_access', 'user_creation', 'user_sign_in_attempt',
+		'snippet_submission', 'comment_submission'],
+	'timeout_lengths' =>
+	[
+
+	],
 	'alert_types' => ['success', 'warning', 'error', 'info'],
     'visibility_modes' => ['public', 'private', 'unlisted'],
 	'languages' =>

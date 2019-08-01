@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\View;
+use App\Ban;
 use App\Http\Facades\UserManager;
 use App\Http\Helpers\AlphanumericGenerator;
 use Carbon\Carbon;
@@ -14,6 +15,60 @@ use \Validator;
 
 class UserController extends Controller
 {
+	public function ban(Request $request, User $user)
+	{
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
+		if(!boolval(UserManager::get()->flags & config('gleemer.power_flags')::BanUser))
+		{
+			session()->flash('alert', __('general.no_power'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		if($user->isBanned)
+		{
+			session()->flash('alert', __('user.already_banned'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$ban = new Ban();
+		$ban->fill($request->all());
+		$ban->user_id = $user->id;
+		$ban->admin_id = UserManager::get()->id;
+		$ban->date_banned = Carbon::now();
+		$ban->save();
+
+		return redirect()->back();
+	}
+
+	public function unban(User $user)
+	{
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
+		if(!boolval(UserManager::get()->flags & config('gleemer.power_flags')::UnbanUser))
+		{
+			session()->flash('alert', __('general.no_power'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$ban = $user->bans->last();
+		$ban->delete();
+
+		return redirect()->back();
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -64,7 +119,7 @@ class UserController extends Controller
 		$entry->date_registered = Carbon::now();
 		$entry->bio = 'This user hasn\'t filled the bio yet.';
 		$entry->default_avatar = true;
-		$entry->api_key = '';
+		$entry->api_key = AlphanumericGenerator::Generate(64);
 		$entry->save();
 
 		session()->flash('alert', __('user.creation_success'));
@@ -185,6 +240,8 @@ class UserController extends Controller
 			session()->flash('alert', __('user.api_key_generated'));
 			session()->flash('alert_type', 'success');
 
+			UserManager::set($user);
+
 			return redirect()->back();
 		}
 
@@ -198,11 +255,15 @@ class UserController extends Controller
 			$user->default_avatar = false;
 			$user->save();
 
+			UserManager::set($user);
+
 			return redirect()->back();
 		}
 
         $user->bio = $request->bio or $user->bio;
 		$user->save();
+		
+		UserManager::set($user);
 
 		session()->flash('alert', __('user.changes_saved'));
 		session()->flash('alert_type', 'success');

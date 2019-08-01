@@ -49,7 +49,7 @@
 			</transition-group>
 		</template>
 	</snippetapicontainer>
-	<snippetapicontainer id="snippet-index-content-wrapper-compact" url="http://gleemer.test/api/snippets/page/">
+	<snippetapicontainer id="snippet-index-content-wrapper-compact" url="http://gleemer.test/api/snippets/">
 		<template slot-scope="data">
 			<transition-group name="fade" id="snippet-index-compact-pane" name="slide-fade">
 				<div v-for="snippet in data.results" :key="snippet.id" class="panel">

@@ -17,5 +17,6 @@ return [
 	'edit_page_locked' => 'You can\'t view edit page for this user!',
 	'cant_update_not_self' => 'You can\'t update this user!',
 	'api_key_generated' => 'New API Key has been generated!',
-	'changes_saved' => 'Changes saved!'
+	'changes_saved' => 'Changes saved!',
+	'already_banned' => 'The user has an ongoing ban!'
 ];

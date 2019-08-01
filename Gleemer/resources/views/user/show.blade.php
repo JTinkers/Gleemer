@@ -3,6 +3,9 @@
 @section('title', $user->nickname)
 
 @section('content')
+	@if($user->isBanned)
+		<h2>User is banned until {{ $user->bans->last()->human_unban_date }} for the following reason: {{ $user->bans->last()->reason }}</h2>
+	@endif
 	<div id="user-show-content-wrapper">
 		<div class="column-start(0) column-end(1) panel flex-grow(1)">
 			<div class="panel-header">
@@ -39,6 +42,28 @@
 			</div>
 			<div class="panel-section dim">
 				<p>{{ $user->bio }}</p>
+				@if(UserManager::get() && boolval(UserManager::get()->flags & config('gleemer.power_flags')::Panel))
+					@admintoolbar
+						@slot('buttons')
+							@if(!$user->isBanned)
+								@if(UserManager::get()->flags & config('gleemer.power_flags')::Panel)
+									<dynform class="margin-left(8px)" method="post" pattern="/user/ban/{{ $user->id }}">
+										@csrf
+										<input placeholder="Length in seconds.." type="number" name="length"/>
+										<input placeholder="Reason.." type="text" name="reason"/>
+										<i class="cursor(pointer) margin-left(4px) fas fa-ban" onclick="this.parentNode.submit()"></i>
+									</dynform>
+								@endif
+							@else
+								@if(UserManager::get()->flags & config('gleemer.power_flags')::Panel)
+									<a href="/user/unban/{{ $user->id }}">
+										<i class="margin-left(8px) far fa-smile"></i>
+									</a>
+								@endif
+							@endif
+						@endslot
+					@endadmintoolbar
+				@endif
 			</div>
 		</div>
 		@if(UserManager::get() && (UserManager::get()->id == $user->id || boolval(UserManager::get()->flags & PowerFlag::ViewSnippets)))

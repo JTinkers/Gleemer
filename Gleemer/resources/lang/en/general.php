@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'no_power' => 'Not enough admin power to perform the task.',
     'credits' => 'Created with <i class="fas fa-heart"></i> fueled by <i class="fas fa-coffee"></i>',
 	'search_results_for' => 'Search results for phrase: ',
 	'users' => 'Users',

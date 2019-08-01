@@ -162,6 +162,21 @@ class SnippetController extends Controller
      */
     public function destroy(Snippet $snippet)
     {
-        //
+		if(!UserManager::get())
+		{
+			return redirect()->back();
+		}
+
+		if(!boolval(UserManager::get()->flags & config('gleemer.power_flags')::DeleteSnippet))
+		{
+			session()->flash('alert', __('general.no_power'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$snippet->delete();
+
+		return redirect('/');
     }
 }

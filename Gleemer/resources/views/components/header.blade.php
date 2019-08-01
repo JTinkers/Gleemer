@@ -26,13 +26,6 @@
 				<i class="fas fa-share-alt"></i>
 			</div>
 		</a>
-		@if(UserManager::get() && boolval(UserManager::get()->flags & PowerFlag::Panel))
-			<a class="menu-button" href="/admin">
-				<div>
-					<i class="fas fa-user-shield"></i>
-				</div>
-			</a>
-		@endif
 		@if(!UserManager::get())
 			<a class="menu-button" href="/user">
 	    	    <div>

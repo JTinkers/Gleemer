@@ -37,7 +37,7 @@ class Snippet extends Model
 			case 'private':
 				return UserManager::get()
 					&& (UserManager::get()->id == $this->user_id
-					|| boolval(UserManager::get()->flags & config('gleemer.power_flags')::Panel));
+					|| boolval(UserManager::get()->flags & config('gleemer.power_flags')::ViewPrivateSnippet));
 				break;
 
 			case 'unlisted':
@@ -86,6 +86,7 @@ class Snippet extends Model
 		$url = str_replace(" ", "-", $this->title);
 		$url = strtolower($url);
 		$url = str_replace("&", "_", $url);
+		$url = preg_replace("/[^A-Za-z0-9 ]/", '_', $url);
 		$url = str_replace(";", "_", $url);
 		$url = str_replace("\\", "_", $url);
 		$url = str_replace("/", "_", $url);

@@ -17,5 +17,6 @@ return [
 	'edit_page_locked' => 'Nie możesz edytować strony użytkownika która nie należy do ciebie!',
 	'cant_update_not_self' => 'Nie możesz aktualizować innego użytkownika niż siebie!',
 	'api_key_generated' => 'Wygenerowano nowy klucz!',
-	'changes_saved' => 'Zapisano zmiany!'
+	'changes_saved' => 'Zapisano zmiany!',
+	'already_banned' => 'Użytkownik jest już zbanowany!'
 ];

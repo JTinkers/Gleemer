@@ -1,0 +1,24 @@
+//main: ../main.scss
+
+.admin-toolbar
+{
+	background: white;
+	border: 1px solid palette('foreground', '7');
+	font-size: 16px;
+	border-radius: 3px;
+	padding: 8px;
+	display: flex;
+	visibility: hidden;
+	position: absolute;
+	align-items: center;
+}
+
+.admin-toolbar-shield
+{
+	color: palette('foreground', '5');
+}
+
+*:hover > .admin-toolbar
+{
+	visibility: visible;
+}
