@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'apiauth' => \App\Http\Middleware\APIAuth::class,
         'gdprnote' => \App\Http\Middleware\GDRPComplianceNotification::class,
         'localemanager' => \App\Http\Middleware\LocaleManager::class,
+        'banenforcer' => \App\Http\Middleware\BanEnforcer::class,
     ];
 
     /**

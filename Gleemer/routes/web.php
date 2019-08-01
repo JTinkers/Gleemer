@@ -14,19 +14,16 @@
 // Internal API (unlimited, inaccessible from outside)
 Route::prefix('iapi')->group(function()
 {
-	Route::middleware('localemanager')->group(function()
+	Route::get('/snippets/{page}', function($page)
 	{
-		Route::get('/snippets/{page}', function($page)
-		{
-			return App\Snippet::with('user')
-				->orderByDesc('date_posted')
-				->where('visibility_mode', '!=', 'unlisted')->get()
-				->where('is_visible_to_user', true)
-				->forPage($page, 20);
-		});
+		return App\Snippet::with('user')
+			->orderByDesc('date_posted')
+			->where('visibility_mode', '!=', 'unlisted')->get()
+			->where('is_visible_to_user', true)
+			->forPage($page, 20);
 	});
 
-	Route::middleware(['apiauth', 'localemanager'])->group(function()
+	Route::middleware('apiauth')->group(function()
 	{
 		Route::get('{api_key}/snippets/{page}', function($api_key, $page)
 		{
@@ -39,7 +36,20 @@ Route::prefix('iapi')->group(function()
 	});
 });
 
-Route::middleware(['gdprnote', 'localemanager'])->group(function()
+Route::get('/youre_banned', function()
+{
+	if(!UserManager::get() || !UserManager::get()->isBanned)
+	{
+		return redirect('/');
+	}
+
+	return view('pages.misc.banned',
+	[
+		'ban' => UserManager::get()->bans->last()
+	]);
+});
+
+Route::middleware(['gdprnote', 'banenforcer'])->group(function()
 {
 	Route::get('/', 'SnippetController@index');
 	Route::get('/api', function()
