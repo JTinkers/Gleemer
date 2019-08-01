@@ -1,7 +1,41 @@
 <?php
 
+abstract class PowerFlag
+{
+	// None
+    const None = 0;
+
+	// Access admin panel and toolbars
+    const Panel = 1;
+
+	// View list of users' snippets
+    const ViewSnippets = 2;
+
+	// View list of users' favourites
+    const ViewFavourites = 4;
+
+	// View snippets with visibility set to 'private'
+    const ViewPrivateSnippet = 8;
+
+	// Delete comments
+    const DeleteComment = 16;
+
+	// Delete snippets
+    const DeleteSnippet = 32;
+
+	// Ban users
+    const BanUser = 64;
+
+	// Unban users
+    const UnbanUser = 128;
+
+	// View detailed user info like API key
+	const ViewUserDetails = 256;
+}
+
 return
 [
+	'power_flags' => PowerFlag::class,
 	'alert_types' => ['success', 'warning', 'error', 'info'],
     'visibility_modes' => ['public', 'private', 'unlisted'],
 	'languages' =>

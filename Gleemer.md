@@ -23,7 +23,7 @@ The portal used as a main driver is compact, responsive and written according to
 The following frameworks, libraries and technologies have been used:
 
 - **Laravel** - main framework, ORM, microservice development, templating engine
-- **Vue.js** - TBD
+- **Vue.js** - API containers, wrappers etc.
 - **SASS** - stylesheet generation/development
 - **HLJS** - syntax highlighting
 
@@ -36,7 +36,7 @@ The following frameworks, libraries and technologies have been used:
   - Public/Private API **[check]**
   - API Timeout
 - **Snippets**
-  - CRUD [check]
+  - CRUD **[check]**
   - Commenting, rating, viewing, favouriting **[check]**
   - Syntax highlighting **[check]**
   - Visibility modes: public, private (posting user only), unlisted (only with link) **[check]**
@@ -45,18 +45,18 @@ The following frameworks, libraries and technologies have been used:
   - 16x16 avatars, (image-rendering: pixelated) **[check]**
   - Display stats for user, like: total snippet rating **[check]**
 - **Style**
-  - Responsive
-  - Made as combination of AtomicCSS and functional programming
-  - Scalable
-  - Single palette
+  - Responsive **[check]**
+  - Made as combination of AtomicCSS and functional programming **[check]**
+  - Scalable **[check]**
+  - Single palette **[check]**
 - **Admin Panel:**
   - Snippet editting/deleting
   - Comment deleting
   - User banning
 - **Misc**
-  - URL Slugs - with alphanumeric generator for unlisted snippets [check]
-  - Searching
-  - Permalinks with slugs [check]
+  - URL Slugs - with alphanumeric generator for unlisted snippets **[check]**
+  - Searching **[check]**
+  - Permalinks with slugs **[check]**
 
 
 
@@ -240,13 +240,3 @@ Is now defined as:
 #### 4.5 Admin Panel
 
 Admins are equipped with tools to edit and remove snippets, ban or unban users, delete comments and view logs. 
-
-
-
-## Tasks:
-
-CHECK ENLIGHTERJS
-
-
-
-# BARDZIEJ NIEBIESKIE TLO!

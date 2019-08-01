@@ -13,26 +13,28 @@ use Illuminate\Http\Request;
 |
 */
 
-//Public API
-/*Route::get('/snippets', function()
-{
-	return App\Snippet::where('visibility_mode', '!=', 'unlisted')->get()
-		->where('is_visible_to_user', true)
-		->sortByDesc('date_posted');
-});*/
-
-Route::get('/snippets/page/{page}', function($page)
+// Public API (limited access)
+Route::get('/snippets/{page}', function($page)
 {
 	return App\Snippet::with('user')
 		->orderByDesc('date_posted')
 		->where('visibility_mode', '!=', 'unlisted')->get()
 		->where('is_visible_to_user', true)
-		->forPage($page, 8);
+		->forPage($page, 6);
 });
 
-//Private API
+// Private API (no limits)
 Route::middleware('apiauth')->group(function()
 {
+	Route::get('{api_key}/snippets/{page}', function($api_key, $page)
+	{
+		return App\Snippet::with('user')
+			->orderByDesc('date_posted')
+			->where('visibility_mode', '!=', 'unlisted')->get()
+			->where('is_visible_to_user', true)
+			->forPage($page, 6);
+	});
+
 	Route::post('/snippets/store', function(Request $request)
 	{
 		$languages = collect(config('gleemer.languages'));

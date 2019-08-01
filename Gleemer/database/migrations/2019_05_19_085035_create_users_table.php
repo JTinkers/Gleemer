@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
 			$table->string('api_key');
 			$table->boolean('default_avatar')->default(true);
 			$table->longText('bio');
-            $table->integer('flags')->default(0)->comment('bitmask');
+            $table->integer('flags')->default(PowerFlag::None)->comment('bitmask');
 			$table->string('date_registered');
         });
     }

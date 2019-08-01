@@ -41,7 +41,7 @@
 				<p>{{ $user->bio }}</p>
 			</div>
 		</div>
-		@if(UserManager::get() && UserManager::get()->id == $user->id)
+		@if(UserManager::get() && (UserManager::get()->id == $user->id || boolval(UserManager::get()->flags & PowerFlag::ViewSnippets)))
 			<div class="column-start(0) column-end(2) panel flex-grow(1)">
 				<div class="panel-header">
 					<span><i class="fas fa-file-alt margin-right(8px)"></i><b>@lang('general.snippets')</b></span>
@@ -54,7 +54,7 @@
 				@endforeach
 			</div>
 		@endif
-		@if(UserManager::get() && UserManager::get()->id == $user->id)
+		@if(UserManager::get() && (UserManager::get()->id == $user->id || boolval(UserManager::get()->flags & PowerFlag::ViewFavourites)))
 			<div class="column-start(2) column-end(4) panel flex-grow(1)">
 				<div class="panel-header">
 					<span><i class="fas fa-star margin-right(8px)"></i><b>@lang('general.favourites')</b></span>

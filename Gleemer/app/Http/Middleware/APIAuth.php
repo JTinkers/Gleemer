@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\User;
-use App\Facades\UserManager;
+use \Facades\UserManager;
 
 class APIAuth
 {
@@ -23,6 +23,8 @@ class APIAuth
 		}
 
 		$user = User::where('api_key', $request->api_key)->get()->first();
+
+		UserManager::set($user);
 
 		if(!$user)
 		{
