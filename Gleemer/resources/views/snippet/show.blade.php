@@ -48,6 +48,14 @@
 					</a>
 				</form>
 				<div class="display(flex) margin-left(auto) margin-right(-4px)">
+					@if(UserManager::get() && UserManager::get()->id == $snippet->user->id)
+						<form class="display(flex) margin-right(4px)" method="get" action="/snippet/edit/{{ $snippet->id }}">
+							<a id="snippet-toolbar-edit-button" class="button-outline" href="#" onclick="this.parentNode.submit()">
+								<i class="margin-right(4px) far fa-edit"></i>
+								<span>@lang('snippets.toolbar_edit')</span>
+							</a>
+						</form>
+					@endif
 					<clipboarder source="#code-copy-source" id="snippet-toolbar-copy-button" class="button-outline margin-right(4px)">
 						<i class="margin-right(4px) far fa-copy"></i>
 						<span>@lang('snippets.toolbar_copy')</span>

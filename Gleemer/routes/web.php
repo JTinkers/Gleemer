@@ -14,9 +14,21 @@
 // Internal API (unlimited, inaccessible from outside)
 Route::prefix('iapi')->group(function()
 {
-	Route::middleware(['localemanager'])->group(function()
+	Route::middleware('localemanager')->group(function()
 	{
 		Route::get('/snippets/{page}', function($page)
+		{
+			return App\Snippet::with('user')
+				->orderByDesc('date_posted')
+				->where('visibility_mode', '!=', 'unlisted')->get()
+				->where('is_visible_to_user', true)
+				->forPage($page, 20);
+		});
+	});
+
+	Route::middleware(['apiauth', 'localemanager'])->group(function()
+	{
+		Route::get('{api_key}/snippets/{page}', function($api_key, $page)
 		{
 			return App\Snippet::with('user')
 				->orderByDesc('date_posted')
@@ -37,6 +49,8 @@ Route::middleware(['gdprnote', 'localemanager'])->group(function()
 
 	Route::get('/snippet/create', 'SnippetController@create');
 	Route::get('/snippet/destroy/{snippet}', 'SnippetController@destroy');
+	Route::get('/snippet/edit/{snippet}', 'SnippetController@edit');
+	Route::post('/snippet/update/{snippet}', 'SnippetController@update');
 	Route::get('/snippet/show/{snippet}', 'SnippetController@show');
 	Route::get('/snippet/show/slug/{slug}', 'SnippetController@showSlug');
 	Route::post('/snippet/store', 'SnippetController@store');

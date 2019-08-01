@@ -152,7 +152,23 @@ class SnippetController extends Controller
      */
     public function edit(Snippet $snippet)
     {
-        //
+		if(!UserManager::get())
+		{
+			session()->flash('alert', __('user.not_logged'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		if($snippet->user != UserManager::get())
+		{
+			session()->flash('alert', __('snippet.cant_edit_someones'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+        return view('snippet.edit', ['snippet' => $snippet]);
     }
 
     /**
@@ -164,7 +180,43 @@ class SnippetController extends Controller
      */
     public function update(Request $request, Snippet $snippet)
     {
-        //
+		if(!UserManager::get())
+		{
+			session()->flash('alert', __('user.not_logged'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		if($snippet->user != UserManager::get())
+		{
+			session()->flash('alert', __('snippets.cant_edit_someones'));
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$languages = collect(config('gleemer.languages'));
+
+		$validator = Validator::make($request->all(),
+		[
+			'title' => ($request->title != $snippet->title ? 'unique:snippets|' : '') . 'max:255|min:16',
+			'contents' => 'required|max:4096|min:16',
+			'language' => ['required', Rule::in($languages)],
+		]);
+
+		if ($validator->fails())
+		{
+			session()->flash('alert', $validator->messages()->first());
+			session()->flash('alert_type', 'error');
+
+			return redirect()->back();
+		}
+
+		$snippet->fill($request->all());
+		$snippet->save();
+
+		return redirect('snippet/show/' . $snippet->id);
     }
 
     /**

@@ -16,6 +16,8 @@ return [
 	'toolbar_share' => 'udostępnij',
 	'toolbar_save' => 'zapisz',
 	'toolbar_unsave' => 'zapomnij',
+	'toolbar_edit' => 'edytuj',
 	'cant_rate_own' => 'Nie możesz oceniać własnych wrzutek!',
+	'cant_edit_someones' => 'Nie możesz edytować tego snippeta!',
 	'cant_view' => 'Nie możesz otworzyć tej wrzutki!'
 ];

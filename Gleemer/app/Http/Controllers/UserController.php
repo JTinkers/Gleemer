@@ -215,7 +215,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-		if(UserManager::get()->id != $user->id)
+		if(UserManager::get() != $user)
 		{
 			session()->flash('alert', __('user.edit_page_locked'));
 			session()->flash('alert_type', 'error');
@@ -235,7 +235,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-		if(UserManager::get()->id != $user->id)
+		if(UserManager::get() != $user)
 		{
 			session()->flash('alert', __('user.cant_update_not_self'));
 			session()->flash('alert_type', 'error');
