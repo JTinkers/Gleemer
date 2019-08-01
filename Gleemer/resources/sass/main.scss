@@ -249,6 +249,20 @@
 	grid-row-gap: 16px;
 }
 
+#locale-list
+{
+	color: palette('teal');
+	display: flex;
+	display: none;
+	background: palette('foreground');
+	border-radius: 3px;
+
+	> a:not(:first-child)
+	{
+		margin-left: 8px;
+	}
+}
+
 .user-sign-panel
 {
 	max-width: 384px;

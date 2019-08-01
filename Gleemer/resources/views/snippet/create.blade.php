@@ -12,7 +12,7 @@
 					<select class="margin-right(-8px)" name="visibility_mode">
 						<option disabled selected>@lang('snippets.select_visibility')</option>
 						@foreach(config('gleemer.visibility_modes') as $mode)
-							<option>{{ $mode }}</option>
+							<option value="{{ $mode }}">@lang('snippets.visibility_' . $mode)</option>
 						@endforeach
 					</select>
 				</div>

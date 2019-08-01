@@ -29,11 +29,11 @@
 		@if(!UserManager::get())
 			<a class="menu-button" href="/user">
 	    	    <div>
-					<i class="fas fa-fw fa-user"></i>
+					<i class=" fas fa-fw fa-user"></i>
 				</div>
 			</a>
 		@else
-			@usertag(['id' => UserManager::get()->id, 'class' => 'dark margin-left(8px)'])
+			@usertag(['id' => UserManager::get()->id, 'class' => 'dark margin-left(8px) margin-right(16px)'])
 		@endif
 	</div>
 </div>

@@ -3,15 +3,15 @@
 #footer
 {
 	display: flex;
+	flex-shrink: 0;
 	justify-content: center;
 	align-items: center;
-	height: 48px;
-	padding: 32px;
+	height: 64px;
 	margin-top: auto;
+	color: palette('background', '-2');
 
-	> a
+	a
 	{
-		color: palette('background', '-1');
 		transition: 0.5s all;
 
 		&:hover
@@ -20,4 +20,9 @@
 			transition: all 0.5s;
 		}
 	}
+}
+
+#locale-selection
+{
+	color: palette('background', '-2');
 }

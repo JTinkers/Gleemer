@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'apiauth' => \App\Http\Middleware\APIAuth::class,
         'gdprnote' => \App\Http\Middleware\GDRPComplianceNotification::class,
+        'localemanager' => \App\Http\Middleware\LocaleManager::class,
     ];
 
     /**

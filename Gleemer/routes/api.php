@@ -13,31 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-// Internal API (unlimited, inaccessible from outside, used on main page)
-Route::get('/snippets/{page}', function($page)
-{
-	return App\Snippet::with('user')
-		->orderByDesc('date_posted')
-		->where('visibility_mode', '!=', 'unlisted')->get()
-		->where('is_visible_to_user', true)
-		->forPage($page, 20);
-});
-
 // Private API (no limits)
 Route::middleware('apiauth')->group(function()
 {
-	// Used on main page when user is logged in
-	Route::get('{api_key}/snippets/{page}', function($api_key, $page)
-	{
-		return App\Snippet::with('user')
-			->orderByDesc('date_posted')
-			->where('visibility_mode', '!=', 'unlisted')->get()
-			->where('is_visible_to_user', true)
-			->forPage($page, 20);
-	});
-
-	// Used to store snippets uploaded via ShareX and such
-	// Timeout: 30
 	Route::post('/snippets/store', function(Request $request)
 	{
 		$languages = collect(config('gleemer.languages'));

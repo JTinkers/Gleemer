@@ -11,7 +11,23 @@
 |
 */
 
-Route::middleware('gdprnote')->group(function()
+// Internal API (unlimited, inaccessible from outside)
+Route::prefix('iapi')->group(function()
+{
+	Route::middleware(['localemanager'])->group(function()
+	{
+		Route::get('/snippets/{page}', function($page)
+		{
+			return App\Snippet::with('user')
+				->orderByDesc('date_posted')
+				->where('visibility_mode', '!=', 'unlisted')->get()
+				->where('is_visible_to_user', true)
+				->forPage($page, 20);
+		});
+	});
+});
+
+Route::middleware(['gdprnote', 'localemanager'])->group(function()
 {
 	Route::get('/', 'SnippetController@index');
 	Route::get('/api', function()

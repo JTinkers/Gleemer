@@ -96,6 +96,12 @@
 					<span class="margin-left(auto)">{{ $snippet->ratings->sum('value') }}</span>
 				</div>
 			</div>
+			<div class="panel-section dim flex-direction(column)">
+				<div class="display(flex)">
+					<span>@lang('snippets.visibility')</span>
+					<span class="margin-left(auto)">@lang('snippets.visibility_' . $snippet->visibility_mode)</span>
+				</div>
+			</div>
 		</div>
 		<div id="snippet-comment-container" class="panel">
 			<div class="panel-header">
