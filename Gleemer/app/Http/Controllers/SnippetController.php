@@ -160,7 +160,7 @@ class SnippetController extends Controller
 			return redirect()->back();
 		}
 
-		if($snippet->user != UserManager::get())
+		if($snippet->user->id != UserManager::get()->id)
 		{
 			session()->flash('alert', __('snippet.cant_edit_someones'));
 			session()->flash('alert_type', 'error');
@@ -188,7 +188,7 @@ class SnippetController extends Controller
 			return redirect()->back();
 		}
 
-		if($snippet->user != UserManager::get())
+		if($snippet->user->id != UserManager::get()->id)
 		{
 			session()->flash('alert', __('snippets.cant_edit_someones'));
 			session()->flash('alert_type', 'error');

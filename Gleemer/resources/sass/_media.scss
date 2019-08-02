@@ -55,6 +55,15 @@
 		display: flex !important;
 	}
 
+	#snippet-index-compact-pane
+	{
+		> .panel
+		{
+			margin-left: 8px;
+			margin-right: 8px;
+		}
+	}
+
 	#user-index-content-wrapper
 	{
 		flex-direction: column;
@@ -108,7 +117,7 @@
 
 	#content
 	{
-		padding: 16px 16px 0 16px;
+		padding: 16px 8px 0 8px;
 	}
 }
 

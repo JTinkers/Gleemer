@@ -31,7 +31,7 @@
 					<div class="panel-header">
 						<a class="margin-right(8px) overflow(hidden) text-overflow(ellipsis) white-space(nowrap)" :href="'/snippet/show/'+snippet.id"><b>@{{ snippet.title }}</b></a>
 						<a :href="'/user/show/'+snippet.user.id" class="usertag margin-left(auto)">
-							<img class="usertag-avatar" :src="'/storage/users/avatars/'+(snippet.user.default_avatar ? 'default' : snipper.user.id)+'.png'"/>
+							<img class="usertag-avatar" :src="'/storage/users/avatars/'+(snippet.user.default_avatar ? 'default' : snippet.user.id)+'.png'"/>
 							<span class="usertag-nickname">@{{ snippet.user.nickname }}</span>
 						</a>
 					</div>
