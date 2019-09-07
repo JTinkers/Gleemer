@@ -11,9 +11,18 @@ Each and every feature was added due to either of two reasons:
 - the feature was essential to the project.
 - the feature provided educational value.
 
+## 2. Installation
 
+- Connect to your server and open shell.
+- Clone repositorium via `git clone https://github.com/JTinkers/Gleemer.git` command.
+- Move nested `Gleemer` folder to an appropriate location.
+- Navigate to the inside of moved folder.
+- Run `install_me.sh`.
+- Edit .env to suit your needs.
+- Run `php artisan migrate:fresh` command.
+- Done.
 
-## 2. Features
+## 3. Features
 
 Gleemer comes with a multitude of features meant to make the website enjoyable, responsive, efficient and accessible to third-party apps.
 
@@ -91,7 +100,7 @@ Thanks to extensive usage of grids and flexboxes, website is responsibe, scalabl
 
 
 
-## 3. Technologies
+## 4. Technologies
 
 Technologies used in this project are as follows:
 
@@ -103,7 +112,7 @@ Technologies used in this project are as follows:
 
 
 
-## 4. Images
+## 5. Images
 
 Sign-in/Sign-up page.
 
