@@ -3,7 +3,7 @@
 @section('title', 'Snippets')
 
 @section('content')
-	<snippetapicontainer id="snippet-index-content-wrapper" url="http://gleemer.test/iapi/{{ UserManager::get() ? UserManager::get()->api_key . "/" : "" }}snippets/">
+	<snippetapicontainer id="snippet-index-content-wrapper" url="iapi/{{ UserManager::get() ? UserManager::get()->api_key . "/" : "" }}snippets/">
 		<template slot-scope="data">
 			<transition-group name="fade" id="snippet-index-left-pane" name="slide-fade">
 				<div v-for="snippet in data.resultsLeft" :key="snippet.id" class="panel">
@@ -49,7 +49,7 @@
 			</transition-group>
 		</template>
 	</snippetapicontainer>
-	<snippetapicontainer id="snippet-index-content-wrapper-compact" url="http://gleemer.test/iapi/snippets/">
+	<snippetapicontainer id="snippet-index-content-wrapper-compact" url="iapi/snippets/">
 		<template slot-scope="data">
 			<transition-group name="fade" id="snippet-index-compact-pane" name="slide-fade">
 				<div v-for="snippet in data.results" :key="snippet.id" class="panel">
