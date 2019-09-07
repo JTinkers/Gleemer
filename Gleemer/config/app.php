@@ -175,7 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\UserManagerServiceProvider::class,
-        App\Providers\TimeoutManagerServiceProvider::class,
     ],
 
     /*
