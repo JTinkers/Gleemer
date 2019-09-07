@@ -4,7 +4,7 @@
 
 ## 1. Idea
 
-The idea behind this project was to create a robust code snippet hosting service, while utilizing the technologies I'm already proficient in using.
+The idea behind this project was to create a robust code snippet hosting service, while utilizing the technologies I'm moderately or highly proficient in using.
 
 Each and every feature was added due to either of two reasons:
 
