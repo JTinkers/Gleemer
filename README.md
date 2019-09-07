@@ -4,7 +4,7 @@
 
 ## 1. Idea
 
-The idea behind this project was to create a robust code snippet hosting service, while utilizing the technologies I'm moderately or highly proficient in using.
+The idea behind this project was to create a robust code snippet hosting service, while utilizing the technologies I'm more or less used to.
 
 Each and every feature was added due to either of two reasons:
 
@@ -107,44 +107,44 @@ Technologies used in this project are as follows:
 
 Sign-in/Sign-up page.
 
-![README-Images\2.png](README-Images\2.png)
+![README-Images\2.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/2.png)
 
 User edit page.
 
-![README-Images\4.png](README-Images\4.png)
+![README-Images\4.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/4.png)
 
 API documentation page.
 
-![README-Images\3.png](README-Images\3.png)
+![README-Images\3.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/3.png)
 
 Snippet submission page.
 
-![README-Images\8.png](README-Images\8.png)
+![README-Images\8.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/8.png)
 
 Main page.
 
-![README-Images\11.png](README-Images\11.png)
+![README-Images\11.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/11.png)
 
 Viewing a snippet.
 
-![README-Images\10.png](README-Images\10.png)
+![README-Images\10.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/10.png)
 
 Toolbar that admin sees when browsing snippets.
 
-![README-Images\9.png](README-Images\9.png)
+![README-Images\9.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/9.png)
 
 User page.
 
-![README-Images\7.png](README-Images\7.png)
+![README-Images\7.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/7.png)
 
 Panel that admin sees when banning user.
 
-![README-Images\1.png](README-Images\1.png)
+![README-Images\1.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/1.png)
 
 How other users see a banned user.
 
-![README-Images\6.png](README-Images\6.png)
+![README-Images\6.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/6.png)
 
 The 'You Are Banned' page.
 
-![README-Images\5.png](README-Images\5.png)
+![README-Images\5.png](https://github.com/JTinkers/Gleemer/blob/master/README-Images/5.png)
