@@ -14,7 +14,7 @@ Each and every feature was added due to either of two reasons:
 ## 2. Installation
 
 - Connect to your server and open shell.
-- Clone repositorium via `git clone https://github.com/JTinkers/Gleemer.git` command.
+- Clone repo via `git clone https://github.com/JTinkers/Gleemer.git` command.
 - Move nested `Gleemer` folder to an appropriate location.
 - Navigate to the inside of moved folder.
 - Run `install_me.sh`.
