@@ -108,8 +108,7 @@ Technologies used in this project are as follows:
 - [Vue.js](https://vuejs.org/)
 - [VueObserveVisibility](https://github.com/Akryum/vue-observe-visibility)
 - [SASS](https://sass-lang.com/)
-- [HLJS](https://highlightjs.org](https://highlightjs.org/)
-
+- [HLJS](https://highlightjs.org)
 
 
 ## 5. Images
